@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View } from 'react-native';
+import { View, StatusBar } from 'react-native';
 import {WIDTH, HEIGHT, em} from '../common';
 import { Actions } from 'react-native-router-flux';
 

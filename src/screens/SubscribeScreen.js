@@ -1,16 +1,17 @@
 import React, { Component } from 'react'
 import {em} from '../common'
-import { TouchableOpacity } from "react-native";
+import { TouchableOpacity, StatusBar } from "react-native";
 import { Actions } from 'react-native-router-flux';
 
 import AccountLayout from '../layouts/AccountLayout'
 import HorizontalCenterLayout from '../layouts/HorizontalCenterLayout'
+import VerticalCenterFlowLayout from '../layouts/VerticalCenterFlowLayout'
 
 import LogoView from '../components/LogoView'
 import RoundButton from '../components/RoundButton'
 import {CommonText, TitleText, SmallText, RoundTextInput} from '../components/text'
 import {RoundDropDownButton} from '../components/button'
-import AgreeCheckBox from '../components/AgreeCheckBox'
+import {AgreeCheckBox} from '../components/checkbox'
 
 class SubscribeScreen extends Component {
   constructor(props){
@@ -20,7 +21,8 @@ class SubscribeScreen extends Component {
   render() {
     return (
         <AccountLayout>
-          <LogoView size="small"/>
+          <StatusBar barstyle="dark-content" translucent backgroundColor="transparent" />
+          <LogoView size="small" style={{marginTop: 20 * em}}/>
           <TitleText style={{marginTop: 35 * em}} theme="black">M'inscrier</TitleText>
           <SmallText theme="gray">*Champ obligatoire</SmallText>
 

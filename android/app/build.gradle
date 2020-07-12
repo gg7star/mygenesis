@@ -129,7 +129,7 @@ android {
     }
 
     defaultConfig {
-        applicationId "com.genesis"
+        applicationId "com.mygenesis"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1

@@ -5,6 +5,8 @@ import HomeScreen from '../screens/HomeScreen'
 import SubscribeScreen from '../screens/SubscribeScreen'
 import ConnectionMessageScreen from '../screens/ConnectionMessageScreen'
 import CoordinatesScreen from '../screens/CoordinatesScreen'
+import MyCVScreen from '../screens/MyCVScreen'
+import LoginScreen from '../screens/LoginScreen'
 
 class Routes extends Component {
 	render() {
@@ -16,6 +18,8 @@ class Routes extends Component {
 				  <Scene key="subscribe" hideNavBar component={SubscribeScreen} />
 				  <Scene key="connectionMessage" hideNavBar component={ConnectionMessageScreen} />
 				  <Scene key="coorindates" hideNavBar component={CoordinatesScreen} />
+				  <Scene key="mycv" hideNavBar component={MyCVScreen} />
+				  <Scene key="login" hideNavBar component={LoginScreen} />
       		</Scene>
 			</Router>
 		)

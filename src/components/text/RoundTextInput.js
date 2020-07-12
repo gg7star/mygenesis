@@ -1,7 +1,11 @@
 import React, { Component } from 'react';
-import { TextInput } from 'react-native';
+import { TextInput, View } from 'react-native';
 
 import {WIDTH, HEIGHT, em} from '../../common';
+import CommonText from './CommonText'
+import SmallButtonText from './SmallButtonText'
+import HorizontalCenterLayout from '../../layouts/HorizontalCenterLayout'
+import HorizontalLayout from '../../layouts/HorizontalLayout'
 
 const RoundTextInput = (props) => {
     const [value, onChangeText] = React.useState(props.placeHolder);
@@ -13,20 +17,31 @@ const RoundTextInput = (props) => {
     if (props.secureTextEntry) {
       propSecureTextEntry = props.secureTextEntry
     }
+    var textLength = 0
+    if (props.rightText) {
+      textLength = props.rightText.length * 8.5 * em
+    }
     return (
-      <TextInput
-        style={[{ width: WIDTH * 0.85,
-          height: 56*em,
-          borderColor: '#ffffff',
-          borderWidth: 1,
-          backgroundColor: "#ffffff", fontFamily: 'Lato-Bold', fontSize: 17*em,
-          borderRadius: 22*em,
-          paddingHorizontal: 25*em},
-          props.style]}
-        textContentType = {propTextContentType}
-        secureTextEntry = {propSecureTextEntry}
-        onChangeText= {text => onChangeText(text) }
-        placeholder = {props.placeHolder} />
+      <HorizontalLayout style={[{
+      borderColor: '#ffffff',
+      backgroundColor: "#ffffff",
+      borderWidth: 1,
+      borderRadius: 22*em}, props.style]}>
+        <TextInput
+          style={[{ width: WIDTH * 0.85 - textLength - 50*em,
+            height: 56*em, fontFamily: 'Lato-Bold', fontSize: 16*em,
+            marginLeft: 25*em}]}
+          editable={true}
+          textContentType = {propTextContentType}
+          secureTextEntry = {propSecureTextEntry}
+          onChangeText= {text => onChangeText(text) }
+          placeholder = {props.placeHolder} />
+
+          <HorizontalCenterLayout style={{width: textLength, height: 56 * em, marginRight: 25*em}}>
+            <SmallButtonText theme="green">{props.rightText}</SmallButtonText>
+          </HorizontalCenterLayout>
+
+      </HorizontalLayout>
     );
 }
 

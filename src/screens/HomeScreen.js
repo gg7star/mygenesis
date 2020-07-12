@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import {em} from '../common'
-import { TouchableHighlight } from "react-native";
+import { TouchableOpacity, StatusBar } from "react-native";
 import { Actions } from 'react-native-router-flux';
 
 import VerticalJustifyLayout from '../layouts/VerticalJustifyLayout'
@@ -17,15 +17,20 @@ class HomeScreen extends Component {
   render() {
     return (
       <VerticalJustifyLayout source={require('../assets/images/bg_home.jpg')}>
-        <LogoView size="small" textShow = "false"/>
+        <StatusBar barstyle="dark-content" translucent backgroundColor="transparent" />
+        <LogoView size="small" textShow = "false" style={{marginTop: 20 * em}}/>
 
         <VerticalCenterLayout>
-            <RoundButton text="Me connecter" theme="negative"/>
-            <TouchableHighlight onPress={() => {
+            <TouchableOpacity onPress={() => {
+              Actions.login()}
+            }>
+              <RoundButton text="Me connecter" theme="negative"/>
+            </TouchableOpacity>
+            <TouchableOpacity onPress={() => {
               Actions.subscribe()}
             }>
               <RoundButton text="M'inscrier" style={{marginTop: 10 * em}}/>
-            </TouchableHighlight>
+            </TouchableOpacity>
             <CommonText style={{marginTop: 20 * em, marginBottom: 20 * em}}>Consulter les offres sans m'inscrier</CommonText>
         </VerticalCenterLayout>
       </VerticalJustifyLayout>

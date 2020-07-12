@@ -6,6 +6,7 @@ import HomeScreen from './screens/HomeScreen'
 import SubscribeScreen from './screens/SubscribeScreen'
 import ConnectionMessageScreen from './screens/ConnectionMessageScreen'
 import CoordinatesScreen from './screens/CoordinatesScreen'
+import MyCVScreen from './screens/MyCVScreen'
 
 class App extends Component {
   constructor(props){

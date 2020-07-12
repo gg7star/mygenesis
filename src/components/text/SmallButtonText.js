@@ -3,7 +3,7 @@ import { Text } from 'react-native';
 
 import {WIDTH, HEIGHT, em} from '../../common';
 
-const CommonText = (props) => {
+const SmallButtonText = (props) => {
     var propTextColor = "#ffffff"
     if (props.theme == "black") {
       propTextColor = "#0a0f37"
@@ -18,10 +18,10 @@ const CommonText = (props) => {
       propTextColor = "#1de1d7"
     }
     return (
-      <Text style={[{fontFamily: 'Lato-Bold', fontSize: 16*em, color: propTextColor}, props.style]}>
+      <Text style={[{fontFamily: 'Lato-Bold', fontSize: 12*em, color: propTextColor}, props.style]}>
         {props.children}
       </Text>
     );
 }
 
-export default CommonText
+export default SmallButtonText

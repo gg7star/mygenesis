@@ -44,8 +44,8 @@ def flipper_post_install(installer)
   end
 end
 
-target 'Genesis' do
-  # Pods for Genesis
+target 'MyGenesis' do
+  # Pods for MyGenesis
   pod 'FBLazyVector', :path => "../node_modules/react-native/Libraries/FBLazyVector"
   pod 'FBReactNativeSpec', :path => "../node_modules/react-native/Libraries/FBReactNativeSpec"
   pod 'RCTRequired', :path => "../node_modules/react-native/Libraries/RCTRequired"
@@ -77,7 +77,7 @@ target 'Genesis' do
   pod 'glog', :podspec => '../node_modules/react-native/third-party-podspecs/glog.podspec'
   pod 'Folly', :podspec => '../node_modules/react-native/third-party-podspecs/Folly.podspec'
 
-  target 'GenesisTests' do
+  target 'MyGenesisTests' do
     inherit! :complete
     # Pods for testing
   end
@@ -94,10 +94,10 @@ target 'Genesis' do
   end
 end
 
-target 'Genesis-tvOS' do
-  # Pods for Genesis-tvOS
+target 'MyGenesis-tvOS' do
+  # Pods for MyGenesis-tvOS
 
-  target 'Genesis-tvOSTests' do
+  target 'MyGenesis-tvOSTests' do
     inherit! :search_paths
     # Pods for testing
   end
