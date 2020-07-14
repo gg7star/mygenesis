@@ -31,7 +31,7 @@ class LoginScreen extends Component {
           </VerticalCenterFlowLayout>
 
           <TouchableOpacity onPress={() => {
-
+            Actions.mainTab()
           }
           }>
             <RoundButton text="Me connecter" rightIcon="next" style={{marginTop: 75 * em}}/>

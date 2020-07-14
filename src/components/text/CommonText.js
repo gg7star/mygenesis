@@ -11,6 +11,9 @@ const CommonText = (props) => {
     else if (props.theme == "gray") {
       propTextColor = "#6b7783"
     }
+    else if (props.theme == "blue_gray") {
+      propTextColor = "#364258"
+    }
     else if (props.theme == "primary") {
       propTextColor = "#18277a"
     }
