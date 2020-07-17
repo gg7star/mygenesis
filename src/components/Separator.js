@@ -5,8 +5,12 @@ import VerticalCenterLayout from '../layouts/VerticalCenterLayout'
 import {WIDTH, HEIGHT, em} from '../common';
 
 const Separator = (props) => {
+    let thickness = 2
+    if (props.thickness) {
+      thickness = props.thickness
+    }
     return (
-      <View style={[{width: WIDTH * 0.85, height: 2 * em}, props.style]}>
+      <View style={[{height: thickness * em}, props.style]}>
         {props.children}
       </View>
     );

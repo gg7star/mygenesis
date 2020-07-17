@@ -6,7 +6,7 @@ import { Actions } from 'react-native-router-flux';
 import VerticalJustifyLayout from '../layouts/VerticalJustifyLayout'
 import VerticalCenterLayout from '../layouts/VerticalCenterLayout'
 import LogoView from '../components/LogoView'
-import RoundButton from '../components/RoundButton'
+import RoundButton from '../components/button/RoundButton'
 import {CommonText} from '../components/text'
 
 class HomeScreen extends Component {

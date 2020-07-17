@@ -8,7 +8,7 @@ import HorizontalCenterLayout from '../layouts/HorizontalCenterLayout'
 import VerticalCenterFlowLayout from '../layouts/VerticalCenterFlowLayout'
 
 import LogoView from '../components/LogoView'
-import RoundButton from '../components/RoundButton'
+import RoundButton from '../components/button/RoundButton'
 import {CommonText, TitleText, SmallText, RoundTextInput} from '../components/text'
 import {RoundDropDownButton} from '../components/button'
 import {AgreeCheckBox} from '../components/checkbox'

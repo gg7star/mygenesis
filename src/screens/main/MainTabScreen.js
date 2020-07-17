@@ -4,36 +4,10 @@ import { TouchableOpacity, StatusBar, View, Text, Image } from "react-native";
 import { NavigationContainer } from '@react-navigation/native';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import HomeTabScreen from './HomeTabScreen'
-import SearchTabScreen from './SearchTabScreen'
+import SearchTabNavigator from './SearchTabNavigator'
 import MyOffersTabScreen from './MyOffersTabScreen'
-
-class FavoritesTabScreen extends Component {
-  constructor(props){
-    super(props)
-  }
-
-  render() {
-    return (
-      <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-        <Text>Favorite Tab!</Text>
-      </View>
-    );
-  }
-}
-
-class CompleteTabScreen extends Component {
-  constructor(props){
-    super(props)
-  }
-
-  render() {
-    return (
-      <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-        <Text>Complete Tab!</Text>
-      </View>
-    );
-  }
-}
+import FavoritesTabScreen from './FavoritesTabScreen'
+import CompleteTabNavigator from './CompleteTabNavigator'
 
 const Tab = createBottomTabNavigator();
 
@@ -79,10 +53,10 @@ export default function MainTabScreen() {
         }}
       >
         <Tab.Screen name="HomeTab" component={HomeTabScreen} options={{ tabBarLabel: 'Accueil' }} />
-        <Tab.Screen name="SearchTab" component={SearchTabScreen} options={{ tabBarLabel: 'Rechercher' }} />
+        <Tab.Screen name="SearchTab" component={SearchTabNavigator} options={{ tabBarLabel: 'Rechercher' }} />
         <Tab.Screen name="MyOffersTab" component={MyOffersTabScreen} options={{ tabBarLabel: 'Mes offres' }} />
         <Tab.Screen name="FavoritesTab" component={FavoritesTabScreen} options={{ tabBarLabel: 'Favoris' }} />
-        <Tab.Screen name="CompleteTab" component={CompleteTabScreen} options={{ tabBarLabel: 'Compte' }} />
+        <Tab.Screen name="CompleteTab" component={CompleteTabNavigator} options={{ tabBarLabel: 'Compte' }} />
       </Tab.Navigator>
     </NavigationContainer>
   );

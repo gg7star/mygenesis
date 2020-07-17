@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import {em} from '../common'
+import {em, WIDTH} from '../common'
 import { TouchableOpacity, StatusBar } from "react-native";
 import { Actions } from 'react-native-router-flux';
 
@@ -8,7 +8,7 @@ import HorizontalCenterLayout from '../layouts/HorizontalCenterLayout'
 import VerticalCenterFlowLayout from '../layouts/VerticalCenterFlowLayout'
 
 import LogoView from '../components/LogoView'
-import RoundButton from '../components/RoundButton'
+import RoundButton from '../components/button/RoundButton'
 import Separator from '../components/Separator'
 import {CommonText, TitleText, SmallText, RoundTextInput} from '../components/text'
 
@@ -26,7 +26,7 @@ class LoginScreen extends Component {
 
           <VerticalCenterFlowLayout style={{backgroundColor: "#ffffff", borderRadius: 22*em}}>
             <RoundTextInput placeHolder="Email" textContentType="emailAddress" />
-            <Separator style={{backgroundColor: "#f5f6fa"}}/>
+            <Separator style={{width: WIDTH * 0.85, backgroundColor: "#f5f6fa"}}/>
             <RoundTextInput placeHolder="Most de passe" secureTextEntry={true} textContentType="password" rightText="OUBLIÉ ?" />
           </VerticalCenterFlowLayout>
 
