@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import {em, WIDTH, HEIGHT} from '../../common'
-import { TouchableOpacity, StatusBar, Image } from "react-native";
-import { Actions } from 'react-native-router-flux';
+import { TouchableOpacity, StatusBar, Image } from "react-native"
 
 import VerticalCenterFlowLayout from '../../layouts/VerticalCenterFlowLayout'
 import VerticalCenterLayout from '../../layouts/VerticalCenterLayout'

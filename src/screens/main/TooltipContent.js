@@ -12,13 +12,13 @@ class TooltipContent extends Component {
     render() {
       return (
         <VerticalFlowLayout>
-          <CommonRegularText theme="gray" style={styles.tooltipItem}>Date de démarrage</CommonRegularText>
+          <CommonRegularText theme="gray" style={[styles.tooltipItem, {marginTop: 20 * em}]}>Date de démarrage</CommonRegularText>
           <Separator thickness = {1} style={styles.tooltipSeparator}/>
           <CommonRegularText theme="gray" style={styles.tooltipItem}>Type de contrat</CommonRegularText>
           <Separator thickness = {1} style={styles.tooltipSeparator}/>
           <CommonRegularText theme="gray" style={styles.tooltipItem}>Ville</CommonRegularText>
           <Separator thickness = {1} style={styles.tooltipSeparator}/>
-          <CommonRegularText theme="gray" style={styles.tooltipItem}>Secteur de d'activité</CommonRegularText>
+          <CommonRegularText theme="gray" style={[styles.tooltipItem, {marginBottom: 20 * em}]}>Secteur de d'activité</CommonRegularText>
         </VerticalFlowLayout>
       )
     }

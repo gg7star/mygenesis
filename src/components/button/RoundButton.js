@@ -16,13 +16,21 @@ const RoundButton = (props) => {
   else if (props.theme=="green") {
     propBackColor = "#1de1d7"
   }
+  else if (props.theme=="gray") {
+    propBackColor = "#e9e9f5"
+    textTheme="primary"
+  }
+  let width = WIDTH * 0.85
+  if (props.width) {
+    width = props.width
+  }
   if (props.rightIcon == "next") {
     return (
       <HorizontalJustifyLayout style={[{height: 56*em,
-        width: WIDTH * 0.85,
+        width: width,
         backgroundColor: propBackColor,
         borderRadius: 22*em}, props.style]}>
-          <HorizontalCenterLayout style={{marginLeft: 50*em, width: WIDTH * 0.85 - 100 * em}}>
+          <HorizontalCenterLayout style={{marginLeft: 50*em, width: width - 100 * em}}>
             <CommonText theme={textTheme}>{props.text}</CommonText>
           </HorizontalCenterLayout>
           <Image source={require("../../assets/images/ic_next_arrow.png")} style={{width: 50*em, height: 30*em}} resizeMode={'center'} />

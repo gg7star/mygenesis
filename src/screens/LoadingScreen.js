@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
-import { View, StatusBar } from 'react-native';
-import {WIDTH, HEIGHT, em} from '../common';
-import { Actions } from 'react-native-router-flux';
+import React, { Component } from 'react'
+import { View, StatusBar } from 'react-native'
+import {WIDTH, HEIGHT, em} from '../common'
+import { Actions } from 'react-native-router-flux'
 
 import GradientProgressView from '../components/GradientProgressView'
 import LogoView from '../components/LogoView'

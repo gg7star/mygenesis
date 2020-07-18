@@ -14,13 +14,16 @@ const LogoView = (props) => {
       propHeight = 40 * em
       propFontSize = 7 * em
     }
-    if (props.textShow == "false") {
-        text = ""
+    if (props.size == "medium") {
+      propWidth = 100 * em
+      propHeight = 100 * em
+      propFontSize = 23 * em
     }
     return (
       <VerticalCenterLayout style={props.style}>
         <Image source={require('../assets/images/logo.png')} style={{width: propWidth, height: propHeight}} resizeMode={'stretch'} />
-        <Text style={{fontFamily: 'Lato-Bold', fontSize: propFontSize}}>{text}</Text>
+        {props.textShow != "false" &&
+        <Text style={{fontFamily: 'Lato-Bold', fontSize: propFontSize}}>{text}</Text>}
       </VerticalCenterLayout>
     );
 }

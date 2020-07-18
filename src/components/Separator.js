@@ -5,7 +5,7 @@ import VerticalCenterLayout from '../layouts/VerticalCenterLayout'
 import {WIDTH, HEIGHT, em} from '../common';
 
 const Separator = (props) => {
-    let thickness = 2
+    let thickness = 1*em
     if (props.thickness) {
       thickness = props.thickness
     }

@@ -8,6 +8,13 @@ import CoordinatesScreen from '../screens/CoordinatesScreen'
 import MyCVScreen from '../screens/MyCVScreen'
 import LoginScreen from '../screens/LoginScreen'
 import MainTabScreen from '../screens/main/MainTabScreen'
+import MyInformationScreen from '../screens/main/MyInformationScreen'
+import MyFollowUpScreen from '../screens/main/MyFollowUpScreen'
+import MyAvailabilityScreen from '../screens/main/MyAvailabilityScreen'
+import ContactUsScreen from '../screens/main/ContactUsScreen'
+import AboutScreen from '../screens/main/AboutScreen'
+import LegalNoticeScreen from '../screens/main/LegalNoticeScreen'
+import CGUScreen from '../screens/main/CGUScreen'
 
 class Routes extends Component {
 	render() {
@@ -22,6 +29,13 @@ class Routes extends Component {
 				  <Scene key="mycv" hideNavBar component={MyCVScreen} />
 				  <Scene key="login" hideNavBar component={LoginScreen} />
 				  <Scene key="mainTab" hideNavBar component={MainTabScreen} />
+				  <Scene key="myinformation" hideNavBar component={MyInformationScreen} />
+				  <Scene key="myfollowup" hideNavBar component={MyFollowUpScreen} />
+				  <Scene key="myavailability" hideNavBar component={MyAvailabilityScreen} />
+					<Scene key="contactus" hideNavBar component={ContactUsScreen} />
+					<Scene key="aboutmygenesis" hideNavBar component={AboutScreen} />
+					<Scene key="legalnotice" hideNavBar component={LegalNoticeScreen} />
+					<Scene key="cgu" hideNavBar component={CGUScreen} />
       		</Scene>
 			</Router>
 		)

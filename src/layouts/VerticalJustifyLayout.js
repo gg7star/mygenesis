@@ -8,7 +8,8 @@ const VerticalJustifyLayout = (props) => {
       <ImageBackground style={[{
           flex: 1,
           flexDirection: 'column',
-          justifyContent: "space-between"
+          justifyContent: "space-between",
+          alignItems: 'center'
         }, props.style]}
         resizeMode={'cover'}
         source={props.source}>

@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { createStackNavigator } from '@react-navigation/stack';
 import CompleteTabScreen from './CompleteTabScreen'
 import CompleteTabDetailScreen from './CompleteTabDetailScreen'
+import MyInformationScreen from './MyInformationScreen'
 
 const CompleteStack = createStackNavigator();
 

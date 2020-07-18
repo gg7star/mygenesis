@@ -21,16 +21,21 @@ const RoundTextInput = (props) => {
     if (props.rightText) {
       textLength = props.rightText.length * 8.5 * em
     }
+    let textAlignVertical = "center"
+    if (props.multiline) {
+      textAlignVertical = "top"
+    }
     return (
       <HorizontalLayout style={[{
       borderColor: '#ffffff',
       backgroundColor: "#ffffff",
       borderWidth: 1,
       borderRadius: 22*em}, props.style]}>
-        <TextInput
+        <TextInput multiline={props.multiline}
           style={[{ width: WIDTH * 0.85 - textLength - 50*em,
-            height: 56*em, fontFamily: 'Lato-Bold', fontSize: 16*em,
-            marginLeft: 25*em}]}
+            height: 56*em, fontFamily: 'Lato-Bold', fontSize: 16*em, paddingVertical: 10*em,
+            marginLeft: 25*em}, props.textInputStyle]}
+          textAlignVertical={textAlignVertical}
           editable={true}
           textContentType = {propTextContentType}
           secureTextEntry = {propSecureTextEntry}

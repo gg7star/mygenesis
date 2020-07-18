@@ -6,7 +6,8 @@ import CommonRegularText from './CommonRegularText'
 import MediumRegularText from './MediumRegularText'
 import CommonItalicText from './CommonItalicText'
 import RoundTextInput from './RoundTextInput'
+import MediumText from './MediumText'
 
 export {
-  CommonText, TitleText, SmallText, RoundTextInput, SmallButtonText, CommonRegularText, CommonItalicText, MediumRegularText
+  CommonText, TitleText, SmallText, RoundTextInput, SmallButtonText, CommonRegularText, CommonItalicText, MediumRegularText, MediumText
 }

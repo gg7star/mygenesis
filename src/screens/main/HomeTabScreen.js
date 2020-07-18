@@ -38,7 +38,7 @@ class HomeTabScreen extends Component {
               backgroundColor="#ffffff"
               overlayColor="#18277aef"
               width={150*em}
-              height={150*em}>
+              height={170*em}>
               {this.state.tooltipShown &&
               <Image source={require('../../assets/images/ic_close_popover.png')} style={styles.tooltipButton} resizeMode={'stretch'} />}
               {!this.state.tooltipShown &&
