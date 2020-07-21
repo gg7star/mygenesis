@@ -24,6 +24,10 @@ const RoundButton = (props) => {
   if (props.width) {
     width = props.width
   }
+  let height = 56 * em;
+  if (props.height) {
+    height = props.height
+  }
   if (props.rightIcon == "next") {
     return (
       <HorizontalJustifyLayout style={[{height: 56*em,
