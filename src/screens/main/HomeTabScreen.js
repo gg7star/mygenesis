@@ -11,7 +11,7 @@ import RoundButton from '../../components/button/RoundButton'
 import {CommonText} from '../../components/text'
 import {RoundDropDownButton} from '../../components/button'
 import JobMetaAdapter from '../../components/custom/JobMetaAdapter'
-import { Tooltip } from 'react-native-elements'
+import {Tooltip, Divider} from 'react-native-elements'
 import TooltipContent from './TooltipContent'
 
 class HomeTabScreen extends Component {

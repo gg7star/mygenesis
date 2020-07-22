@@ -15,6 +15,7 @@ const AgreeCheckBox = (props) => {
         props.style]}>
         <HorizontalLayout>
           <CheckBox
+            style={{width: 15*em, height: 15*em, marginRight: 5*em}}
             disabled={false}
             value={toggleCheckBox}
             onValueChange={() => toggleCheckBox ? setToggleCheckBox(false) : setToggleCheckBox(true)}

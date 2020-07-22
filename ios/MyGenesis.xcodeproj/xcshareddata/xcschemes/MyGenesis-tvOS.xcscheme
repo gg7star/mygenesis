@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "2D02E47A1E0B4A5D006451C7"
-               BuildableName = "Genesis-tvOS.app"
-               BlueprintName = "Genesis-tvOS"
-               ReferencedContainer = "container:Genesis.xcodeproj">
+               BuildableName = "MyGenesis-tvOS.app"
+               BlueprintName = "MyGenesis-tvOS"
+               ReferencedContainer = "container:MyGenesis.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -33,9 +33,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "2D02E48F1E0B4A5D006451C7"
-               BuildableName = "Genesis-tvOSTests.xctest"
-               BlueprintName = "Genesis-tvOSTests"
-               ReferencedContainer = "container:Genesis.xcodeproj">
+               BuildableName = "MyGenesis-tvOSTests.xctest"
+               BlueprintName = "MyGenesis-tvOSTests"
+               ReferencedContainer = "container:MyGenesis.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -55,9 +55,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "2D02E47A1E0B4A5D006451C7"
-            BuildableName = "Genesis-tvOS.app"
-            BlueprintName = "Genesis-tvOS"
-            ReferencedContainer = "container:Genesis.xcodeproj">
+            BuildableName = "MyGenesis-tvOS.app"
+            BlueprintName = "MyGenesis-tvOS"
+            ReferencedContainer = "container:MyGenesis.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </LaunchAction>
@@ -72,9 +72,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "2D02E47A1E0B4A5D006451C7"
-            BuildableName = "Genesis-tvOS.app"
-            BlueprintName = "Genesis-tvOS"
-            ReferencedContainer = "container:Genesis.xcodeproj">
+            BuildableName = "MyGenesis-tvOS.app"
+            BlueprintName = "MyGenesis-tvOS"
+            ReferencedContainer = "container:MyGenesis.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

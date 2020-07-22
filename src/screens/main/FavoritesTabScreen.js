@@ -21,7 +21,7 @@ class FavoritesTabScreen extends Component {
 
   render() {
     return (
-        <AccountLayout>
+        <AccountLayout style={{marginBottom: 65*em}}>
           <StatusBar barstyle="dark-content" translucent backgroundColor="transparent" />
           <TitleText style={{marginTop: 35 * em, marginBottom: 30 * em}} theme="black">Favoris</TitleText>
           <JobMetaAdapter global={true} favorite={true} title="Chef de project digital" durationType="CDD" budget="33000" availability="ASAP" location="Bordeaux"/>

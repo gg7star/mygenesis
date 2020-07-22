@@ -13,6 +13,7 @@ const CommonCheckBox = (props) => {
         <HorizontalLayout style={[{width: WIDTH * 0.85},
           props.style]}>
           <CheckBox
+            style={{marginRight:5*em, width: 15*em, height: 15*em}}
             disabled={false}
             value={toggleCheckBox}
             onValueChange={() => toggleCheckBox ? setToggleCheckBox(false) : setToggleCheckBox(true)}

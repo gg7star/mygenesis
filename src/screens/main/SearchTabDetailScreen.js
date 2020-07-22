@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { TouchableOpacity, StatusBar, Image, Button } from "react-native"
+import { TouchableOpacity, StatusBar, Image, Button, View } from "react-native"
 import { createStackNavigator } from '@react-navigation/stack';
 import SearchTabMainScreen from './SearchTabMainScreen'
 import AccountLayout from '../../layouts/AccountLayout'
@@ -36,52 +36,54 @@ class SearchTabDetailScreen extends Component {
 
     return (
       <VerticalFlowLayout style={{width: WIDTH, height: HEIGHT, backgroundColor: "#f5f6fa"}}>
-        <AccountLayout>
-          {this.state.isModalVisible &&
-          <StatusBar barstyle="dark-content" translucent backgroundColor="#18277a" />}
-          {!this.state.isModalVisible &&
-          <StatusBar barstyle="dark-content" translucent backgroundColor="transparent" />}
-          <HorizontalJustifyLayout style={{marginTop: 25 * em, marginBottom: 5 * em}}>
-            <HorizontalLayout>
-              <TouchableOpacity onPress={() => {
-                this.props.navigation.goBack()
-              }}>
-                <Image source={require('../../assets/images/ic_back.png')} style={{width: 30 * em, height: 30 * em}} resizeMode={'stretch'} />
-              </TouchableOpacity>
-            </HorizontalLayout>
-            <HorizontalLayout>
-              {isGlobal &&
-              <Image source={require('../../assets/images/ic_global.png')}
-                style={{width: 12 * em, height: 12 * em, marginRight: 5 * em}}
-                resizeMode={'stretch'} />
-              }
-              <CommonText theme="primary">{ title }</CommonText>
-            </HorizontalLayout>
-            <Image source={favoriteImageResource} style={{width: 20 * em, height: 20 * em}} resizeMode={'stretch'} />
-          </HorizontalJustifyLayout>
-          <CommonRegularText theme="black" style={{marginLeft: 15 * em}}>
-            Cdi - 33000 Bordeaux
-          </CommonRegularText>
-          <HorizontalLayout style={{marginTop: 5 * em}}>
-            <CommonRegularText theme="gray" style={{alignSelf: "flex-start"}}>
-              {responsibility}
+        <View style={{height: HEIGHT - 220*em}}>
+          <AccountLayout>
+            {this.state.isModalVisible &&
+            <StatusBar barstyle="dark-content" translucent backgroundColor="#18277a" />}
+            {!this.state.isModalVisible &&
+            <StatusBar barstyle="dark-content" translucent backgroundColor="transparent" />}
+            <HorizontalJustifyLayout style={{marginTop: 25 * em, marginBottom: 5 * em}}>
+              <HorizontalLayout>
+                <TouchableOpacity onPress={() => {
+                  this.props.navigation.goBack()
+                }}>
+                  <Image source={require('../../assets/images/ic_back.png')} style={{width: 30 * em, height: 30 * em}} resizeMode={'stretch'} />
+                </TouchableOpacity>
+              </HorizontalLayout>
+              <HorizontalLayout>
+                {isGlobal &&
+                <Image source={require('../../assets/images/ic_global.png')}
+                  style={{width: 12 * em, height: 12 * em, marginRight: 5 * em}}
+                  resizeMode={'stretch'} />
+                }
+                <CommonText theme="primary">{ title }</CommonText>
+              </HorizontalLayout>
+              <Image source={favoriteImageResource} style={{width: 20 * em, height: 20 * em}} resizeMode={'stretch'} />
+            </HorizontalJustifyLayout>
+            <CommonRegularText theme="black" style={{marginLeft: 15 * em}}>
+              Cdi - 33000 Bordeaux
             </CommonRegularText>
-            <CommonItalicText theme="black">
-              ASAP
-            </CommonItalicText>
-          </HorizontalLayout>
-          <VerticalFlowLayout style={{width: WIDTH * 0.85, backgroundColor: "#ffffff", borderRadius: 10 * em, marginTop: 20*em}}>
-            <JobPostSector type="description" text='Venez "matcher" avec Cyllene ! Cyllene c&apos;est 400 collaborateurs, qui accompagnent quotidiennement leurs clients dans le domaine du numerique et de la gestion des donnees : hebergement en Datacenters prives ou en Cloud public, Cyber securite, developpement web & mobile, marketing digital, solutions collaboratives...' />
-            <JobPostSector type="mission" applied={true} text='Venez "matcher" avec Cyllene ! Cyllene c&apos;est 400 collaborateurs, qui accompagnent quotidiennement leurs clients dans le domaine du numerique et de la gestion des donnees : hebergement en Datacenters prives ou en Cloud public, Cyber securite, developpement web & mobile, marketing digital, solutions collaboratives...' />
-            <JobPostSector type="profile_research" text='Venez "matcher" avec Cyllene ! Cyllene c&apos;est 400 collaborateurs, qui accompagnent quotidiennement leurs clients dans le domaine du numerique et de la gestion des donnees : hebergement en Datacenters prives ou en Cloud public, Cyber securite, developpement web & mobile, marketing digital, solutions collaboratives...'/>
-            <JobPostSector type="information" text='Venez "matcher" avec Cyllene ! Cyllene c&apos;est 400 collaborateurs, qui accompagnent quotidiennement leurs clients dans le domaine du numerique et de la gestion des donnees : hebergement en Datacenters prives ou en Cloud public, Cyber securite, developpement web & mobile, marketing digital, solutions collaboratives...'/>
-          </VerticalFlowLayout>
-        </AccountLayout>
+            <HorizontalLayout style={{marginTop: 5 * em}}>
+              <CommonRegularText theme="gray" style={{alignSelf: "flex-start"}}>
+                {responsibility}
+              </CommonRegularText>
+              <CommonItalicText theme="black">
+                ASAP
+              </CommonItalicText>
+            </HorizontalLayout>
+            <VerticalFlowLayout style={{width: WIDTH * 0.85, backgroundColor: "#ffffff", borderRadius: 10 * em, marginTop: 20*em}}>
+              <JobPostSector type="description" text='Venez "matcher" avec Cyllene ! Cyllene c&apos;est 400 collaborateurs, qui accompagnent quotidiennement leurs clients dans le domaine du numerique et de la gestion des donnees : hebergement en Datacenters prives ou en Cloud public, Cyber securite, developpement web & mobile, marketing digital, solutions collaboratives...' />
+              <JobPostSector type="mission" applied={true} text='Venez "matcher" avec Cyllene ! Cyllene c&apos;est 400 collaborateurs, qui accompagnent quotidiennement leurs clients dans le domaine du numerique et de la gestion des donnees : hebergement en Datacenters prives ou en Cloud public, Cyber securite, developpement web & mobile, marketing digital, solutions collaboratives...' />
+              <JobPostSector type="profile_research" text='Venez "matcher" avec Cyllene ! Cyllene c&apos;est 400 collaborateurs, qui accompagnent quotidiennement leurs clients dans le domaine du numerique et de la gestion des donnees : hebergement en Datacenters prives ou en Cloud public, Cyber securite, developpement web & mobile, marketing digital, solutions collaboratives...'/>
+              <JobPostSector type="information" text='Venez "matcher" avec Cyllene ! Cyllene c&apos;est 400 collaborateurs, qui accompagnent quotidiennement leurs clients dans le domaine du numerique et de la gestion des donnees : hebergement en Datacenters prives ou en Cloud public, Cyber securite, developpement web & mobile, marketing digital, solutions collaboratives...'/>
+            </VerticalFlowLayout>
+          </AccountLayout>
+        </View>
         <TouchableOpacity onPress={() => {
           this.setState({isModalVisible: true})
         }}>
           { applied &&
-            <RoundButton text="Déjà postulé" leftIcon="applied" theme="green" style={{marginTop: 15 * em, marginBottom: 80 * em, alignSelf: "center"}}/>
+            <RoundButton text="Déjà postulé" leftIcon="applied" theme="green" style={{marginTop: 15 * em, alignSelf: "center"}}/>
           }
           { !applied &&
             <RoundButton text="Postuler" rightIcon="next" style={{marginTop: 15 * em, marginBottom: 80 * em, alignSelf: "center"}}/>
