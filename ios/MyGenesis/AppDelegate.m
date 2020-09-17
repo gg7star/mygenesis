@@ -49,7 +49,7 @@ static void InitializeFlipper(UIApplication *application) {
 - (NSURL *)sourceURLForBridge:(RCTBridge *)bridge
 {
 #if DEBUG
-  [[RCTBundleURLProvider sharedSettings] setJsLocation:@"127.0.0.1"];
+  //[[RCTBundleURLProvider sharedSettings] setJsLocation:@"127.0.0.1"];
   return [[RCTBundleURLProvider sharedSettings] jsBundleURLForBundleRoot:@"index" fallbackResource:nil];
 #else
   return [[NSBundle mainBundle] URLForResource:@"main" withExtension:@"jsbundle"];

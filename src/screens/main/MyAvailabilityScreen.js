@@ -1,5 +1,9 @@
 import React, { Component } from 'react'
 import { TouchableOpacity, StatusBar, Image, View, StyleSheet, Text} from "react-native"
+import { connect } from 'react-redux'
+
+import { getAvailability, getDefaultAvailability, updateAvailability } from '../../utils/firebase/database'
+
 import {TitleText, CommonText, CommonRegularText, MediumText, SmallText, TinyText} from '../../components/text'
 import {em, WIDTH} from '../../common'
 import AccountLayout from '../../layouts/AccountLayout'
@@ -11,23 +15,151 @@ import VerticalFlowLayout from '../../layouts/VerticalFlowLayout'
 import RoundButton from '../../components/button/RoundButton'
 import Modal from 'react-native-modal'
 import DatePicker from 'react-native-date-picker'
+import Spinner from 'react-native-loading-spinner-overlay'
 
 class MyAvailabilityScreen extends Component {
+  _daysOfWeek = ["Lun", "Mar", "Mer", "Jeu", "Ven", "Sam", "Dim"]
   constructor(props){
     super(props)
     this.state = {
-      isModalVisible: false
+      isModalVisible: false,
+      chosenDate: new Date(),
+      tempDate: new Date(),
+      availability: getDefaultAvailability(),
+      renderAvailability: true,
+      showLoading: false,
     }
-    this.state = { chosenDate: new Date() }
     this.setDate = this.setDate.bind(this)
+    this.setTempDate = this.setTempDate.bind(this)
   }
 
   setDate(newDate) {
-    this.setState({ chosenDate: newDate });
+    this.setState({ chosenDate: newDate })
+  }
+
+  setTempDate(newDate) {
+    this.setState({ tempDate: newDate })
+  }
+
+  getMonthOfDate(date) {
+    const monthString = ["janvier", "février", "mars", "avril", "mai", "juin",
+            "juillet", "août", "septembre", "octobre", "novembre", "décembre"]
+    const month = date.getMonth()
+    return monthString[month]
+  }
+
+  getDayOfDate(date) {
+    const day = date.getDate()
+    if (day < 10) {
+      return "0" + day
+    }
+    return String(day)
+  }
+
+  getYearOfDate(date) {
+    return date.getYear() + 1900
+  }
+
+  UNSAFE_componentWillMount() {
+    const _this = this
+    this.setState({showLoading: true})
+    getAvailability().then(res => {
+      let availability = res
+      _this.setState({availability})
+      _this.setDate(new Date(availability["startDate"]))
+      _this.setTempDate(new Date(availability["startDate"]))
+      _this.setState({showLoading: false})
+    }).catch(e => {
+      console.log("======= error", e)
+    })
+  }
+
+  updateStartDateState(newDate) {
+    const _this = this
+    let newAvailability = JSON.parse(JSON.stringify(this.state.availability))
+    newAvailability["startDate"] = newDate.toString()
+    this.updateDatabaseAndState(newAvailability)
+  }
+
+  setAvailableForDay = (defaultValue, dayOfWeek, index) => {
+    let newAvailability = JSON.parse(JSON.stringify(this.state.availability))
+    newAvailability[dayOfWeek][index] = !defaultValue
+    this.updateDatabaseAndState(newAvailability)
+  }
+
+  updateDatabaseAndState(newAvailability) {
+    this.setState({showLoading: true})
+    updateAvailability(newAvailability).then(res => {
+      this.setState({ availability: res, showLoading: false })
+      this.setDate(new Date(res["startDate"]))
+      this.setTempDate(new Date(res["startDate"]))
+    })
   }
 
   render() {
     let checkImageSource = require('../../assets/images/check_circled.png')
+    let availTable = []
+    availTable.push(
+      <HorizontalLayout style={[{borderRadius: 20*em}, styles.weekItemContainer]}>
+        <HorizontalCenterLayout style={styles.weekItem}>
+        </HorizontalCenterLayout>
+        <HorizontalCenterLayout style={styles.weekItem}>
+          <View style={styles.realSeparator}/>
+          <TinyText theme="black">Martin</TinyText>
+        </HorizontalCenterLayout>
+        <HorizontalCenterLayout style={styles.weekItem}>
+          <View style={styles.realSeparator}/>
+          <TinyText theme="black">Soir</TinyText>
+        </HorizontalCenterLayout>
+        <HorizontalCenterLayout style={styles.weekItem}>
+          <View style={styles.realSeparator}/>
+          <TinyText theme="black">Nuit</TinyText>
+        </HorizontalCenterLayout>
+        <HorizontalCenterLayout style={styles.weekItem}>
+          <View style={styles.realSeparator}/>
+          <TinyText theme="black">Journée</TinyText>
+        </HorizontalCenterLayout>
+      </HorizontalLayout>)
+
+    const _this = this
+    this._daysOfWeek.map((item, index) => {
+      let weekItemContainerChild = []
+      if (index % 2 == 0) {
+        weekItemContainerChild.push(
+          <HorizontalCenterLayout style={styles.weekItemGrayShadow}>
+          </HorizontalCenterLayout>
+        )
+      }
+      weekItemContainerChild.push(
+        <HorizontalCenterLayout style={styles.weekItem}>
+          <CommonText theme="black">{item}</CommonText>
+        </HorizontalCenterLayout>
+      )
+      this.state.availability[item].map((availItem, availIndex) => {
+        weekItemContainerChild.push(
+            <HorizontalCenterLayout style={styles.weekItem}>
+                <View style={styles.realSeparator}/>
+                {availItem &&
+                <TouchableOpacity onPress={() => {
+                    _this.setAvailableForDay(availItem, item, availIndex)
+                  }}>
+                    <Image source={checkImageSource} style={styles.checkImage} resizeMode={'stretch'} />
+                </TouchableOpacity>}
+                {!availItem &&
+                <TouchableOpacity onPress={() => {
+                    _this.setAvailableForDay(availItem, item, availIndex)
+                  }}>
+                    <Image style={styles.checkImage} resizeMode={'stretch'} />
+                </TouchableOpacity>}
+            </HorizontalCenterLayout>
+        )
+      })
+      availTable.push(
+        <HorizontalLayout style={[{borderRadius: 20*em}, styles.weekItemContainer]}>
+          {weekItemContainerChild}
+        </HorizontalLayout>
+      )
+    })
     return (
         <AccountLayout>
           {this.state.isModalVisible &&
@@ -62,10 +194,10 @@ class MyAvailabilityScreen extends Component {
                 this.setState({isModalVisible: true})
               }}>
                 <HorizontalLayout>
-                  <TitleText theme="primary">04</TitleText>
+                  <TitleText theme="primary">{this.getDayOfDate(this.state.chosenDate)}</TitleText>
                   <VerticalFlowLayout style={{marginLeft: 6*em}}>
-                    <SmallText theme="primary">juin</SmallText>
-                    <SmallText theme="primary">2020</SmallText>
+                    <SmallText theme="primary">{ this.getMonthOfDate(this.state.chosenDate) }</SmallText>
+                    <SmallText theme="primary">{ this.getYearOfDate(this.state.chosenDate) }</SmallText>
                   </VerticalFlowLayout>
                 </HorizontalLayout>
               </TouchableOpacity>
@@ -79,157 +211,7 @@ class MyAvailabilityScreen extends Component {
 
           <MediumText theme="primary" style={{marginTop: 25*em}}>Mes creneaux horaires par jour</MediumText>
           <VerticalCenterFlowLayout style={styles.weekDataContainer}>
-            <HorizontalLayout style={[{borderRadius: 20*em}, styles.weekItemContainer]}>
-              <HorizontalCenterLayout style={styles.weekItem}>
-              </HorizontalCenterLayout>
-              <HorizontalCenterLayout style={styles.weekItem}>
-                <View style={styles.realSeparator}/>
-                <TinyText theme="black">Martin</TinyText>
-              </HorizontalCenterLayout>
-              <HorizontalCenterLayout style={styles.weekItem}>
-                <View style={styles.realSeparator}/>
-                <TinyText theme="black">Soir</TinyText>
-              </HorizontalCenterLayout>
-              <HorizontalCenterLayout style={styles.weekItem}>
-                <View style={styles.realSeparator}/>
-                <TinyText theme="black">Nuit</TinyText>
-              </HorizontalCenterLayout>
-              <HorizontalCenterLayout style={styles.weekItem}>
-                <View style={styles.realSeparator}/>
-                <TinyText theme="black">Journée</TinyText>
-              </HorizontalCenterLayout>
-            </HorizontalLayout>
-            <HorizontalLayout style={[{borderRadius: 20*em}, styles.weekItemContainer]}>
-              <HorizontalCenterLayout style={styles.weekItemGrayShadow}>
-              </HorizontalCenterLayout>
-              <HorizontalCenterLayout style={styles.weekItem}>
-                <CommonText theme="black">Lun</CommonText>
-              </HorizontalCenterLayout>
-              <HorizontalCenterLayout style={styles.weekItem}>
-                <View style={styles.realSeparator}/>
-                <Image source={checkImageSource} style={styles.checkImage} resizeMode={'stretch'} />
-              </HorizontalCenterLayout>
-              <HorizontalCenterLayout style={styles.weekItem}>
-                <View style={styles.realSeparator}/>
-                <Image source={checkImageSource} style={styles.checkImage} resizeMode={'stretch'} />
-              </HorizontalCenterLayout>
-              <HorizontalCenterLayout style={styles.weekItem}>
-                <View style={styles.realSeparator}/>
-              </HorizontalCenterLayout>
-              <HorizontalCenterLayout style={styles.weekItem}>
-                <View style={styles.realSeparator}/>
-              </HorizontalCenterLayout>
-            </HorizontalLayout>
-            <HorizontalLayout style={[{borderRadius: 20*em}, styles.weekItemContainer]}>
-              <HorizontalCenterLayout style={styles.weekItem}>
-                <CommonText theme="black">Mar</CommonText>
-              </HorizontalCenterLayout>
-              <HorizontalCenterLayout style={styles.weekItem}>
-                <View style={styles.realSeparator}/>
-              </HorizontalCenterLayout>
-              <HorizontalCenterLayout style={styles.weekItem}>
-                <View style={styles.realSeparator}/>
-                <Image source={checkImageSource} style={styles.checkImage} resizeMode={'stretch'} />
-              </HorizontalCenterLayout>
-              <HorizontalCenterLayout style={styles.weekItem}>
-                <View style={styles.realSeparator}/>
-              </HorizontalCenterLayout>
-              <HorizontalCenterLayout style={styles.weekItem}>
-                <View style={styles.realSeparator}/>
-              </HorizontalCenterLayout>
-            </HorizontalLayout>
-            <HorizontalLayout style={[{borderRadius: 20*em}, styles.weekItemContainer]}>
-              <HorizontalCenterLayout style={styles.weekItemGrayShadow}>
-              </HorizontalCenterLayout>
-              <HorizontalCenterLayout style={styles.weekItem}>
-                <CommonText theme="black">Mer</CommonText>
-              </HorizontalCenterLayout>
-              <HorizontalCenterLayout style={styles.weekItem}>
-                <View style={styles.realSeparator}/>
-              </HorizontalCenterLayout>
-              <HorizontalCenterLayout style={styles.weekItem}>
-                <View style={styles.realSeparator}/>
-              </HorizontalCenterLayout>
-              <HorizontalCenterLayout style={styles.weekItem}>
-                <View style={styles.realSeparator}/>
-              </HorizontalCenterLayout>
-              <HorizontalCenterLayout style={styles.weekItem}>
-                <View style={styles.realSeparator}/>
-              </HorizontalCenterLayout>
-            </HorizontalLayout>
-            <HorizontalLayout style={[{borderRadius: 20*em}, styles.weekItemContainer]}>
-              <HorizontalCenterLayout style={styles.weekItem}>
-                <CommonText theme="black">Jeu</CommonText>
-              </HorizontalCenterLayout>
-              <HorizontalCenterLayout style={styles.weekItem}>
-                <View style={styles.realSeparator}/>
-              </HorizontalCenterLayout>
-              <HorizontalCenterLayout style={styles.weekItem}>
-                <View style={styles.realSeparator}/>
-              </HorizontalCenterLayout>
-              <HorizontalCenterLayout style={styles.weekItem}>
-                <View style={styles.realSeparator}/>
-              </HorizontalCenterLayout>
-              <HorizontalCenterLayout style={styles.weekItem}>
-                <View style={styles.realSeparator}/>
-              </HorizontalCenterLayout>
-            </HorizontalLayout>
-            <HorizontalLayout style={[{borderRadius: 20*em}, styles.weekItemContainer]}>
-              <HorizontalCenterLayout style={styles.weekItemGrayShadow}>
-              </HorizontalCenterLayout>
-              <HorizontalCenterLayout style={styles.weekItem}>
-                <CommonText theme="black">Ven</CommonText>
-              </HorizontalCenterLayout>
-              <HorizontalCenterLayout style={styles.weekItem}>
-                <View style={styles.realSeparator}/>
-              </HorizontalCenterLayout>
-              <HorizontalCenterLayout style={styles.weekItem}>
-                <View style={styles.realSeparator}/>
-              </HorizontalCenterLayout>
-              <HorizontalCenterLayout style={styles.weekItem}>
-                <View style={styles.realSeparator}/>
-              </HorizontalCenterLayout>
-              <HorizontalCenterLayout style={styles.weekItem}>
-                <View style={styles.realSeparator}/>
-              </HorizontalCenterLayout>
-            </HorizontalLayout>
-            <HorizontalLayout style={[{borderRadius: 20*em}, styles.weekItemContainer]}>
-              <HorizontalCenterLayout style={styles.weekItem}>
-                <CommonText theme="black">Sam</CommonText>
-              </HorizontalCenterLayout>
-              <HorizontalCenterLayout style={styles.weekItem}>
-                <View style={styles.realSeparator}/>
-              </HorizontalCenterLayout>
-              <HorizontalCenterLayout style={styles.weekItem}>
-                <View style={styles.realSeparator}/>
-                <Image source={checkImageSource} style={styles.checkImage} resizeMode={'stretch'} />
-              </HorizontalCenterLayout>
-              <HorizontalCenterLayout style={styles.weekItem}>
-                <View style={styles.realSeparator}/>
-              </HorizontalCenterLayout>
-              <HorizontalCenterLayout style={styles.weekItem}>
-                <View style={styles.realSeparator}/>
-              </HorizontalCenterLayout>
-            </HorizontalLayout>
-            <HorizontalLayout style={[{borderRadius: 20*em}, styles.weekItemContainer]}>
-              <HorizontalCenterLayout style={styles.weekItemGrayShadow}>
-              </HorizontalCenterLayout>
-              <HorizontalCenterLayout style={styles.weekItem}>
-                <CommonText theme="black">Dim</CommonText>
-              </HorizontalCenterLayout>
-              <HorizontalCenterLayout style={styles.weekItem}>
-                <View style={styles.realSeparator}/>
-              </HorizontalCenterLayout>
-              <HorizontalCenterLayout style={styles.weekItem}>
-                <View style={styles.realSeparator}/>
-              </HorizontalCenterLayout>
-              <HorizontalCenterLayout style={styles.weekItem}>
-                <View style={styles.realSeparator}/>
-              </HorizontalCenterLayout>
-              <HorizontalCenterLayout style={styles.weekItem}>
-                <View style={styles.realSeparator}/>
-              </HorizontalCenterLayout>
-            </HorizontalLayout>
+            {availTable}
           </VerticalCenterFlowLayout>
 
           <Modal isVisible={this.state.isModalVisible} backdropColor="#18277a" backdropOpacity={0.95}>
@@ -248,10 +230,10 @@ class MyAvailabilityScreen extends Component {
                   <HorizontalLayout style={{flex: 2}}>
                     <View style={{width: 1*em, height: 22*em, backgroundColor: "#f4f5f9"}}/>
                     <HorizontalLayout style={{marginLeft: 20*em}}>
-                      <TitleText theme="green">04</TitleText>
+                      <TitleText theme="green">{ this.getDayOfDate(this.state.tempDate) }</TitleText>
                       <VerticalFlowLayout style={{marginLeft: 6*em}}>
-                        <SmallText theme="green">juin</SmallText>
-                        <SmallText theme="green">2020</SmallText>
+                        <SmallText theme="green">{ this.getMonthOfDate(this.state.tempDate) }</SmallText>
+                        <SmallText theme="green">{ this.getYearOfDate(this.state.tempDate) }</SmallText>
                       </VerticalFlowLayout>
                     </HorizontalLayout>
                   </HorizontalLayout>
@@ -259,7 +241,7 @@ class MyAvailabilityScreen extends Component {
                 <HorizontalLayout style={{backgroundColor: "#f4f5f9", borderRadius: 15*em, marginTop: 15*em, marginBottom: 5*em}}>
                   <DatePicker
                     date={this.state.chosenDate}
-                    onDateChange={this.setDate}
+                    onDateChange={this.setTempDate}
                     mode='date'
                     locale='fr'
                     fadeToColor="#f4f5f9"
@@ -275,12 +257,19 @@ class MyAvailabilityScreen extends Component {
                   </TouchableOpacity>
                   <TouchableOpacity onPress={() => {
                     this.setState({isModalVisible: false})
+                    this.updateStartDateState(this.state.tempDate)
                   }}>
                     <RoundButton text="Enregistrer" style={styles.modalButton} theme="primary"/>
                   </TouchableOpacity>
                 </HorizontalJustifyLayout>
               </VerticalCenterFlowLayout>
           </Modal>
+
+          <Spinner
+            visible={this.state.showLoading}
+            textContent={''}
+            textStyle={{ color: '#FFF' }}
+          />
         </AccountLayout>
     );
   }
@@ -354,4 +343,12 @@ const styles = {
   }
 }
 
-export default MyAvailabilityScreen
+
+const mapStateToProps = state => ({
+  credential: state.app.credential,
+})
+
+export default connect(
+    mapStateToProps,
+    null
+  )(MyAvailabilityScreen)

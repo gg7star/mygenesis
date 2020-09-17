@@ -8,7 +8,7 @@ import HorizontalCenterLayout from '../../layouts/HorizontalCenterLayout'
 import HorizontalLayout from '../../layouts/HorizontalLayout'
 
 const RoundTextInput = (props) => {
-    const [value, onChangeText] = React.useState(props.placeHolder);
+    // const [value, onChangeText] = React.useState(props.placeHolder);
     var propTextContentType = "none"
     var propSecureTextEntry = false
     if (props.textContentType) {
@@ -35,11 +35,12 @@ const RoundTextInput = (props) => {
           style={[{ width: WIDTH * 0.85 - textLength - 50*em,
             height: 56*em, fontFamily: 'Lato-Bold', fontSize: 16*em, paddingVertical: 10*em,
             marginLeft: 25*em}, props.textInputStyle]}
+          onChangeText={props.handleChange}
+          value={props.value}
           textAlignVertical={textAlignVertical}
           editable={true}
           textContentType = {propTextContentType}
           secureTextEntry = {propSecureTextEntry}
-          onChangeText= {text => onChangeText(text) }
           placeholder = {props.placeHolder} />
 
           <HorizontalCenterLayout style={{width: textLength, height: 56 * em, marginRight: 25*em}}>

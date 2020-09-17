@@ -21,7 +21,7 @@ const CommonText = (props) => {
       propTextColor = "#1de1d7"
     }
     return (
-      <Text style={[{fontFamily: 'Lato-Bold', fontSize: 16*em, color: propTextColor}, props.style]}>
+      <Text style={[{fontFamily: 'Lato-Bold', fontSize: 16*em, color: propTextColor}, props.style]} onPress={props.onPress}>
         {props.children}
       </Text>
     );

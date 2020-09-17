@@ -5,6 +5,7 @@ import { Actions } from 'react-native-router-flux';
 
 import AccountLayout from '../layouts/AccountLayout'
 import HorizontalCenterLayout from '../layouts/HorizontalCenterLayout'
+import {showRootToast} from '../utils/misc'
 
 import LogoView from '../components/LogoView'
 import RoundButton from '../components/button/RoundButton'
@@ -14,9 +15,38 @@ import {RoundDropDownButton} from '../components/button'
 class SubscribeScreen extends Component {
   constructor(props){
     super(props)
+
+    this.state = {
+      zipCode: "",
+      city: "",
+      telephone: "",
+    }
+  }
+
+  handleContinue = () => {
+    const {zipCode, city, telephone} = this.state
+    const {email, password, civility, firstName, lastName} = this.props
+
+    if (zipCode == "") {
+      showRootToast('Please enter your zip code')
+      return
+    }
+
+    if (city == ""){
+      showRootToast('Please enter your city')
+      return
+    }
+
+    if (telephone == ""){
+      showRootToast('Please enter your telephone')
+      return
+    }
+
+    Actions.mycv({email, password, civility, firstName, lastName, zipCode, city, telephone})
   }
 
   render() {
+    const {zipCode, city, telephone} = this.state
     return (
         <AccountLayout>
           <StatusBar barstyle="dark-content" translucent backgroundColor="transparent" />
@@ -24,12 +54,13 @@ class SubscribeScreen extends Component {
           <TitleText style={{marginTop: 35 * em}} theme="black">Mes coordonnées</TitleText>
           <SmallText theme="gray">*Champ obligatoire</SmallText>
 
-          <RoundTextInput placeHolder="Code Postale*" textContentType="postalCode" style={{marginTop: 20 * em}} />
-          <RoundTextInput placeHolder="Ville*" style={{marginTop: 15 * em}} />
-          <RoundTextInput placeHolder="Téléphone*" textContentType="telephoneNumber" style={{marginTop: 15 * em}} />
-          <TouchableOpacity onPress={() => {
-            Actions.mycv()}
-          }>
+          <RoundTextInput placeHolder="Code Postale*" textContentType="postalCode"
+            style={{marginTop: 20 * em}} value={zipCode} handleChange={(text)=>this.setState({zipCode:text})} />
+          <RoundTextInput placeHolder="Ville*" style={{marginTop: 15 * em}}
+            value={city} handleChange={(text)=>this.setState({city:text})} />
+          <RoundTextInput placeHolder="Téléphone*" textContentType="telephoneNumber"
+            style={{marginTop: 15 * em}} value={telephone} handleChange={(text)=>this.setState({telephone:text})} />
+          <TouchableOpacity onPress={this.handleContinue.bind(this)}>
             <RoundButton text="Continuer" rightIcon="next" style={{marginTop: 15 * em}}/>
           </TouchableOpacity>
         </AccountLayout>

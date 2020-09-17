@@ -1,0 +1,85 @@
+{
+  "project_info": {
+    "project_number": "760817321870",
+    "firebase_url": "https://mygenesis-2adb3.firebaseio.com",
+    "project_id": "mygenesis-2adb3",
+    "storage_bucket": "mygenesis-2adb3.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:760817321870:android:2aecdecb044fde383ec6df",
+        "android_client_info": {
+          "package_name": "com.laplus.mygenesis"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "760817321870-g3tto3gjbdoc469gvnrumk8pm3h39taq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB5EKg3qw4VUrLmmopF82bLO7GFMtL-_wo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "760817321870-g3tto3gjbdoc469gvnrumk8pm3h39taq.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "760817321870-c63bla0k960p6enpt7cpf1nbg3iv5ls1.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.laplus.mygenesis",
+                "app_store_id": "1523169599"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:760817321870:android:4ceca647f88233063ec6df",
+        "android_client_info": {
+          "package_name": "com.mygenesis"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "760817321870-g3tto3gjbdoc469gvnrumk8pm3h39taq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB5EKg3qw4VUrLmmopF82bLO7GFMtL-_wo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "760817321870-g3tto3gjbdoc469gvnrumk8pm3h39taq.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "760817321870-c63bla0k960p6enpt7cpf1nbg3iv5ls1.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.laplus.mygenesis",
+                "app_store_id": "1523169599"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

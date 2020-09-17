@@ -1,9 +1,9 @@
-import React, { Component } from 'react';
-import { Image } from 'react-native';
+import React, { Component } from 'react'
+import { Image } from 'react-native'
 import VerticalCenterLayout from '../../layouts/VerticalCenterLayout'
 import {CommonText} from '../text'
 
-import {em, WIDTH} from '../../common';
+import {em, WIDTH} from '../../common'
 
 const CompleteCard = (props) => {
     let imageResource = require('../../assets/images/ic_my_information.png')
@@ -26,7 +26,7 @@ const CompleteCard = (props) => {
           style={{width: 60 * em, height: 60 * em}} resizeMode={'stretch'} />
         <CommonText theme="primary" style={{textAlign: "center", marginTop: 12*em}}>{textContent}</CommonText>
       </VerticalCenterLayout>
-    );
+    )
 }
 
 export default CompleteCard

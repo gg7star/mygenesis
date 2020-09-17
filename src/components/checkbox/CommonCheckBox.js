@@ -8,15 +8,14 @@ import CheckBox from '@react-native-community/checkbox';
 import SmallText from '../../components/text/SmallText';
 
 const CommonCheckBox = (props) => {
-    const [toggleCheckBox, setToggleCheckBox] = useState(false)
     return (
         <HorizontalLayout style={[{width: WIDTH * 0.85},
           props.style]}>
           <CheckBox
             style={{marginRight:5*em, width: 15*em, height: 15*em}}
             disabled={false}
-            value={toggleCheckBox}
-            onValueChange={() => toggleCheckBox ? setToggleCheckBox(false) : setToggleCheckBox(true)}
+            value={props.toggleCheckBox}
+            onValueChange={props.onValueChange}
           />
           <SmallText theme="gray">{props.text}</SmallText>
         </HorizontalLayout>

@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { TouchableOpacity, StatusBar, Image, View } from "react-native"
+import { Actions } from 'react-native-router-flux'
 import {TitleText, CommonText, CommonRegularText, SmallText} from '../../components/text'
 import {em, WIDTH} from '../../common'
 import AccountLayout from '../../layouts/AccountLayout'
@@ -10,6 +11,10 @@ import RoundButton from '../../components/button/RoundButton'
 class MyInformationScreen extends Component {
   constructor(props){
     super(props)
+  }
+
+  didClickLogout = () => {
+    Actions.reset("login")
   }
 
   render() {
@@ -47,7 +52,11 @@ class MyInformationScreen extends Component {
             <CommonText theme="blue_gray" style={{marginTop: 15*em}}>Métier</CommonText>
             <SmallText theme="light_gray" style={{marginTop: 5*em}}>Médecin, Aide soignant, infirmier</SmallText>
           </VerticalFlowLayout>
-          <RoundButton style={{marginTop: 20*em, marginBottom: 20*em}} text="DÉCONNEXION" theme="gray"/>
+          <TouchableOpacity onPress={() => {
+            this.didClickLogout()
+          }}>
+            <RoundButton style={{marginTop: 20*em, marginBottom: 20*em}} text="DÉCONNEXION" theme="gray"/>
+          </TouchableOpacity>
         </AccountLayout>
     );
   }

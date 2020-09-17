@@ -7,14 +7,16 @@ import GradientProgressView from '../components/GradientProgressView'
 import LogoView from '../components/LogoView'
 import VerticalJustifyLayout from '../layouts/VerticalJustifyLayout'
 import VerticalCenterLayout from '../layouts/VerticalCenterLayout'
+import { createDummyJSON, createUserDummyJSON, createJobDummyJSON } from '../utils/firebase/database'
 
 class LoadingScreen extends Component {
+  _isMounted = false
+
   constructor(props){
     super(props)
     this.state = {
       percent: 0.0
     }
-    this.increasePercent();
   }
 
   increasePercent() {
@@ -25,7 +27,7 @@ class LoadingScreen extends Component {
       if (newPercent > 100) {
         newPercent = 100
       }
-      _this.setState({percent: newPercent});
+      _this.setState({percent: newPercent})
       if (newPercent < 100) {
         _this.increasePercent()
       }
@@ -33,6 +35,16 @@ class LoadingScreen extends Component {
         Actions.home()
       }
     }, 40)
+  }
+
+  componentDidMount() {
+      this._isMounted = true
+      this.setDummyJSON()
+      this.increasePercent()
+  }
+
+  componentWillUnmount(){
+    this._isMounted = false
   }
 
   render() {
@@ -48,6 +60,24 @@ class LoadingScreen extends Component {
         <View style={{height: 20 * em}}/>
       </VerticalJustifyLayout>
     )
+  }
+
+  setDummyJSON = () => {
+        console.log("=====Adding dummy json")
+        // createUserDummyJSON().then(res => {
+        //   if (this._isMounted){
+        //     console.log("=====Dummy Users created!");
+        //   }
+        // }).catch(e => {
+        //   console.log(e)
+        // })
+        // createJobDummyJSON().then(res => {
+        //   if (this._isMounted){
+        //     console.log("=====Dummy Jobs created!");
+        //   }
+        // }).catch(e => {
+        //   console.log(e)
+        // })
   }
 }
 

@@ -79,6 +79,8 @@ target 'MyGenesis' do
 
   pod 'BVLinearGradient', :path => '../node_modules/react-native-linear-gradient'
 
+  pod 'react-native-webview', :path => '../node_modules/react-native-webview'
+
   target 'MyGenesisTests' do
     inherit! :complete
     # Pods for testing

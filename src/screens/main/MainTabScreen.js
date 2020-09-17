@@ -1,12 +1,12 @@
 import React, { Component } from 'react'
 import {em} from '../../common'
-import { TouchableOpacity, StatusBar, View, Text, Image } from "react-native";
-import { NavigationContainer } from '@react-navigation/native';
+import { TouchableOpacity, StatusBar, View, Text, Image } from "react-native"
+import { NavigationContainer } from '@react-navigation/native'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
-import HomeTabScreen from './HomeTabScreen'
 import SearchTabNavigator from './SearchTabNavigator'
-import MyOffersTabScreen from './MyOffersTabScreen'
-import FavoritesTabScreen from './FavoritesTabScreen'
+import HomeTabNavigator from './HomeTabNavigator'
+import MyOffersTabNavigator from './MyOffersTabNavigator'
+import FavoritesTabNavigator from './FavoritesTabNavigator'
 import CompleteTabNavigator from './CompleteTabNavigator'
 
 const Tab = createBottomTabNavigator();
@@ -52,10 +52,10 @@ export default function MainTabScreen() {
           }
         }}
       >
-        <Tab.Screen name="HomeTab" component={HomeTabScreen} options={{ tabBarLabel: 'Accueil' }} />
+        <Tab.Screen name="HomeTab" component={HomeTabNavigator} options={{ tabBarLabel: 'Accueil' }} />
         <Tab.Screen name="SearchTab" component={SearchTabNavigator} options={{ tabBarLabel: 'Rechercher' }} />
-        <Tab.Screen name="MyOffersTab" component={MyOffersTabScreen} options={{ tabBarLabel: 'Mes offres' }} />
-        <Tab.Screen name="FavoritesTab" component={FavoritesTabScreen} options={{ tabBarLabel: 'Favoris' }} />
+        <Tab.Screen name="MyOffersTab" component={MyOffersTabNavigator} options={{ tabBarLabel: 'Mes offres' }} />
+        <Tab.Screen name="FavoritesTab" component={FavoritesTabNavigator} options={{ tabBarLabel: 'Favoris' }} />
         <Tab.Screen name="CompleteTab" component={CompleteTabNavigator} options={{ tabBarLabel: 'Compte' }} />
       </Tab.Navigator>
     </NavigationContainer>

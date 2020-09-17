@@ -3,12 +3,11 @@ import { Text, View, Image } from 'react-native';
 import VerticalCenterFlowLayout from '../../layouts/VerticalCenterFlowLayout'
 import HorizontalLayout from '../../layouts/HorizontalLayout'
 
-import {WIDTH, HEIGHT, em} from '../../common';
-import CheckBox from '@react-native-community/checkbox';
-import SmallText from '../../components/text/SmallText';
+import {WIDTH, HEIGHT, em} from '../../common'
+import CheckBox from '@react-native-community/checkbox'
+import SmallText from '../../components/text/SmallText'
 
 const AgreeCheckBox = (props) => {
-    const [toggleCheckBox, setToggleCheckBox] = useState(false)
     return (
       <VerticalCenterFlowLayout style={[{height: 56*em,
         width: WIDTH * 0.85},
@@ -17,8 +16,8 @@ const AgreeCheckBox = (props) => {
           <CheckBox
             style={{width: 15*em, height: 15*em, marginRight: 5*em}}
             disabled={false}
-            value={toggleCheckBox}
-            onValueChange={() => toggleCheckBox ? setToggleCheckBox(false) : setToggleCheckBox(true)}
+            value={props.value}
+            onValueChange={props.onValueChange}
           />
           <SmallText theme="gray">J'accepte less</SmallText>
           <SmallText theme="primary"> Conditions generales d'utilisation</SmallText>

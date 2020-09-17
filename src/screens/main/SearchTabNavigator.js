@@ -2,9 +2,9 @@ import React, { Component } from 'react'
 import { createStackNavigator } from '@react-navigation/stack';
 import SearchTabMainScreen from './SearchTabMainScreen'
 import SearchTabResultScreen from './SearchTabResultScreen'
-import SearchTabDetailScreen from './SearchTabDetailScreen'
+import JobDetailScreen from './JobDetailScreen'
 
-const SearchStack = createStackNavigator();
+const SearchStack = createStackNavigator()
 
 class SearchTabNavigator extends Component {
   constructor(props){
@@ -16,7 +16,7 @@ class SearchTabNavigator extends Component {
       <SearchStack.Navigator headerMode="none">
         <SearchStack.Screen name="SearchMain" component={SearchTabMainScreen} />
         <SearchStack.Screen name="SearchResult" component={SearchTabResultScreen} />
-        <SearchStack.Screen name="SearchDetail" component={SearchTabDetailScreen} />
+        <SearchStack.Screen name="JobDetail" component={JobDetailScreen} />
       </SearchStack.Navigator>
     );
   }

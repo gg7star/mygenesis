@@ -3,6 +3,7 @@ import VerticalFlowLayout from '../../layouts/VerticalFlowLayout'
 import {CommonRegularText} from '../../components/text'
 import Separator from '../../components/Separator'
 import {em} from '../../common'
+import { TouchableOpacity } from "react-native"
 
 class TooltipContent extends Component {
     constructor(props) {
@@ -12,13 +13,29 @@ class TooltipContent extends Component {
     render() {
       return (
         <VerticalFlowLayout>
-          <CommonRegularText theme="gray" style={[styles.tooltipItem, {marginTop: 20 * em}]}>Date de démarrage</CommonRegularText>
+          <TouchableOpacity onPress={() => {
+              this.props.onItemClick(1)
+          }}>
+            <CommonRegularText theme="gray" style={[styles.tooltipItem, {marginTop: 20 * em}]}>Date de démarrage</CommonRegularText>
+          </TouchableOpacity>
           <Separator thickness = {1} style={styles.tooltipSeparator}/>
-          <CommonRegularText theme="gray" style={styles.tooltipItem}>Type de contrat</CommonRegularText>
+          <TouchableOpacity onPress={() => {
+              this.props.onItemClick(2)
+          }}>
+            <CommonRegularText theme="gray" style={styles.tooltipItem}>Type de contrat</CommonRegularText>
+          </TouchableOpacity>
           <Separator thickness = {1} style={styles.tooltipSeparator}/>
-          <CommonRegularText theme="gray" style={styles.tooltipItem}>Ville</CommonRegularText>
+          <TouchableOpacity onPress={() => {
+              this.props.onItemClick(3)
+          }}>
+            <CommonRegularText theme="gray" style={styles.tooltipItem}>Ville</CommonRegularText>
+          </TouchableOpacity>
           <Separator thickness = {1} style={styles.tooltipSeparator}/>
-          <CommonRegularText theme="gray" style={[styles.tooltipItem, {marginBottom: 20 * em}]}>Secteur de d'activité</CommonRegularText>
+          <TouchableOpacity onPress={() => {
+              this.props.onItemClick(4)
+          }}>
+            <CommonRegularText theme="gray" style={[styles.tooltipItem, {marginBottom: 20 * em}]}>Secteur de d'activité</CommonRegularText>
+          </TouchableOpacity>
         </VerticalFlowLayout>
       )
     }

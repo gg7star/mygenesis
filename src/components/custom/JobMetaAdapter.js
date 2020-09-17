@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import { Text, View, Image } from 'react-native';
+import React, { Component } from 'react'
+import { Text, View, Image, ImageButton, TouchableOpacity } from 'react-native'
 import VerticalFlowLayout from '../../layouts/VerticalCenterLayout'
 import HorizontalJustifyLayout from '../../layouts/HorizontalJustifyLayout'
 import HorizontalLayout from '../../layouts/HorizontalLayout'
@@ -27,8 +27,10 @@ const JobMetaAdapter = (props) => {
               style={{width: 12 * em, height: 12 * em, marginRight: 5 * em}} resizeMode={'stretch'} />}
               <CommonText theme="primary">{props.title}</CommonText>
             </HorizontalLayout>
-            <Image source={favoriteImageResource}
-            style={{width: 16 * em, height: 16 * em, marginRight: 15*em, marginTop: 15*em}} resizeMode={'stretch'} />
+            <TouchableOpacity onPress={props.onFavoriteClick}>
+              <Image source={favoriteImageResource}
+              style={{width: 16 * em, height: 16 * em, marginRight: 15*em, marginTop: 15*em}} resizeMode={'stretch'} />
+            </TouchableOpacity>
           </HorizontalJustifyLayout>
           <CommonRegularText theme="black" style={{alignSelf: "flex-start", marginLeft: 15 * em, marginTop: 10 * em}}>
             {secondRow}
