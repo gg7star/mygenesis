@@ -20,6 +20,7 @@ import {FireBaseStorage, uploadFileToFireBase} from '../utils/firebase/storage'
 import DropDownPicker from 'react-native-dropdown-picker'
 import FilePickerManager from 'react-native-file-picker'
 import Spinner from 'react-native-loading-spinner-overlay'
+import DocumentPicker from 'react-native-document-picker'
 
 class MyCVScreen extends Component {
   constructor(props){
@@ -89,26 +90,56 @@ class MyCVScreen extends Component {
     });
   }
 
-  handleCVUpload = () => {
-    FilePickerManager.showFilePicker(null, (response) => {
-      console.log('Response = ', response);
-
-      if (response.didCancel) {
-        console.log('User cancelled file picker');
-      }
-      else if (response.error) {
-        console.log('FilePickerManager Error: ', response.error);
-      }
-      else {
-        console.log("File Response", response)
-        const localPath = response.path
+  handleIOSDocumentPicker = async () => {
+        try {
+        const res = await DocumentPicker.pick({
+          type: [DocumentPicker.types.allFiles],
+        })
+        console.log(
+          res.uri,
+          res.type, // mime type
+          res.name,
+          res.size
+        );
+        const localPath = res.uri
         this.setState({
           cvFilePath: localPath,
           cvFileName: this.getFileNameFromUri(localPath),
           cvFileExtension: this.getFileExtensionFromUri(localPath)
         })
+      } catch (err) {
+        if (DocumentPicker.isCancel(err)) {
+        } else {
+          throw err
+        }
       }
-    })
+  }
+
+  handleCVUpload = () => {
+    if (Platform.OS == 'android') {
+      FilePickerManager.showFilePicker(null, (response) => {
+        console.log('Response = ', response);
+
+        if (response.didCancel) {
+          console.log('User cancelled file picker');
+        }
+        else if (response.error) {
+          console.log('FilePickerManager Error: ', response.error);
+        }
+        else {
+          console.log("File Response", response)
+          const localPath = response.path
+          this.setState({
+            cvFilePath: localPath,
+            cvFileName: this.getFileNameFromUri(localPath),
+            cvFileExtension: this.getFileExtensionFromUri(localPath)
+          })
+        }
+      })
+    }
+    else {
+      this.handleIOSDocumentPicker()
+    }
   }
 
   getFileExtensionFromUri = (uri) => {
