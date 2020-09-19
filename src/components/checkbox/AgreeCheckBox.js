@@ -19,8 +19,8 @@ const AgreeCheckBox = (props) => {
             value={props.value}
             onValueChange={props.onValueChange}
           />
-          <SmallText theme="gray">J'accepte less</SmallText>
-          <SmallText theme="primary"> Conditions generales d'utilisation</SmallText>
+          <SmallText theme="gray">J'accepte les</SmallText>
+          <SmallText theme="primary"> conditions générales d'utilisation</SmallText>
           <SmallText theme="gray"> et les</SmallText>
           <SmallText theme="primary"> mentions</SmallText>
         </HorizontalLayout>

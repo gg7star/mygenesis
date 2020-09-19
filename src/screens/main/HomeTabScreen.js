@@ -107,7 +107,7 @@ class HomeTabScreen extends Component {
           <StatusBar barstyle="dark-content" translucent backgroundColor="transparent" />}
           <LogoView size="small" style={{marginTop: 20 * em}}/>
           <HorizontalJustifyLayout style={{marginTop: 25 * em, marginBottom: 20 * em}}>
-            <CommonText theme="blue_gray">Mess données de connexion</CommonText>
+            <CommonText theme="blue_gray">Mes données de connexion</CommonText>
             <Tooltip
               ref = {this.tooltipRef}
               popover={<TooltipContent onItemClick={(index) => {

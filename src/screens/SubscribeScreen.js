@@ -63,7 +63,7 @@ class SubscribeScreen extends Component {
         <AccountLayout>
           <StatusBar barstyle="dark-content" translucent backgroundColor="transparent" />
           <LogoView size="small" style={{marginTop: 20 * em}}/>
-          <TitleText style={{marginTop: 35 * em}} theme="black">M'inscrier</TitleText>
+          <TitleText style={{marginTop: 35 * em}} theme="black">M'inscrire</TitleText>
           <SmallText theme="gray">*Champ obligatoire</SmallText>
 
           <AccountDropDown defaultValue={this.state.civility}
@@ -75,12 +75,14 @@ class SubscribeScreen extends Component {
                 {label: 'Bonjour', value: 'Bonjour'},
                 {label: 'Comment allez-vous?', value: 'Comment allez-vous?'},
                 {label: 'Ravi de vous rencontrer', value: 'Ravi de vous rencontrer'},
+                {label: 'Madame', value: 'Madame'},
+                {label: 'Monseiur', value: 'Monseiur'},
             ]}
             style={{marginTop: 20*em}}
             placeholder='Civilité'/>
           <RoundTextInput placeHolder="Nom*" textContentType="familyName" style={{marginTop: 15 * em}}
             value={this.state.firstName} handleChange={(text)=>this.setState({firstName:text})} />
-          <RoundTextInput placeHolder="Prenom*"textContentType="givenName"  style={{marginTop: 15 * em}}
+          <RoundTextInput placeHolder="Prénom*"textContentType="givenName"  style={{marginTop: 15 * em}}
             value={this.state.lastName} handleChange={(text)=>this.setState({lastName:text})} />
           <TouchableOpacity onPress={this.handleContinue.bind(this)}>
             <RoundButton text="Continuer" rightIcon="next" style={{marginTop: 15 * em}}/>

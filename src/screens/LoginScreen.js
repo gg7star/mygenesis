@@ -71,7 +71,7 @@ class LoginScreen extends Component {
             <RoundTextInput placeHolder="Email" textContentType="emailAddress"
               value={email} handleChange={(text)=>this.setState({email:text})} />
             <Separator style={{width: WIDTH * 0.85, backgroundColor: "#f5f6fa"}}/>
-            <RoundTextInput placeHolder="Most de passe" secureTextEntry={true}
+            <RoundTextInput placeHolder="Mot de passe" secureTextEntry={true}
               value={password} handleChange={(text)=>this.setState({password:text})}
               textContentType="password" rightText="OUBLIÉ ?" />
           </VerticalCenterFlowLayout>
@@ -88,7 +88,7 @@ class LoginScreen extends Component {
               Actions.subscribe()
             }
             }>
-              <CommonText theme="primary" style={{marginTop: 25 * em}}>M'inscrier'</CommonText>
+              <CommonText theme="primary" style={{marginTop: 25 * em}}>M'inscrire'</CommonText>
             </TouchableOpacity>
           </HorizontalCenterLayout>
         </AccountLayout>

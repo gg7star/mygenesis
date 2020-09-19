@@ -45,7 +45,7 @@ class SubscribeScreen extends Component {
         <AccountLayout>
           <StatusBar barstyle="dark-content" translucent backgroundColor="transparent" />
           <LogoView size="small" style={{marginTop: 20 * em}}/>
-          <TitleText style={{marginTop: 35 * em}} theme="black">Mess données de connexion</TitleText>
+          <TitleText style={{marginTop: 35 * em}} theme="black">Mes données de connexion</TitleText>
 
           <RoundTextInput placeHolder="Email" textContentType="emailAddress" style={{marginTop: 15 * em}}
             value={email} handleChange={(text)=>this.setState({email:text})} />

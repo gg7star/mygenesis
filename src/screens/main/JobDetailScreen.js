@@ -137,7 +137,7 @@ class JobDetailScreen extends Component {
               <JobPostSector type="description" text={job.description} />
               <JobPostSector type="mission" applied={true} text={job.position} />
               <JobPostSector type="profile_research" text={job.profile}/>
-              <JobPostSector type="information" text=''/>
+              <JobPostSector type="information" job={job}/>
             </VerticalFlowLayout>
           </AccountLayout>
         </View>

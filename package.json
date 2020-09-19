@@ -23,6 +23,7 @@
     "@reduxjs/toolkit": "^1.4.0",
     "expo-asset": "^8.1.7",
     "expo-constants": "^9.1.1",
+    "moment": "^2.28.0",
     "react": "16.11.0",
     "react-native": "0.62.2",
     "react-native-collapsible": "^1.5.2",

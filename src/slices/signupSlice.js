@@ -65,7 +65,7 @@ export function signupWithInfo(signupInfo, job, activityArea, localFilePath) {
       ...signupInfo
     }
 
-    const createAccountRes = await createAccount({credential: res.credential}, newSignupInfo)
+    const createAccountRes = await createAccount({credential: res.credential, signupInfo: newSignupInfo})
     dispatch(signupSuccess({credential: res.credential}))
     Actions.reset("login")
   }

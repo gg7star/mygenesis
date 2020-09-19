@@ -47,8 +47,7 @@ export function authWithEmail(email, password) {
       return
     }
 
-    const _user = getCurrentUserInfo()
-    // const _user = await getUserInfo('-MBC5lHoTRfthA545U7Y')
+    const _user = await getCurrentUserInfo()
     dispatch(loginSuccess({credential: _user}))
     dispatch(appLoginSuccess({credential: _user}))
     console.log("User Info: " + _user)

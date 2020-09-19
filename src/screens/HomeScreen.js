@@ -29,9 +29,9 @@ class HomeScreen extends Component {
             <TouchableOpacity onPress={() => {
               Actions.subscribe()}
             }>
-              <RoundButton text="M'inscrier" style={{marginTop: 10 * em}}/>
+              <RoundButton text="M'inscrire" style={{marginTop: 10 * em}}/>
             </TouchableOpacity>
-            <CommonText style={{marginTop: 20 * em, marginBottom: 20 * em}}>Consulter les offres sans m'inscrier</CommonText>
+            <CommonText style={{marginTop: 20 * em, marginBottom: 20 * em}}>Consulter les offres sans m'inscrire</CommonText>
         </VerticalCenterLayout>
       </VerticalJustifyLayout>
     );
