@@ -5,7 +5,8 @@ import '@react-native-firebase/database'
 export const FireBaseStorage = storage()
 
 export const createStorageReferenceToFile = () => {
-  const fileName = "cv-" + firebase.database.ServerValue.TIMESTAMP
+  const date = new Date()
+  const fileName = "cv-" + date.getTime()
   return FireBaseStorage.ref(fileName)
 }
 

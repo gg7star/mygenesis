@@ -13,7 +13,7 @@ export async function createAccount({credential, signupInfo}) {
   console.log("User Info: ", user)
   const { uid } = user
   console.log("SingupInfo inside function", signupInfo.civility)
-  const { civility, firstname, lastname, zipcode, city, telephone, cvFirebasePath, job, activityArea } = signupInfo
+  const { civility, firstname, lastname, zipcode, city, telephone, cvFirebasePath, cvFileName, job, activityArea } = signupInfo
   if (uid) {
     var userData = {
       uid,
@@ -27,6 +27,7 @@ export async function createAccount({credential, signupInfo}) {
       city,
       telephone,
       cvFirebasePath,
+      cvFileName,
       job,
       activityArea,
       ...user

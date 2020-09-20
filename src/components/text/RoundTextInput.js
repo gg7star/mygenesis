@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { TextInput, View } from 'react-native';
+import { TextInput, View, TouchableOpacity } from 'react-native';
 
 import {WIDTH, HEIGHT, em} from '../../common';
 import CommonText from './CommonText'
@@ -43,9 +43,12 @@ const RoundTextInput = (props) => {
           secureTextEntry = {propSecureTextEntry}
           placeholder = {props.placeHolder} />
 
+
+        <TouchableOpacity onPress={props.onPressRightText}>
           <HorizontalCenterLayout style={{width: textLength, height: 56 * em, marginRight: 25*em}}>
             <SmallButtonText theme="green">{props.rightText}</SmallButtonText>
           </HorizontalCenterLayout>
+        </TouchableOpacity>
 
       </HorizontalLayout>
     );

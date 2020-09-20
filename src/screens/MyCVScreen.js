@@ -66,9 +66,7 @@ class MyCVScreen extends Component {
       return
     }
 
-    this.props.signupWithInfo(this.props, activityArea, job, cvFileUri)
-    // const uploadTask = uploadFileToFireBase(cvFileUri)
-    // this.monitorFileUpload(uploadTask)
+    this.props.signupWithInfo(this.props, activityArea, job, cvFileUri, cvFileName)
   }
 
   monitorFileUpload = uploadTask => {
@@ -128,7 +126,8 @@ class MyCVScreen extends Component {
         }
         else {
           console.log("File Response", response)
-          const localPath = response.path
+          const localPath = "file://" + response.path
+          console.log("File Path", response)
           this.setState({
             cvFilePath: localPath,
             cvFileName: this.getFileNameFromUri(localPath),

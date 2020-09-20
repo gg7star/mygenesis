@@ -20,6 +20,7 @@ class SubscribeScreen extends Component {
     this.state = {
       email: "",
       password: "",
+      showPassword: false,
     }
   }
 
@@ -39,8 +40,20 @@ class SubscribeScreen extends Component {
     Actions.coorindates({email, password, civility, firstName, lastName})
   }
 
+  togglePasswordShow = () => {
+    console.log("Press Right Text")
+    const {showPassword} = this.state
+    this.setState({showPassword: !showPassword})
+  }
+
   render() {
-    const {email, password} = this.state
+    const {email, password, showPassword} = this.state
+    let passwordShowButtonText = "VOIR"
+    let textContentType = "password"
+    if (showPassword) {
+      passwordShowButtonText = "CACHER"
+      textContentType = "text"
+    }
     return (
         <AccountLayout>
           <StatusBar barstyle="dark-content" translucent backgroundColor="transparent" />
@@ -49,8 +62,8 @@ class SubscribeScreen extends Component {
 
           <RoundTextInput placeHolder="Email" textContentType="emailAddress" style={{marginTop: 15 * em}}
             value={email} handleChange={(text)=>this.setState({email:text})} />
-          <RoundTextInput placeHolder="Mot de passe" secureTextEntry={true}
-            textContentType="password" rightText="VOIR" style={{marginTop: 15 * em}}
+          <RoundTextInput placeHolder="Mot de passe" secureTextEntry={!showPassword} onPressRightText={this.togglePasswordShow.bind(this)}
+            textContentType={textContentType} rightText={passwordShowButtonText} style={{marginTop: 15 * em}}
             value={password} handleChange={(text)=>this.setState({password:text})} />
           <TouchableOpacity onPress={this.handleContinue.bind(this)}>
             <RoundButton text="Continuer" rightIcon="next" style={{marginTop: 75 * em}}/>
