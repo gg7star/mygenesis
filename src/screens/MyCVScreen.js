@@ -34,6 +34,7 @@ class MyCVScreen extends Component {
       activityArea: "",
       job: "",
       toggleCheckBox: false,
+      jobItems: []
     }
   }
 
@@ -167,7 +168,7 @@ class MyCVScreen extends Component {
   }
 
   render() {
-    const {cvFileName, activityArea, job, toggleCheckBox} = this.state
+    const {cvFileName, activityArea, job, toggleCheckBox, jobItems} = this.state
     return (
         <AccountLayout>
           <StatusBar barstyle="dark-content" translucent backgroundColor="transparent" />
@@ -179,22 +180,48 @@ class MyCVScreen extends Component {
             <RoundUploadButton text={this.getCVFileName()} style={{marginTop: 20 * em}} />
           </TouchableOpacity>
           <AccountDropDown defaultValue={activityArea}
-            onChangeItem={item => this.setState({
-                activityArea: item.value
-            })}
-            items={[
-                {label: 'chauffeur PL', value: 'chauffeur PL'},
-                {label: 'chauffeur SPL', value: 'chauffeur SPL'},
-                {label: 'chauffeur VL', value: 'chauffeur VL'},
-                {label: 'responsable logistique', value: 'responsable logistique'}
-            ]}
-            style={{marginTop: 20*em}}
-            placeholder="Secteur d'activité*"/>
-
-          <AccountDropDown defaultValue={job}
-            onChangeItem={item => this.setState({
-                job: item.value
-            })}
+            onChangeItem={item => {
+                this.setState({
+                  activityArea: item.value
+                })
+                if (item.value == "BTP") {
+                  this.setState({jobItems: [
+                    {label: 'BTP', value: 'BTP'}
+                  ]})
+                }
+                else if (item.value == "INDUSTRIE") {
+                  this.setState({jobItems: [
+                    {label: 'INDUSTRIE', value: 'INDUSTRIE'}
+                  ]})
+                }
+                else if (item.value == "TERTIAIRE") {
+                  this.setState({jobItems: [
+                    {label: 'TERTIAIRE', value: 'TERTIAIRE'}
+                  ]})
+                }
+                else if (item.value == "TRANSPORT/LOGITIQUE") {
+                  this.setState({jobItems: [
+                      {label: 'chauffeur PL', value: 'chauffeur PL'},
+                      {label: 'chauffeur SPL', value: 'chauffeur SPL'},
+                      {label: 'chauffeur VL', value: 'chauffeur VL'},
+                      {label: 'responsable logistique', value: 'responsable logistique'}
+                  ]})
+                }
+                else if (item.value == "AGRICULTURE") {
+                  this.setState({jobItems: [
+                      {label: 'agriculteur', value: 'agriculteur'},
+                      {label: 'viticulteur', value: 'viticulteur'},
+                      {label: 'vendangeur', value: 'vendangeur'},
+                      {label: 'pisciculteur', value: 'pisciculteur'}
+                  ]})
+                }
+                else if (item.value == "MEDICAL") {
+                  this.setState({jobItems: [
+                      {label: 'MEDICAL', value: 'MEDICAL'}
+                  ]})
+                }
+              }
+            }
             items={[
                 {label: 'BTP', value: 'BTP'},
                 {label: 'INDUSTRIE', value: 'INDUSTRIE'},
@@ -203,6 +230,14 @@ class MyCVScreen extends Component {
                 {label: 'AGRICULTURE', value: 'AGRICULTURE'},
                 {label: 'MEDICAL', value: 'MEDICAL'}
             ]}
+            style={{marginTop: 20*em}}
+            placeholder="Secteur d'activité*"/>
+
+          <AccountDropDown defaultValue={job}
+            onChangeItem={item => this.setState({
+                job: item.value
+            })}
+            items={jobItems}
             style={{marginTop: 20*em}}
             placeholder="Métier*"/>
 
