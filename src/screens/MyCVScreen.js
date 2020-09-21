@@ -183,8 +183,10 @@ class MyCVScreen extends Component {
                 activityArea: item.value
             })}
             items={[
-                {label: 'Paris', value: 'Paris'},
-                {label: 'Aoste', value: 'Aoste'}
+                {label: 'chauffeur PL', value: 'chauffeur PL'},
+                {label: 'chauffeur SPL', value: 'chauffeur SPL'},
+                {label: 'chauffeur VL', value: 'chauffeur VL'},
+                {label: 'responsable logistique', value: 'responsable logistique'}
             ]}
             style={{marginTop: 20*em}}
             placeholder="Secteur d'activité*"/>

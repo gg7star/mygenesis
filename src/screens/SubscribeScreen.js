@@ -71,12 +71,8 @@ class SubscribeScreen extends Component {
                 civility: item.value
             })}
             items={[
-                {label: 'salut', value: 'salut'},
-                {label: 'Bonjour', value: 'Bonjour'},
-                {label: 'Comment allez-vous?', value: 'Comment allez-vous?'},
-                {label: 'Ravi de vous rencontrer', value: 'Ravi de vous rencontrer'},
                 {label: 'Madame', value: 'Madame'},
-                {label: 'Monseiur', value: 'Monseiur'},
+                {label: 'Monsieur', value: 'Monsieur'},
             ]}
             style={{marginTop: 20*em}}
             placeholder='Civilité'/>

@@ -18,15 +18,16 @@ const AgreeCheckBox = (props) => {
             disabled={false}
             value={props.value}
             onValueChange={props.onValueChange}
+            tintColors={{ true: '#18277a', false: 'gray' }}
           />
-          <SmallText theme="gray">J'accepte les</SmallText>
+          <SmallText theme="gray">  J'accepte les</SmallText>
           <SmallText theme="primary"> conditions générales d'utilisation</SmallText>
           <SmallText theme="gray"> et les</SmallText>
           <SmallText theme="primary"> mentions</SmallText>
         </HorizontalLayout>
         <HorizontalLayout style={{marginLeft: 48 * em, width: WIDTH * 0.85}}>
           <SmallText theme="primary"> légales</SmallText>
-          <SmallText theme="gray"> de Genesis-rh.</SmallText>
+          <SmallText theme="gray"> de Genesis-RH.</SmallText>
         </HorizontalLayout>
       </VerticalCenterFlowLayout>
     );
