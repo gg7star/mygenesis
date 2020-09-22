@@ -13,7 +13,7 @@ export async function createAccount({credential, signupInfo}) {
   console.log("User Info: ", user)
   const { uid } = user
   console.log("SingupInfo inside function", signupInfo.civility)
-  const { civility, firstname, lastname, zipcode, city, telephone, cvFirebasePath, cvFileName, job, activityArea } = signupInfo
+  const { civility, firstName, lastName, zipCode, city, telephone, cvFirebasePath, cvFileName, job, activityArea } = signupInfo
   if (uid) {
     var userData = {
       uid,
@@ -21,9 +21,9 @@ export async function createAccount({credential, signupInfo}) {
       signedUp: firebase.database.ServerValue.TIMESTAMP,
       lastLoggedIn: firebase.database.ServerValue.TIMESTAMP,
       civility,
-      firstname,
-      lastname,
-      zipcode,
+      firstName,
+      lastName,
+      zipCode,
       city,
       telephone,
       cvFirebasePath,
@@ -38,7 +38,6 @@ export async function createAccount({credential, signupInfo}) {
           return userData
         });
     } catch (e) {
-      console.log('==== error: ', e)
       return null
     }
   }
