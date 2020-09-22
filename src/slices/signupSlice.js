@@ -36,7 +36,7 @@ export const { trySignup, signupSuccess, signupFailure } = signupSlice.actions
 export const signupSelector = state => state.signup
 export default signupSlice.reducer
 
-export function signupWithInfo(signupInfo, job, activityArea, localFilePath, cvFileName) {
+export function signupWithInfo(signupInfo, activityArea, job, localFilePath, cvFileName) {
   const {email, password} = signupInfo
   return async dispatch => {
     dispatch(trySignup())
@@ -47,16 +47,16 @@ export function signupWithInfo(signupInfo, job, activityArea, localFilePath, cvF
       return
     }
 
-    // const storageRef = createStorageReferenceToFile()
-    // const uploadRes = await storageRef.putFile(localFilePath)
-    // if (uploadRes.error) {
-    //   dispatch(signupFailure({statusMessage: uploadRes.error}))
-    //   showRootToast(uploadRes.error)
-    //   return
-    // }
-    //
-    // const cvFirebasePath = await storageRef.getDownloadURL()
-    const cvFirebasePath = "cv.pdf"
+    const storageRef = await createStorageReferenceToFile()
+    const uploadRes = await storageRef.putFile(localFilePath)
+    if (uploadRes.error) {
+      dispatch(signupFailure({statusMessage: uploadRes.error}))
+      showRootToast(uploadRes.error)
+      return
+    }
+
+    const cvFirebasePath = await storageRef.getDownloadURL()
+    // const cvFirebasePath = "cv.pdf"
 
     var newSignupInfo = {
       cvFirebasePath,

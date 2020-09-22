@@ -57,14 +57,14 @@ export async function getUserInfo(uid) {
   )
 }
 
-export function getCurrentUserId() {
+export async function getCurrentUserId() {
   const uid = firebase.auth().currentUser.uid
   // const uid = "-MBC5lHoTRfthA545U7Y"
   return uid
 }
 
 export async function getCurrentUserInfo() {
-  const uid = getCurrentUserId()
+  const uid = await getCurrentUserId()
   return getUserInfo(uid)
 }
 

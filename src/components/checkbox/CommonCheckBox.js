@@ -12,9 +12,10 @@ const CommonCheckBox = (props) => {
         <HorizontalLayout style={[{width: WIDTH * 0.85},
           props.style]}>
           <CheckBox
-            style={{marginRight:5*em, width: 15*em, height: 15*em}}
+            style={{marginRight:10*em, width: 15*em, height: 15*em}}
             disabled={false}
             value={props.toggleCheckBox}
+            tintColors={{ true: '#18277a', false: 'gray' }}
             onValueChange={props.onValueChange}
           />
           <SmallText theme="gray">{props.text}</SmallText>

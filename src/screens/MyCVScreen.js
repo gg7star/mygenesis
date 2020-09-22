@@ -27,6 +27,7 @@ class MyCVScreen extends Component {
     super(props)
 
     this.state = {
+      cvFilePath: "",
       cvFileUri: "",
       cvFirebasePath: "",
       cvFileName: "",
@@ -43,7 +44,7 @@ class MyCVScreen extends Component {
   }
 
   handleContinue = () => {
-    const {cvFileUri, cvFileName, cvFileExtension, activityArea, job, toggleCheckBox} = this.state
+    const {cvFilePath, cvFileUri, cvFileName, cvFileExtension, activityArea, job, toggleCheckBox} = this.state
     const {email, password, civility, firstName, lastName, zipCode, city, telephone} = this.props
     console.log("Firebase Storage", JSON.stringify(FireBaseStorage))
     if (cvFileName == "") {
@@ -67,27 +68,27 @@ class MyCVScreen extends Component {
       return
     }
 
-    this.props.signupWithInfo(this.props, activityArea, job, cvFileUri, cvFileName)
+    this.props.signupWithInfo(this.props, activityArea, job, cvFilePath, cvFileName)
   }
 
-  monitorFileUpload = uploadTask => {
-    const {cvFirebasePath, activityArea, job} = this.state
-    uploadTask.on('state_changed', snapshot => {
-      switch (snapshot.state) {
-        case 'running':
-          this.setState({cvFirebasePath: null})
-          break
-        case 'success':
-          snapshot.ref.getDownloadURL().then(downloadURL => {
-              this.setState({cvFirebasePath: downloadURL})
-              this.props.signupWithInfo(this.props, cvFirebasePath, activityArea, job)
-          })
-          break
-        default:
-          break
-      }
-    });
-  }
+  // monitorFileUpload = uploadTask => {
+  //   const {cvFirebasePath, activityArea, job} = this.state
+  //   uploadTask.on('state_changed', snapshot => {
+  //     switch (snapshot.state) {
+  //       case 'running':
+  //         this.setState({cvFirebasePath: null})
+  //         break
+  //       case 'success':
+  //         snapshot.ref.getDownloadURL().then(downloadURL => {
+  //             this.setState({cvFirebasePath: downloadURL})
+  //             this.props.signupWithInfo(this.props, cvFirebasePath, activityArea, job)
+  //         })
+  //         break
+  //       default:
+  //         break
+  //     }
+  //   });
+  // }
 
   handleIOSDocumentPicker = async () => {
         try {
@@ -127,7 +128,7 @@ class MyCVScreen extends Component {
         }
         else {
           console.log("File Response", response)
-          const localPath = "file://" + response.path
+          const localPath = response.path
           console.log("File Path", response)
           this.setState({
             cvFilePath: localPath,
