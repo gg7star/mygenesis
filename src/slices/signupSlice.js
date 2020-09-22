@@ -47,16 +47,16 @@ export function signupWithInfo(signupInfo, job, activityArea, localFilePath, cvF
       return
     }
 
-    const storageRef = createStorageReferenceToFile()
-    const uploadRes = await storageRef.putFile(localFilePath)
-    if (uploadRes.error) {
-      dispatch(signupFailure({statusMessage: uploadRes.error}))
-      showRootToast(uploadRes.error)
-      return
-    }
-
-    const downloadURL = await storageRef.getDownloadURL()
-    // const cvFirebasePath = "cv.pdf"
+    // const storageRef = createStorageReferenceToFile()
+    // const uploadRes = await storageRef.putFile(localFilePath)
+    // if (uploadRes.error) {
+    //   dispatch(signupFailure({statusMessage: uploadRes.error}))
+    //   showRootToast(uploadRes.error)
+    //   return
+    // }
+    //
+    // const cvFirebasePath = await storageRef.getDownloadURL()
+    const cvFirebasePath = "cv.pdf"
 
     var newSignupInfo = {
       cvFirebasePath,

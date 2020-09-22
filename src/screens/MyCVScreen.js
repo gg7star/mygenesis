@@ -47,23 +47,23 @@ class MyCVScreen extends Component {
     const {email, password, civility, firstName, lastName, zipCode, city, telephone} = this.props
     console.log("Firebase Storage", JSON.stringify(FireBaseStorage))
     if (cvFileName == "") {
-      showRootToast('Please upload cv file')
+      showRootToast('Veuillez télécharger le fichier cv')
       return
     }
     if (cvFileExtension != "pdf" && cvFileExtension != "doc" &&
       cvFileExtension != "docx" && cvFileExtension != "jpg" &&
       cvFileExtension != "jpeg" && cvFileExtension != "png") {
 
-      showRootToast('CV File should be one of pdf, word or image')
+      showRootToast('Le fichier CV doit être au format pdf, word ou image')
       return
     }
 
     if (activityArea == "") {
-      showRootToast('Please select activity area')
+      showRootToast("Veuillez sélectionner la zone d'activité")
       return
     }
     if (job == "") {
-      showRootToast('Please select job')
+      showRootToast('Veuillez sélectionner un emploi')
       return
     }
 

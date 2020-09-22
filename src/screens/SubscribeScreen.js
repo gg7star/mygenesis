@@ -31,19 +31,19 @@ class SubscribeScreen extends Component {
   handleContinue = () => {
     const {civility, firstName, lastName, toggleCheckBox} = this.state
     if (civility == "") {
-      showRootToast('Please select civility')
+      showRootToast('Merci de mettre civilité')
       return
     }
     if (firstName == "") {
-      showRootToast('Please enter first name')
+      showRootToast('Merci de mettre prénom')
       return
     }
     if (lastName == "") {
-      showRootToast('Please enter last name')
+      showRootToast('Merci de mettre nom de famille')
       return
     }
     if (!toggleCheckBox) {
-      showRootToast('Please agree with terms and policy')
+      showRootToast('Accepter les CGU et les mentions légales pour continuer')
       return
     }
     Actions.connectionMessage({civility, firstName, lastName})

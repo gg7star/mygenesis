@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import {em} from '../common'
-import { TouchableOpacity, StatusBar } from "react-native";
+import { TouchableOpacity, StatusBar, Linking } from "react-native";
 import { Actions } from 'react-native-router-flux';
 
 import VerticalJustifyLayout from '../layouts/VerticalJustifyLayout'
@@ -31,7 +31,11 @@ class HomeScreen extends Component {
             }>
               <RoundButton text="M'inscrire" style={{marginTop: 10 * em}}/>
             </TouchableOpacity>
-            <CommonText style={{marginTop: 20 * em, marginBottom: 20 * em}}>Consulter les offres sans m'inscrire</CommonText>
+            <TouchableOpacity onPress={() => {
+                Linking.openURL('https://genesis.softy.pro')
+            }}>
+              <CommonText style={{marginTop: 20 * em, marginBottom: 20 * em}}>Consulter les offres sans m'inscrire</CommonText>
+            </TouchableOpacity>
         </VerticalCenterLayout>
       </VerticalJustifyLayout>
     );

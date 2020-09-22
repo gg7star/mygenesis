@@ -29,12 +29,12 @@ class SubscribeScreen extends Component {
     const {civility, firstName, lastName} = this.props
 
     if (!validateEmail(email)) {
-      showRootToast('Please enter valid email address')
+      showRootToast('Merci de mettre un email valide')
       return
     }
 
     if (password == ""){
-      showRootToast('Please enter your password')
+      showRootToast('Merci de mettre votre mot de passe')
       return
     }
     Actions.coorindates({email, password, civility, firstName, lastName})

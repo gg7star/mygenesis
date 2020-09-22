@@ -28,17 +28,17 @@ class SubscribeScreen extends Component {
     const {email, password, civility, firstName, lastName} = this.props
 
     if (zipCode == "") {
-      showRootToast('Please enter your zip code')
+      showRootToast('Merci de mettre ton code postal')
       return
     }
 
     if (city == ""){
-      showRootToast('Please enter your city')
+      showRootToast('Merci de mettre ta ville')
       return
     }
 
     if (telephone == ""){
-      showRootToast('Please enter your telephone')
+      showRootToast('Merci de mettre ton téléphone')
       return
     }
 

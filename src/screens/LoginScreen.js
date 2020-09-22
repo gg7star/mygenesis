@@ -88,7 +88,7 @@ class LoginScreen extends Component {
               Actions.subscribe()
             }
             }>
-              <CommonText theme="primary" style={{marginTop: 25 * em}}>M'inscrire'</CommonText>
+              <CommonText theme="primary" style={{marginTop: 25 * em}}>M'inscrire</CommonText>
             </TouchableOpacity>
           </HorizontalCenterLayout>
         </AccountLayout>

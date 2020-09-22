@@ -32,7 +32,7 @@ class LoadingScreen extends Component {
         _this.increasePercent()
       }
       else {
-        Actions.home()
+        Actions.reset('home')
       }
     }, 40)
   }
