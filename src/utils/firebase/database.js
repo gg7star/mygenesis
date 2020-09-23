@@ -32,6 +32,7 @@ export async function createAccount({credential, signupInfo}) {
       activityArea,
       ...user
     }
+    console.log("User data to be pushed", userData)
     try {
       return firebase.database().ref(`${USER_TABLE_NAME}/${uid}`)
         .set(userData).then(() => {
