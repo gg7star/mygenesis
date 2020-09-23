@@ -35,14 +35,14 @@ export async function createAccount({credential, signupInfo}) {
     try {
       return firebase.database().ref(`${USER_TABLE_NAME}/${uid}`)
         .set(userData).then(() => {
-          return userData
+          return { credential: userData, error: null }
         });
     } catch (e) {
-      return null
+      return { credential: null, error: e.code }
     }
   }
   console.log("User Info is null")
-  return null
+  return {credential: null, error: "No user data" }
 }
 
 export async function getUserInfo(uid) {

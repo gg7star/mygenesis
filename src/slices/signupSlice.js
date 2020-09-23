@@ -41,6 +41,7 @@ export function signupWithInfo(signupInfo, activityArea, job, localFilePath, cvF
   return async dispatch => {
     dispatch(trySignup())
     const res = await attempSignup({email, password})
+    console.log("Attemp to sign up res", res)
     if (res.error) {
       dispatch(signupFailure({statusMessage: res.error}))
       showRootToast(res.error)
@@ -49,6 +50,7 @@ export function signupWithInfo(signupInfo, activityArea, job, localFilePath, cvF
 
     const storageRef = await createStorageReferenceToFile()
     const uploadRes = await storageRef.putFile(localFilePath)
+    console.log("Storage upload res", res)
     if (uploadRes.error) {
       dispatch(signupFailure({statusMessage: uploadRes.error}))
       showRootToast(uploadRes.error)
@@ -67,7 +69,13 @@ export function signupWithInfo(signupInfo, activityArea, job, localFilePath, cvF
     }
 
     const createAccountRes = await createAccount({credential: res.credential, signupInfo: newSignupInfo})
-    dispatch(signupSuccess({credential: res.credential}))
+    console.log("Create account res", createAccountRes)
+    if (createAccountRes.error) {
+      dispatch(signupFailure({statusMessage: createAccountRes.error}))
+      showRootToast(createAccountRes.error)
+      return
+    }
+    dispatch(signupSuccess({credential: createAccountRes.credential}))
     Actions.reset("login")
   }
 }
