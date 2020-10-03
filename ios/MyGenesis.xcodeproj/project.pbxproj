@@ -54,6 +54,7 @@
 		00E356EE1AD99517003FC87E /* MyGenesisTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MyGenesisTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		00E356F11AD99517003FC87E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		00E356F21AD99517003FC87E /* MyGenesisTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MyGenesisTests.m; sourceTree = "<group>"; };
+		046A1A57251C009F00D41906 /* MyGenesis.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = MyGenesis.entitlements; path = MyGenesis/MyGenesis.entitlements; sourceTree = "<group>"; };
 		09489173A2444FDBA52AA85B /* Fontisto.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Fontisto.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Fontisto.ttf"; sourceTree = "<group>"; };
 		0B3CA2F515EA62C0F11A9473 /* Pods-MyGenesis-tvOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MyGenesis-tvOSTests.release.xcconfig"; path = "Target Support Files/Pods-MyGenesis-tvOSTests/Pods-MyGenesis-tvOSTests.release.xcconfig"; sourceTree = "<group>"; };
 		128C0A39A8FD4CA796C9050C /* Lato-LightItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Lato-LightItalic.ttf"; path = "../src/assets/fonts/Lato-LightItalic.ttf"; sourceTree = "<group>"; };
@@ -162,6 +163,7 @@
 		13B07FAE1A68108700A75B9A /* MyGenesis */ = {
 			isa = PBXGroup;
 			children = (
+				046A1A57251C009F00D41906 /* MyGenesis.entitlements */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
 				13B07FB01A68108700A75B9A /* AppDelegate.m */,
 				13B07FB51A68108700A75B9A /* Images.xcassets */,
@@ -365,7 +367,9 @@
 						TestTargetID = 13B07F861A680F5B00A75B9A;
 					};
 					13B07F861A680F5B00A75B9A = {
+						DevelopmentTeam = ZSVQXPQ3L5;
 						LastSwiftMigration = 1120;
+						ProvisioningStyle = Manual;
 					};
 					2D02E47A1E0B4A5D006451C7 = {
 						CreatedOnToolsVersion = 8.2.1;
@@ -457,7 +461,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "export NODE_BINARY=node\n../node_modules/react-native/scripts/react-native-xcode.sh";
+			shellScript = "export NODE_BINARY=node\n../node_modules/react-native/scripts/react-native-xcode.sh\n";
 		};
 		0E5F949596DA5B35FEF403A5 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -807,11 +811,15 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				CURRENT_PROJECT_VERSION = 2;
+				CODE_SIGN_ENTITLEMENTS = MyGenesis/MyGenesis.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Distribution: LA2 PLUS (ZSVQXPQ3L5)";
+				CODE_SIGN_STYLE = Manual;
+				CURRENT_PROJECT_VERSION = 1.0.9;
+				DEVELOPMENT_TEAM = ZSVQXPQ3L5;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = MyGenesis/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				MARKETING_VERSION = 1.0.2;
+				MARKETING_VERSION = 1.0;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
@@ -819,6 +827,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.laplus.mygenesis;
 				PRODUCT_NAME = MyGenesis;
+				PROVISIONING_PROFILE_SPECIFIER = mygenesis_prod_profile_0710;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -831,10 +840,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				CURRENT_PROJECT_VERSION = 2;
+				CODE_SIGN_ENTITLEMENTS = MyGenesis/MyGenesis.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Distribution: LA2 PLUS (ZSVQXPQ3L5)";
+				CODE_SIGN_STYLE = Manual;
+				CURRENT_PROJECT_VERSION = 1.0.9;
+				DEVELOPMENT_TEAM = ZSVQXPQ3L5;
 				INFOPLIST_FILE = MyGenesis/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				MARKETING_VERSION = 1.0.2;
+				MARKETING_VERSION = 1.0;
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
@@ -842,6 +855,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.laplus.mygenesis;
 				PRODUCT_NAME = MyGenesis;
+				PROVISIONING_PROFILE_SPECIFIER = mygenesis_prod_profile_0710;
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
