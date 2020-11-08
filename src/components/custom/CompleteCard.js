@@ -1,9 +1,10 @@
 import React, { Component } from 'react'
 import { Image } from 'react-native'
 import VerticalCenterLayout from '../../layouts/VerticalCenterLayout'
-import {CommonText} from '../text'
+import {CommonText} from '../text';
 
-import {em, WIDTH} from '../../common'
+import {em, WIDTH} from '../../common';
+import commonStyles from '../common_styles';
 
 const CompleteCard = (props) => {
     let imageResource = require('../../assets/images/ic_my_information.png')
@@ -21,7 +22,18 @@ const CompleteCard = (props) => {
       imageResource = require('../../assets/images/ic_contact_us.png')
     }
     return (
-      <VerticalCenterLayout style={[{width: WIDTH * 0.4, paddingHorizontal: 20*em, paddingVertical: 30*em, backgroundColor: "#ffffff", borderRadius: 20*em}, props.style]}>
+      <VerticalCenterLayout
+        style={[
+          {
+            width: WIDTH * 0.4,
+            paddingHorizontal: 20*em,
+            paddingVertical: 30*em,
+            backgroundColor: "#ffffff",
+            borderRadius: 20*em,
+          },
+          commonStyles.shadow.card,
+          props.style,
+        ]}>
         <Image source={imageResource}
           style={{width: 60 * em, height: 60 * em}} resizeMode={'stretch'} />
         <CommonText theme="primary" style={{textAlign: "center", marginTop: 12*em}}>{textContent}</CommonText>

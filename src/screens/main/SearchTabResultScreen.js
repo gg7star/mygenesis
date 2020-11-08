@@ -135,7 +135,7 @@ class SearchTabResultScreen extends Component {
               <Image source={tooltipButtonImage} style={styles.tooltipButton} resizeMode={'stretch'} />
             </Tooltip>
           </HorizontalJustifyLayout>
-          <SwipeListView data={this.props.searchedJobs} renderItem={this.renderItem} />
+          <SwipeListView style={{ paddingLeft: 15 * em, paddingRight: 15 * em }} data={this.props.searchedJobs} renderItem={this.renderItem} />
         </VerticalCenterFlowLayout>
     );
   }

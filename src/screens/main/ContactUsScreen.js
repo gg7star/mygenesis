@@ -15,6 +15,7 @@ import RoundDropDownButton from '../../components/button/RoundDropDownButton'
 import Separator from '../../components/Separator'
 import Modal from 'react-native-modal'
 import Accordion from 'react-native-collapsible/Accordion'
+import commonStyles from '../../components/common_styles';
 
 const SECTIONS = [
   {
@@ -94,7 +95,17 @@ class ContactUsScreen extends Component {
             <View style={{width: 30*em}}/>
           </HorizontalJustifyLayout>
           <CommonRegularText theme="gray" style={{marginTop: 5*em}}>Venez-nous rencontrer ou appelez-nous</CommonRegularText>
-          <VerticalFlowLayout style={{marginTop: 20*em, width: WIDTH*0.85, backgroundColor: "#ffffff", borderRadius: 20*em}}>
+          <VerticalFlowLayout
+            style={[
+              {
+                marginTop: 20*em,
+                width: WIDTH*0.85,
+                backgroundColor: "#ffffff",
+                borderRadius: 20*em,
+              },
+              commonStyles.shadow.card,
+            ]}
+          >
             <HorizontalJustifyLayout style={{paddingHorizontal: 15*em, paddingVertical: 10*em}}>
               <VerticalFlowLayout>
                 <CommonRegularText theme="gray">Agence</CommonRegularText>

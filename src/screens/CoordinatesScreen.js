@@ -54,12 +54,22 @@ class SubscribeScreen extends Component {
           <TitleText style={{marginTop: 35 * em}} theme="black">Mes coordonnées</TitleText>
           <SmallText theme="gray">*Champ obligatoire</SmallText>
 
-          <RoundTextInput placeHolder="Code Postale*" textContentType="postalCode"
-            style={{marginTop: 20 * em}} value={zipCode} handleChange={(text)=>this.setState({zipCode:text})} />
+          <RoundTextInput
+            placeHolder="Code Postale*"
+            textContentType="postalCode"
+            style={{marginTop: 20 * em}}
+            value={zipCode}
+            keyboardType='numeric'
+            handleChange={(text)=>this.setState({zipCode:text})} />
           <RoundTextInput placeHolder="Ville*" style={{marginTop: 15 * em}}
             value={city} handleChange={(text)=>this.setState({city:text})} />
-          <RoundTextInput placeHolder="Téléphone*" textContentType="telephoneNumber"
-            style={{marginTop: 15 * em}} value={telephone} handleChange={(text)=>this.setState({telephone:text})} />
+          <RoundTextInput
+            placeHolder="Téléphone*"
+            textContentType="telephoneNumber"
+            style={{marginTop: 15 * em}}
+            value={telephone}
+            keyboardType='phone-pad'
+            handleChange={(text)=>this.setState({telephone:text})} />
           <TouchableOpacity onPress={this.handleContinue.bind(this)}>
             <RoundButton text="Continuer" rightIcon="next" style={{marginTop: 15 * em}}/>
           </TouchableOpacity>

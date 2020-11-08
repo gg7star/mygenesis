@@ -7,6 +7,7 @@ import HorizontalJustifyLayout from '../../layouts/HorizontalJustifyLayout'
 import VerticalCenterFlowLayout from '../../layouts/VerticalCenterFlowLayout'
 import RoundButton from '../../components/button/RoundButton'
 import LogoView from '../../components/LogoView'
+import commonStyles from '../../components/common_styles';
 
 class AboutScreen extends Component {
   constructor(props){
@@ -26,7 +27,12 @@ class AboutScreen extends Component {
             <CommonText theme="blue_gray" style={{marginLeft: 5 * em}}>A propos de My Genesis</CommonText>
             <View style={{width: 30*em}}/>
           </HorizontalJustifyLayout>
-          <VerticalCenterFlowLayout style={{padding: 20*em, backgroundColor: "#ffffff", borderRadius: 20*em, width: WIDTH * 0.85, marginVertical: 20*em}}>
+          <VerticalCenterFlowLayout
+            style={[
+              {padding: 20*em, backgroundColor: "#ffffff", borderRadius: 20*em, width: WIDTH * 0.85, marginVertical: 20*em},
+              commonStyles.shadow.card,
+            ]}
+          >
             <LogoView size="medium" textShow="false"/>
             <TitleText theme="black" style={{marginTop: 15*em}}>Lorem ipsumundefined</TitleText>
             <CommonRegularText theme="gray" style={{marginTop: 15*em, textAlign:"center"}}>

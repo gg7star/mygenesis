@@ -7,6 +7,7 @@ import AccountLayout from '../../layouts/AccountLayout'
 import HorizontalJustifyLayout from '../../layouts/HorizontalJustifyLayout'
 import VerticalFlowLayout from '../../layouts/VerticalFlowLayout'
 import RoundButton from '../../components/button/RoundButton'
+import commonStyles from '../../components/common_styles';
 
 class MyInformationScreen extends Component {
   constructor(props){
@@ -33,7 +34,17 @@ class MyInformationScreen extends Component {
           <CommonRegularText theme="gray">Monsieur</CommonRegularText>
           <TitleText theme="black" style={{marginTop: 5*em}}>Caille Dylan</TitleText>
 
-          <VerticalFlowLayout style={{padding: 20*em, backgroundColor: "#ffffff", width: WIDTH*0.85, borderRadius: 20*em, marginTop: 15*em}}>
+          <VerticalFlowLayout
+            style={[
+              {
+                padding: 20*em,
+                backgroundColor: "#ffffff",
+                width: WIDTH*0.85,
+                borderRadius: 20*em,
+                marginTop: 15*em,
+              },
+              commonStyles.shadow.card,
+            ]}>
             <CommonText theme="blue_gray">Email</CommonText>
             <SmallText theme="light_gray" style={{marginTop: 5*em}}>dylan-caille@hotmail.fr</SmallText>
             <CommonText theme="blue_gray" style={{marginTop: 15*em}}>Code postal</CommonText>
@@ -44,7 +55,17 @@ class MyInformationScreen extends Component {
             <SmallText theme="light_gray" style={{marginTop: 5*em}}>06 12 34 56 78</SmallText>
           </VerticalFlowLayout>
 
-          <VerticalFlowLayout style={{padding: 20*em, backgroundColor: "#ffffff", width: WIDTH*0.85, borderRadius: 20*em, marginTop: 15*em}}>
+          <VerticalFlowLayout
+            style={[
+              {
+                padding: 20*em,
+                backgroundColor: "#ffffff",
+                width: WIDTH*0.85,
+                borderRadius: 20*em,
+                marginTop: 15*em,
+              },
+              commonStyles.shadow.card,
+            ]}>
             <CommonText theme="blue_gray">Mon CV</CommonText>
             <SmallText theme="light_gray" style={{marginTop: 5*em}}>CV DylanCaille 2020.pdf</SmallText>
             <CommonText theme="blue_gray" style={{marginTop: 15*em}}>Secteur d'activité</CommonText>

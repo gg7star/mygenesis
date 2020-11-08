@@ -74,7 +74,7 @@ class MyFollowUpScreen extends Component {
             <View style={{width: 30*em}}/>
           </HorizontalJustifyLayout>
           <CommonRegularText theme="gray" style={{marginTop: 5*em, marginBottom: 15*em}}>Voici la liste des offres dont vous avez déjà postulé</CommonRegularText>
-          <SwipeListView data={this.props.appliedJobs} renderItem={this.renderItem} />
+        <SwipeListView style={{ paddingLeft: 15 * em, paddingRight: 15 * em }} data={this.props.appliedJobs} renderItem={this.renderItem} />
           <Spinner
             visible={this.props.isFetching}
             textContent={''}

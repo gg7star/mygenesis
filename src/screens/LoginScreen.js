@@ -62,18 +62,18 @@ class LoginScreen extends Component {
     const {statusMessage} = this.props
 
     return (
-        <AccountLayout>
+      <AccountLayout>
           <StatusBar barstyle="dark-content" translucent backgroundColor="transparent" />
           <LogoView size="small" style={{marginTop: 20 * em}}/>
           <TitleText style={{marginTop: 35 * em, marginBottom: 15 * em}} theme="black">Me connecter</TitleText>
 
           <VerticalCenterFlowLayout style={{backgroundColor: "#ffffff", borderRadius: 22*em}}>
-            <RoundTextInput placeHolder="Email" textContentType="emailAddress"
+          <RoundTextInput placeHolder="Email" textContentType="emailAddress" keyboardType="email-address"
               value={email} handleChange={(text)=>this.setState({email:text})} />
             <Separator style={{width: WIDTH * 0.85, backgroundColor: "#f5f6fa"}}/>
             <RoundTextInput placeHolder="Mot de passe" secureTextEntry={true}
               value={password} handleChange={(text)=>this.setState({password:text})}
-              textContentType="password" rightText="OUBLIÉ ?" />
+            textContentType="password" rightText="OUBLIÉ ?" />
           </VerticalCenterFlowLayout>
 
           <TouchableOpacity onPress={() => {

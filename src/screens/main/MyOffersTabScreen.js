@@ -112,7 +112,7 @@ class MyOffersTabScreen extends Component {
             <StatusBar barstyle="dark-content" translucent backgroundColor="transparent" />
             <TitleText style={{marginTop: 35 * em, marginBottom: 10 * em}} theme="black">Mes offres</TitleText>
             <SmallText theme="gray" style={{marginBottom: 20 * em}}>Pour supprimer l'offre glisser vers la droite</SmallText>
-            <SwipeListView data={this.props.appliedJobs} renderItem={this.renderItem} />
+            <SwipeListView style={{ paddingLeft: 15 * em, paddingRight: 15 * em }} data={this.props.appliedJobs} renderItem={this.renderItem} />
 
             <Spinner
               visible={this.props.isFetching}

@@ -1,10 +1,12 @@
+/* eslint-disable prettier/prettier */
 import React, { Component } from 'react';
 import { Text, Image } from 'react-native';
 
 import {WIDTH, HEIGHT, em} from '../../common';
-import HorizontalJustifyLayout from '../../layouts/HorizontalJustifyLayout'
-import HorizontalCenterLayout from '../../layouts/HorizontalCenterLayout'
-import {CommonText} from '../../components/text'
+import HorizontalJustifyLayout from '../../layouts/HorizontalJustifyLayout';
+import HorizontalCenterLayout from '../../layouts/HorizontalCenterLayout';
+import {CommonText} from '../../components/text';
+import commonStyles from '../common_styles';
 
 const RoundButton = (props) => {
   var propBackColor = '#18277a'
@@ -30,34 +32,45 @@ const RoundButton = (props) => {
   }
   if (props.rightIcon == "next") {
     return (
-      <HorizontalJustifyLayout style={[{height: 56*em,
-        width: width,
-        backgroundColor: propBackColor,
-        borderRadius: 22*em}, props.style]}>
-          <HorizontalCenterLayout style={{marginLeft: 50*em, width: width - 100 * em}}>
+      <HorizontalJustifyLayout
+        style={[
+          {
+            height: 56 * em,
+            width: width,
+            backgroundColor: propBackColor,
+            borderRadius: 22 * em,
+          },
+          commonStyles.shadow.button,
+          props.style,
+        ]}>
+          <HorizontalCenterLayout style={{marginLeft: 50 * em, width: width - 100 * em}}>
             <CommonText theme={textTheme}>{props.text}</CommonText>
           </HorizontalCenterLayout>
-          <Image source={require("../../assets/images/ic_next_arrow.png")} style={{width: 50*em, height: 30*em}} resizeMode={'center'} />
+          <Image source={require("../../assets/images/ic_next_arrow.png")} style={{width: 50 * em, height: 30 * em}} resizeMode={'center'} />
       </HorizontalJustifyLayout>
     );
   }
   else if (props.leftIcon == "applied") {
     return (
-      <HorizontalCenterLayout style={[{height: 56*em,
+      <HorizontalCenterLayout style={[{height: 56 * em,
         width: WIDTH * 0.85,
         backgroundColor: propBackColor,
-        borderRadius: 22*em}, props.style]}>
-          <Image source={require("../../assets/images/ic_applied.png")} style={{width: 14*em, height: 15*em, marginRight: 5 * em}} resizeMode={'stretch'} />
+        borderRadius: 22 * em}, 
+        commonStyles.shadow.button,
+        props.style]}>
+          <Image source={require("../../assets/images/ic_applied.png")} style={{width: 14 * em, height: 15 * em, marginRight: 5 * em}} resizeMode={'stretch'} />
           <CommonText theme={textTheme}>{props.text}</CommonText>
       </HorizontalCenterLayout>
     );
   }
 
   return (
-    <HorizontalCenterLayout style={[{height: 56*em,
+    <HorizontalCenterLayout style={[{height: 56 * em,
       width: WIDTH * 0.85,
       backgroundColor: propBackColor,
-      borderRadius: 22*em}, props.style]}>
+      borderRadius: 22 * em},
+      commonStyles.shadow.button,
+      props.style]}>
         <CommonText theme={textTheme}>{props.text}</CommonText>
     </HorizontalCenterLayout>
   );

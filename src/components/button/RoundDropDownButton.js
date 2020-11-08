@@ -2,8 +2,9 @@ import React, { Component } from 'react';
 import { View, Text, Image } from 'react-native';
 
 import {WIDTH, HEIGHT, em} from '../../common';
-import HorizontalJustifyLayout from '../../layouts/HorizontalJustifyLayout'
-import {CommonText} from '../../components/text'
+import HorizontalJustifyLayout from '../../layouts/HorizontalJustifyLayout';
+import {CommonText} from '../../components/text';
+import commonStyles from '../common_styles';
 
 const RoundDropDownButton = (props) => {
   let expand = false
@@ -20,6 +21,7 @@ const RoundDropDownButton = (props) => {
       backgroundColor: "#ffffff",
       borderRadius: 22*em,
       paddingHorizontal: 25*em},
+      commonStyles.shadow.dropdown,
       props.style]}>
         <CommonText theme={theme}>{props.text}</CommonText>
         {!expand &&

@@ -22,6 +22,7 @@ import RoundButton from '../../components/button/RoundButton'
 import {em, WIDTH, HEIGHT} from '../../common'
 
 import {TitleText, CommonText, CommonRegularText, CommonItalicText, MediumRegularText} from '../../components/text'
+import commonStyles from '../../components/common_styles';
 
 class JobDetailScreen extends Component {
   constructor(props){
@@ -133,7 +134,12 @@ class JobDetailScreen extends Component {
                 {job.duration}
               </CommonItalicText>
             </HorizontalLayout>
-            <VerticalFlowLayout style={{width: WIDTH * 0.85, backgroundColor: "#ffffff", borderRadius: 10 * em, marginTop: 20*em}}>
+            <VerticalFlowLayout
+              style={[
+                {width: WIDTH * 0.85, backgroundColor: "#ffffff", borderRadius: 10 * em, marginTop: 20*em},
+                commonStyles.shadow.card,
+              ]}
+            >
               <JobPostSector type="description" text={job.description} />
               <JobPostSector type="mission" applied={true} text={job.position} />
               <JobPostSector type="profile_research" text={job.profile}/>

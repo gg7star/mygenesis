@@ -106,7 +106,7 @@ class HomeTabScreen extends Component {
           {!this.state.tooltipShown &&
           <StatusBar barstyle="dark-content" translucent backgroundColor="transparent" />}
           <LogoView size="small" style={{marginTop: 20 * em}}/>
-          <HorizontalJustifyLayout style={{marginTop: 25 * em, marginBottom: 20 * em}}>
+          <HorizontalJustifyLayout style={{ marginTop: 25 * em, marginBottom: 20 * em}}>
             <CommonText theme="blue_gray">Mes données de connexion</CommonText>
             <Tooltip
               ref = {this.tooltipRef}
@@ -122,7 +122,7 @@ class HomeTabScreen extends Component {
               <Image source={tooltipButtonImage} style={styles.tooltipButton} resizeMode={'stretch'} />
             </Tooltip>
           </HorizontalJustifyLayout>
-          <SwipeListView data={this.props.allJobs} renderItem={this.renderItem} />
+          <SwipeListView style={{paddingLeft: 15*em, paddingRight: 15*em}} data={this.props.allJobs} renderItem={this.renderItem} />
 
           <Spinner
             visible={this.props.isFetching}

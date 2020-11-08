@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import { Image } from 'react-native';
-import VerticalFlowLayout from '../../layouts/VerticalCenterLayout'
-import HorizontalCenterLayout from '../../layouts/HorizontalCenterLayout'
-import HorizontalJustifyLayout from '../../layouts/HorizontalJustifyLayout'
-import {TitleText, CommonRegularText} from '../text'
-import Moment from 'moment'
+import VerticalFlowLayout from '../../layouts/VerticalCenterLayout';
+import HorizontalCenterLayout from '../../layouts/HorizontalCenterLayout';
+import HorizontalJustifyLayout from '../../layouts/HorizontalJustifyLayout';
+import {TitleText, CommonRegularText} from '../text';
+import Moment from 'moment';
 
 import {WIDTH, HEIGHT, em} from '../../common';
-
+import commonStyles from '../common_styles';
 
 const getMonthOfDate = (date) => {
   const monthString = ["janvier", "février", "mars", "avril", "mai", "juin",
@@ -33,7 +33,13 @@ const JobPostSector = (props) => {
       Moment.locale("de")
       const formattedDate = Moment(props.job.date).format("DD MMMM YYYY")
       return (
-        <VerticalFlowLayout style={[{padding: 15 * em, backgroundColor: "#ffffff", borderRadius: 10 * em}, props.style]}>
+        <VerticalFlowLayout
+          style={[
+            {padding: 15 * em, backgroundColor: "#ffffff", borderRadius: 10 * em},
+            commonStyles.shadow.card,
+            props.style,
+          ]}
+        >
           <HorizontalCenterLayout>
             <Image source={iconResource}
               style={{width: 55 * em, height: 55 * em, marginTop: 10 * em}}
