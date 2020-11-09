@@ -52,12 +52,18 @@ const RoundButton = (props) => {
   }
   else if (props.leftIcon == "applied") {
     return (
-      <HorizontalCenterLayout style={[{height: 56 * em,
-        width: WIDTH * 0.85,
-        backgroundColor: propBackColor,
-        borderRadius: 22 * em}, 
-        commonStyles.shadow.button,
-        props.style]}>
+      <HorizontalCenterLayout
+        style={[
+          {
+            height: 56 * em,
+            width: WIDTH * 0.85,
+            backgroundColor: propBackColor,
+            borderRadius: 22 * em
+          }, 
+          commonStyles.shadow.button,
+          props.style
+        ]}
+      >
           <Image source={require("../../assets/images/ic_applied.png")} style={{width: 14 * em, height: 15 * em, marginRight: 5 * em}} resizeMode={'stretch'} />
           <CommonText theme={textTheme}>{props.text}</CommonText>
       </HorizontalCenterLayout>
@@ -65,12 +71,17 @@ const RoundButton = (props) => {
   }
 
   return (
-    <HorizontalCenterLayout style={[{height: 56 * em,
-      width: WIDTH * 0.85,
-      backgroundColor: propBackColor,
-      borderRadius: 22 * em},
-      commonStyles.shadow.button,
-      props.style]}>
+    <HorizontalCenterLayout
+      style={[
+        {
+          height: 56 * em,
+          width: WIDTH * 0.85,
+          backgroundColor: propBackColor,
+          borderRadius: 22 * em
+        },
+        commonStyles.shadow.button,
+        props.style
+      ]}>
         <CommonText theme={textTheme}>{props.text}</CommonText>
     </HorizontalCenterLayout>
   );

@@ -16,7 +16,7 @@ import VerticalCenterFlowLayout from '../layouts/VerticalCenterFlowLayout'
 import LogoView from '../components/LogoView'
 import RoundButton from '../components/button/RoundButton'
 import Separator from '../components/Separator'
-import {CommonText, TitleText, SmallText, RoundTextInput} from '../components/text'
+import {CommonText, TitleText, SmallText, CustomTextInput} from '../components/text'
 import Toast from 'react-native-root-toast'
 import Spinner from 'react-native-loading-spinner-overlay'
 
@@ -63,35 +63,50 @@ class LoginScreen extends Component {
 
     return (
       <AccountLayout>
-          <StatusBar barstyle="dark-content" translucent backgroundColor="transparent" />
-          <LogoView size="small" style={{marginTop: 20 * em}}/>
-          <TitleText style={{marginTop: 35 * em, marginBottom: 15 * em}} theme="black">Me connecter</TitleText>
+        <StatusBar barstyle="dark-content" translucent backgroundColor="transparent" />
+        <LogoView size="small" style={{marginTop: 20 * em}}/>
+        <TitleText style={{marginTop: 35 * em, marginBottom: 15 * em}} theme="black">Me connecter</TitleText>
 
-          <VerticalCenterFlowLayout style={{backgroundColor: "#ffffff", borderRadius: 22*em}}>
-          <RoundTextInput placeHolder="Email" textContentType="emailAddress" keyboardType="email-address"
-              value={email} handleChange={(text)=>this.setState({email:text})} />
-            <Separator style={{width: WIDTH * 0.85, backgroundColor: "#f5f6fa"}}/>
-            <RoundTextInput placeHolder="Mot de passe" secureTextEntry={true}
-              value={password} handleChange={(text)=>this.setState({password:text})}
-            textContentType="password" rightText="OUBLIÉ ?" />
-          </VerticalCenterFlowLayout>
+        <VerticalCenterFlowLayout style={{backgroundColor: "#ffffff", borderRadius: 22*em}}>
+          <CustomTextInput
+            placeHolder="Email"
+            textContentType="emailAddress"
+            keyboardType="email-address"
+            value={email}
+            handleChange={text => this.setState({email: text})}
+            style={{
+              borderTopLeftRadius: 22 * em,
+              borderTopRightRadius: 22 * em,
+            }}
+          />
+          <Separator style={{width: WIDTH * 0.85, backgroundColor: "#f5f6fa"}}/>
+          <CustomTextInput
+            placeHolder="Mot de passe"
+            secureTextEntry={true}
+            value={password}
+            handleChange={text => this.setState({password: text})}
+            textContentType="password" rightText="OUBLIÉ ?"
+            style={{
+              borderBottomLeftRadius: 22 * em,
+              borderBottomRightRadius: 22 * em,
+            }}
+          />
+        </VerticalCenterFlowLayout>
 
-          <TouchableOpacity onPress={() => {
-            this.handleLogin()
-          }
-          }>
-            <RoundButton text="Me connecter" rightIcon="next" style={{marginTop: 75 * em}}/>
+        <TouchableOpacity onPress={() => {this.handleLogin()}}>
+          <RoundButton
+            text="Me connecter"
+            rightIcon="next"
+            style={{marginTop: 75 * em}}
+          />
+        </TouchableOpacity>
+        <HorizontalCenterLayout style={{marginBottom: 30 * em}}>
+          <CommonText theme="gray" style={{marginTop: 25 * em}}>Pas de compte ? </CommonText>
+          <TouchableOpacity onPress={() => {Actions.subscribe()}}>
+            <CommonText theme="primary" style={{marginTop: 25 * em}}>M'inscrire</CommonText>
           </TouchableOpacity>
-          <HorizontalCenterLayout style={{marginBottom: 30 * em}}>
-            <CommonText theme="gray" style={{marginTop: 25 * em}}>Pas de compte ? </CommonText>
-            <TouchableOpacity onPress={() => {
-              Actions.subscribe()
-            }
-            }>
-              <CommonText theme="primary" style={{marginTop: 25 * em}}>M'inscrire</CommonText>
-            </TouchableOpacity>
-          </HorizontalCenterLayout>
-        </AccountLayout>
+        </HorizontalCenterLayout>
+      </AccountLayout>
     );
   }
 }

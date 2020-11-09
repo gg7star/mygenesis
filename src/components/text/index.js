@@ -8,7 +8,18 @@ import CommonItalicText from './CommonItalicText'
 import RoundTextInput from './RoundTextInput'
 import MediumText from './MediumText'
 import TinyText from './TinyText'
+import CustomTextInput from './CustomTextInput'
 
 export {
-  CommonText, TitleText, SmallText, RoundTextInput, SmallButtonText, CommonRegularText, CommonItalicText, MediumRegularText, MediumText, TinyText
+  CommonText,
+  TitleText,
+  SmallText,
+  RoundTextInput,
+  SmallButtonText,
+  CommonRegularText,
+  CommonItalicText,
+  MediumRegularText,
+  MediumText,
+  TinyText,
+  CustomTextInput,
 }
