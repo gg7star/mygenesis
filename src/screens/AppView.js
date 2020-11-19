@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { RootSiblingParent } from 'react-native-root-siblings'
 import {
-  StyleSheet, View, SafeAreaView
+  StyleSheet, View, SafeAreaView, StatusBar
 } from 'react-native';
 import RootRoutes from '../routes';
 
@@ -29,11 +29,13 @@ class AppView extends Component {
   render() {
     return (
       <RootSiblingParent>
+        <SafeAreaView style={{ flex: 0, backgroundColor: '#000000' }} />
         <SafeAreaView style={styles.safeArea}>
           <View style={styles.container}>
             <RootRoutes />
           </View>
         </SafeAreaView>
+        <SafeAreaView style={{ flex: 0, backgroundColor: '#000000' }} />
       </RootSiblingParent>
     );
   }
@@ -41,11 +43,11 @@ class AppView extends Component {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1
+    flex: 1,
   },
   safeArea: {
-    flex: 1
-  }
+    flex: 1,
+  },
 });
 
 const mapDispatchToProps = dispatch => ({
@@ -53,5 +55,6 @@ const mapDispatchToProps = dispatch => ({
 });
 
 export default connect(
-    null,
-    mapDispatchToProps)(AppView);
+  null,
+  mapDispatchToProps,
+)(AppView);

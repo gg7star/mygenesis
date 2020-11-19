@@ -20,8 +20,9 @@ const SmallText = (props) => {
     else if (props.theme == "green") {
       propTextColor = "#1de1d7"
     }
+    var size = props.size ? props.size : 10
     return (
-      <Text style={[{fontFamily: 'Lato-Bold', fontSize: 10*em, color: propTextColor}, props.style]}>
+      <Text style={[{ fontFamily: 'Lato-Bold', fontSize: size*em, color: propTextColor}, props.style]}>
         {props.children}
       </Text>
     );

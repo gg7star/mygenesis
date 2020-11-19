@@ -15,28 +15,44 @@ import Accordion from 'react-native-collapsible/Accordion'
 const SECTIONS = [
   {
     index: 0,
-    title: 'Mentions légales 1',
-    content: 'Lorem ipsum dolor sit amet, conseteur\nsadipscing elitr, sed diam nounmy eirmod\ntempor invidunt ut labore et dolore\nmagna aliquyam erat, sed diam voluptua.\nAt vero eos et accusam et justo duo\ndolores et ea rebum. Stet clita kasd gubergre, no sea takimata sanctus\nestundefined',
+    title: 'Entreprise',
+    content: 'Nom entreprise : Genesis RH\nForme sociale: SARL vicayla\nCapital Social: 60 000 €\nRCS: Mâcon',
   },
   {
     index: 1,
-    title: 'Mentions légales 2',
-    content: 'Lorem ipsum dolor sit amet, conseteur\nsadipscing elitr, sed diam nounmy eirmod\ntempor invidunt ut labore et dolore\nmagna aliquyam erat, sed diam voluptua.\nAt vero eos et accusam et justo duo\ndolores et ea rebum. Stet clita kasd gubergre, no sea takimata sanctus\nestundefined',
+    title: 'Siège social',
+    content: 'Siège social : 22.1 CONSULTING - 40 Rue Victor Hugo - 71 000 Mâcon\nResponsable de publication: Mathilde LOSSON\nMail et téléphone de contact du responsable de publication:\nrh@genesisrh.fr\n03 85 20 30 00',
   },
   {
     index: 2,
-    title: 'Mentions légales 3',
-    content: 'Lorem ipsum dolor sit amet, conseteur\nsadipscing elitr, sed diam nounmy eirmod\ntempor invidunt ut labore et dolore\nmagna aliquyam erat, sed diam voluptua.\nAt vero eos et accusam et justo duo\ndolores et ea rebum. Stet clita kasd gubergre, no sea takimata sanctus\nestundefined',
+    title: 'Conception et développement',
+    content: 'Altagile\n\
+SAS au capital de 252 000 €\n\
+5 rue de la Grande Fin 21 121 FONTAINE LES DIJON\n\
+RCS 810145847 RDC Dijon',
   },
   {
     index: 3,
-    title: 'Mentions légales 4',
-    content: 'Lorem ipsum dolor sit amet, conseteur\nsadipscing elitr, sed diam nounmy eirmod\ntempor invidunt ut labore et dolore\nmagna aliquyam erat, sed diam voluptua.\nAt vero eos et accusam et justo duo\ndolores et ea rebum. Stet clita kasd gubergre, no sea takimata sanctus\nestundefined',
+    title: 'Hébergeur',
+    content: 'SAS au capital de 10 069 020 €\n\
+RCS Lille Métropole 424 761 419 00045\n\
+Code APE 2620Z\n\
+N° TVA: FR 22 424 761 419\n\
+Siège social: 2 rue Kellermann - 59100 Roubaix - France.\n\
+',
   },
   {
     index: 4,
-    title: 'Mentions légales 5',
-    content: 'Lorem ipsum dolor sit amet, conseteur\nsadipscing elitr, sed diam nounmy eirmod\ntempor invidunt ut labore et dolore\nmagna aliquyam erat, sed diam voluptua.\nAt vero eos et accusam et justo duo\ndolores et ea rebum. Stet clita kasd gubergre, no sea takimata sanctus\nestundefined',
+    title: 'La description',
+    content: 'Les renseignements personnels que nous collectons sont conservés dans un environnement sécurisé. Les personnes travaillant pour nous sont tenues de respecter la confidentialité de vos informations. Pour assurer la sécurité de vos renseignements personnels, nous avons recours aux mesures suivantes :',
+  },
+  {
+    index: 5,
+    title: 'Gestion des accès',
+    content: 'Gestion des accès - personne autorisée\n\
+Logiciel de surveillance du réseau\n\
+Sauvegarde informatique\n\
+Pare- feu(Firewalls)',
   },
 ];
 

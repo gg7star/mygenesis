@@ -15,6 +15,7 @@ import MyAvailabilityScreen from '../screens/main/MyAvailabilityScreen'
 import ContactUsScreen from '../screens/main/ContactUsScreen'
 import AboutScreen from '../screens/main/AboutScreen'
 import LegalNoticeScreen from '../screens/main/LegalNoticeScreen'
+import TermsOfServiceScreen from '../screens/main/TermsOfServiceScreen'
 import CGUScreen from '../screens/main/CGUScreen'
 import { NavigationContainer } from '@react-navigation/native'
 
@@ -37,6 +38,7 @@ class Routes extends Component {
 					<Scene key="contactus" hideNavBar component={ContactUsScreen} />
 					<Scene key="aboutmygenesis" hideNavBar component={AboutScreen} />
 					<Scene key="legalnotice" hideNavBar component={LegalNoticeScreen} />
+					<Scene key="termsofservice" hideNavBar component={TermsOfServiceScreen} />
 					<Scene key="cgu" hideNavBar component={CGUScreen} />
       		</Scene>
 			</Router>

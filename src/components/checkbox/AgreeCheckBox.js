@@ -1,5 +1,6 @@
 import React, { Component, useState } from 'react';
-import { Text, View, Image } from 'react-native';
+import { Text, View, Image, TouchableOpacity } from 'react-native';
+import { Actions } from 'react-native-router-flux';
 import VerticalCenterFlowLayout from '../../layouts/VerticalCenterFlowLayout';
 import HorizontalLayout from '../../layouts/HorizontalLayout';
 
@@ -9,6 +10,7 @@ import SmallText from '../../components/text/SmallText';
 import commonStyles from '../common_styles';
 
 const AgreeCheckBox = props => {
+  const fontSize = 11;
   return (
     <VerticalCenterFlowLayout
       style={[
@@ -21,20 +23,23 @@ const AgreeCheckBox = props => {
       ]}>
       <HorizontalLayout>
         <CheckBox
-          style={{width: 15 * em, height: 15 * em, marginRight: 5 * em}}
+          style={{width: 17 * em, height: 17 * em, marginRight: 5 * em}}
           disabled={false}
           value={props.value}
           onValueChange={props.onValueChange}
           tintColors={{ true: '#18277a', false: 'gray' }}
         />
-        <SmallText theme="gray">  J'accepte les</SmallText>
-        <SmallText theme="primary"> conditions générales d'utilisation</SmallText>
-        <SmallText theme="gray"> et les</SmallText>
-        <SmallText theme="primary"> mentions</SmallText>
+        <SmallText theme="gray" size={fontSize}> J'accepte les</SmallText>
+        <TouchableOpacity onPress={() => Actions.termsofservice()}>
+          <SmallText theme="primary" size={fontSize}> conditions générales d'utilisation</SmallText>
+        </TouchableOpacity>
+        <SmallText theme="gray" size={fontSize}> et les</SmallText>
       </HorizontalLayout>
       <HorizontalLayout style={{marginLeft: 48 * em, width: WIDTH * 0.85}}>
-        <SmallText theme="primary"> légales</SmallText>
-        <SmallText theme="gray"> de Genesis-RH.</SmallText>
+        <TouchableOpacity onPress={() => Actions.legalnotice()}>
+          <SmallText theme="primary" size={fontSize}> mentions légales</SmallText>
+        </TouchableOpacity>
+        <SmallText theme="gray" size={fontSize}> de Genesis-RH.</SmallText>
       </HorizontalLayout>
     </VerticalCenterFlowLayout>
   );
