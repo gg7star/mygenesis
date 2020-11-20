@@ -232,18 +232,17 @@ class MyCVScreen extends Component {
                 {label: 'MEDICAL', value: 'MEDICAL'}
             ]}
             style={{marginTop: 20*em}}
-            placeholder="Secteur d'activité*"/>
+            placeholder="Secteur d'activité*"
+            zIndex={1000}/>
 
           <AccountDropDown defaultValue={job}
-            onChangeItem={item => this.setState({
-                job: item.value
-            })}
+            onChangeItem={item => this.setState({job: item.value})}
             items={jobItems}
             style={{marginTop: 20*em}}
             placeholder="Métier*"/>
 
           <CommonCheckBox text="J'autorise Genesis-RH à me contacter"
-            style={{marginTop: 15*em}} value={toggleCheckBox}
+            style={{marginTop: 15*em, marginLeft: 15*em}} value={toggleCheckBox}
             onValueChange={() => toggleCheckBox ? this.setToggleCheckBox(false) : this.setToggleCheckBox(true)}/>
           <TouchableOpacity onPress={this.handleContinue.bind(this)}>
             <RoundButton text="Enregistrer mes informations" style={{marginTop: 75 * em, marginBottom: 25 * em}}/>

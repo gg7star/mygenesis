@@ -21,21 +21,21 @@ class HomeScreen extends Component {
         <LogoView size="small" textShow = "false" style={{marginTop: 20 * em}}/>
 
         <VerticalCenterLayout>
-            <TouchableOpacity onPress={() => {
-              Actions.login()}
-            }>
-              <RoundButton text="Me connecter" theme="negative"/>
-            </TouchableOpacity>
-            <TouchableOpacity onPress={() => {
-              Actions.subscribe()}
-            }>
-              <RoundButton text="M'inscrire" style={{marginTop: 10 * em}}/>
-            </TouchableOpacity>
-            <TouchableOpacity onPress={() => {
-                Linking.openURL('https://genesis.softy.pro')
-            }}>
-              <CommonText style={{marginTop: 20 * em, marginBottom: 20 * em}}>Consulter les offres sans m'inscrire</CommonText>
-            </TouchableOpacity>
+          <TouchableOpacity onPress={() => {
+            Actions.login()}
+          }>
+            <RoundButton text="Me connecter" theme="negative"/>
+          </TouchableOpacity>
+          <TouchableOpacity onPress={() => {
+            Actions.subscribe()}
+          }>
+            <RoundButton text="M'inscrire" style={{marginTop: 10 * em}}/>
+          </TouchableOpacity>
+          <TouchableOpacity onPress={() => {
+              Linking.openURL('https://genesis.softy.pro')
+          }}>
+            <CommonText style={{marginTop: 20 * em, marginBottom: 20 * em}}>Consulter les offres sans m'inscrire</CommonText>
+          </TouchableOpacity>
         </VerticalCenterLayout>
       </VerticalJustifyLayout>
     );

@@ -2,15 +2,15 @@ import React, { Component } from 'react'
 import {em} from '../common'
 import { TouchableOpacity, StatusBar } from "react-native";
 import { Actions } from 'react-native-router-flux';
+import Zips from 'zips';
+import AccountLayout from '../layouts/AccountLayout';
+import HorizontalCenterLayout from '../layouts/HorizontalCenterLayout';
+import {showRootToast} from '../utils/misc';
 
-import AccountLayout from '../layouts/AccountLayout'
-import HorizontalCenterLayout from '../layouts/HorizontalCenterLayout'
-import {showRootToast} from '../utils/misc'
-
-import LogoView from '../components/LogoView'
-import RoundButton from '../components/button/RoundButton'
-import {CommonText, TitleText, SmallText, RoundTextInput} from '../components/text'
-import {RoundDropDownButton} from '../components/button'
+import LogoView from '../components/LogoView';
+import RoundButton from '../components/button/RoundButton';
+import {CommonText, TitleText, SmallText, RoundTextInput} from '../components/text';
+import {RoundDropDownButton} from '../components/button';
 
 class SubscribeScreen extends Component {
   constructor(props){
@@ -43,6 +43,10 @@ class SubscribeScreen extends Component {
     }
 
     Actions.mycv({email, password, civility, firstName, lastName, zipCode, city, telephone})
+  }
+
+  handleChangePostalCode = (postalCode) => {
+    
   }
 
   render() {

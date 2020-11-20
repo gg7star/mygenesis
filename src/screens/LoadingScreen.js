@@ -39,7 +39,7 @@ class LoadingScreen extends Component {
 
   componentDidMount() {
       this._isMounted = true
-      this.setDummyJSON()
+      // this.setDummyJSON()
       this.increasePercent()
   }
 

@@ -812,9 +812,9 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = MyGenesis/MyGenesis.entitlements;
-				CODE_SIGN_IDENTITY = "Apple Development: yang changliu (8JLUR4H748)";
+				CODE_SIGN_IDENTITY = "Apple Distribution: LA2 PLUS (ZSVQXPQ3L5)";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 1.1.2;
+				CURRENT_PROJECT_VERSION = 1.1.3;
 				DEVELOPMENT_TEAM = ZSVQXPQ3L5;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = MyGenesis/Info.plist;
@@ -827,7 +827,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.laplus.mygenesis;
 				PRODUCT_NAME = MyGenesis;
-				PROVISIONING_PROFILE_SPECIFIER = mygenesis_dev_profile_0710;
+				PROVISIONING_PROFILE_SPECIFIER = mygenesis_prod_profile_0710;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -841,9 +841,9 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = MyGenesis/MyGenesis.entitlements;
-				CODE_SIGN_IDENTITY = "Apple Development: yang changliu (8JLUR4H748)";
+				CODE_SIGN_IDENTITY = "Apple Distribution: LA2 PLUS (ZSVQXPQ3L5)";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 1.1.2;
+				CURRENT_PROJECT_VERSION = 1.1.3;
 				DEVELOPMENT_TEAM = ZSVQXPQ3L5;
 				INFOPLIST_FILE = MyGenesis/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -855,7 +855,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.laplus.mygenesis;
 				PRODUCT_NAME = MyGenesis;
-				PROVISIONING_PROFILE_SPECIFIER = mygenesis_dev_profile_0710;
+				PROVISIONING_PROFILE_SPECIFIER = mygenesis_prod_profile_0710;
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
 			};

@@ -29,7 +29,7 @@ class AppView extends Component {
   render() {
     return (
       <RootSiblingParent>
-        <SafeAreaView style={{ flex: 0, backgroundColor: '#000000' }} />
+        <SafeAreaView style={{ flex: 0, backgroundColor: '#FFFFFF' }} />
         <SafeAreaView style={styles.safeArea}>
           <View style={styles.container}>
             <RootRoutes />

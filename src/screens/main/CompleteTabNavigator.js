@@ -14,8 +14,8 @@ class CompleteTabNavigator extends Component {
   render() {
     return (
       <CompleteStack.Navigator headerMode="none">
-        <CompleteStack.Screen name="CompleteMain" component={CompleteTabScreen} />
         <CompleteStack.Screen name="CompleteDetail" component={CompleteTabDetailScreen} />
+        <CompleteStack.Screen name="CompleteMain" component={CompleteTabScreen} />
       </CompleteStack.Navigator>
     );
   }

@@ -43,7 +43,7 @@ const styles = {
       elevation: 15,
     },
   },
-  height: HEIGHT <= 670 ? 56 : 69,
+  height: HEIGHT <= 670 ? 56 : 56,
 };
 
 export default styles;

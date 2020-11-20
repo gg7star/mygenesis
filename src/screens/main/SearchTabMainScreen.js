@@ -50,7 +50,7 @@ class SearchTabMainScreen extends Component {
     return (
         <AccountLayout style={{marginBottom: 60 * em}}>
           <StatusBar barstyle="dark-content" translucent backgroundColor="transparent" />
-          <TitleText style={{marginTop: 35 * em}} theme="black">Recherer</TitleText>
+          <TitleText style={{marginTop: 35 * em}} theme="black">Rechercher</TitleText>
           <RoundTextInput placeHolder="Métier" style={{marginTop: 15 * em}}
             value={title} handleChange={(text)=>this.setState({title:text})} />
           <RoundTextInput placeHolder="Secteur d'activité" style={{marginTop: 15 * em}}
@@ -62,7 +62,7 @@ class SearchTabMainScreen extends Component {
           <TouchableOpacity onPress={() => {
               this.didClickSearchButton()
           }}>
-            <RoundButton text="Recherer" rightIcon="next" style={{marginTop: 15 * em}}/>
+          <RoundButton text="Rechercher" rightIcon="next" style={{marginTop: 15 * em}}/>
           </TouchableOpacity>
         </AccountLayout>
     );

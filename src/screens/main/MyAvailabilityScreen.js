@@ -17,6 +17,7 @@ import commonStyles from '../../components/common_styles'
 import Modal from 'react-native-modal'
 import DatePicker from 'react-native-date-picker'
 import Spinner from 'react-native-loading-spinner-overlay'
+import { Actions } from 'react-native-router-flux'
 
 class MyAvailabilityScreen extends Component {
   _daysOfWeek = ["Lun", "Mar", "Mer", "Jeu", "Ven", "Sam", "Dim"]
@@ -106,7 +107,7 @@ class MyAvailabilityScreen extends Component {
         </HorizontalCenterLayout>
         <HorizontalCenterLayout style={styles.weekItem}>
           <View style={styles.realSeparator}/>
-          <TinyText theme="black">Martin</TinyText>
+          <TinyText theme="black">Matin</TinyText>
         </HorizontalCenterLayout>
         <HorizontalCenterLayout style={styles.weekItem}>
           <View style={styles.realSeparator}/>
@@ -127,7 +128,7 @@ class MyAvailabilityScreen extends Component {
       let weekItemContainerChild = []
       if (index % 2 == 0) {
         weekItemContainerChild.push(
-          <HorizontalCenterLayout style={styles.weekItemGrayShadow}>
+          <HorizontalCenterLayout style={styles.weekItemGrayShadow} key={index}>
           </HorizontalCenterLayout>
         )
       }
@@ -138,7 +139,7 @@ class MyAvailabilityScreen extends Component {
       )
       this.state.availability[item].map((availItem, availIndex) => {
         weekItemContainerChild.push(
-            <HorizontalCenterLayout style={styles.weekItem}>
+          <HorizontalCenterLayout style={styles.weekItem} key={`available-${availIndex}`}>
                 <View style={styles.realSeparator}/>
                 {availItem &&
                 <TouchableOpacity onPress={() => {
@@ -177,7 +178,9 @@ class MyAvailabilityScreen extends Component {
             <View style={{width: 30*em}}/>
           </HorizontalJustifyLayout>
           <CommonRegularText theme="gray" style={{marginTop: 5*em}}>Si vous avez des indisponibilités merci de nous</CommonRegularText>
-          <CommonRegularText theme="green" style={{textDecorationLine: "underline"}}>contacter</CommonRegularText>
+          <TouchableOpacity onPress={() => Actions.contactus()}>
+            <CommonRegularText theme="green" style={{textDecorationLine: "underline"}}>contacter</CommonRegularText>
+          </TouchableOpacity>
           <HorizontalLayout
             style={[
               {backgroundColor: "#ffffff", borderRadius: 20*em, marginTop: 15*em, width: WIDTH * 0.85},
@@ -215,7 +218,7 @@ class MyAvailabilityScreen extends Component {
             </HorizontalJustifyLayout>
           </HorizontalLayout>
 
-          <MediumText theme="primary" style={{marginTop: 25*em}}>Mes creneaux horaires par jour</MediumText>
+          <MediumText theme="primary" style={{ marginTop: 25 * em }}>Mes créneaux horaires par jour</MediumText>
           <VerticalCenterFlowLayout
             style={[
               styles.weekDataContainer,

@@ -78,21 +78,25 @@ class HomeTabScreen extends Component {
   }
 
   renderItem = (data, rowMap) => (
-    <TouchableOpacity onPress={() => {
-      this.props.navigation.navigate('JobDetail', {
-        job: data.item,
-      })
-    }}>
-      <JobMetaAdapter global={data.item.country != "France"}
+    <TouchableOpacity
+      onPress={() => {
+        this.props.navigation.navigate('JobDetail', {
+          job: data.item,
+        })
+      }}>
+      <JobMetaAdapter
+        global={data.item.country !== 'France'}
         applied={isJobApplied(data.item.id, this.props.appliedJobIds)}
         favorite={isJobFavorite(data.item.id, this.props.favoriteJobIds)}
-        title={data.item.title} durationType={data.item.contract_type}
-        budget={data.item.salary} availability={data.item.duration} location=""
-        onFavoriteClick={() => {
-          this.didClickFavorite(data.item, data.index)
-        }}/>
+        title={data.item.title}
+        durationType={data.item.contract_type}
+        budget={data.item.salary}
+        availability={data.item.duration}
+        location=""
+        onFavoriteClick={() => this.didClickFavorite(data.item, data.index)}
+      />
     </TouchableOpacity>
-  )
+  );
 
   render() {
     let tooltipButtonImage = require('../../assets/images/ic_close_popover.png')
@@ -100,14 +104,14 @@ class HomeTabScreen extends Component {
       tooltipButtonImage = require('../../assets/images/btn_sub_menu.png')
     }
     return (
-        <VerticalCenterFlowLayout style={{marginBottom: 75 * em}}>
+      <VerticalCenterFlowLayout style={{marginBottom: 75 * em}}>
           {this.state.tooltipShown &&
           <StatusBar barstyle="dark-content" translucent backgroundColor="#18277aef" />}
           {!this.state.tooltipShown &&
           <StatusBar barstyle="dark-content" translucent backgroundColor="transparent" />}
           <LogoView size="small" style={{marginTop: 20 * em}}/>
           <HorizontalJustifyLayout style={{ marginTop: 25 * em, marginBottom: 20 * em}}>
-            <CommonText theme="blue_gray">Mes données de connexion</CommonText>
+            <CommonText theme="blue_gray">Toutes les offres de postes</CommonText>
             <Tooltip
               ref = {this.tooltipRef}
               popover={<TooltipContent onItemClick={(index) => {
@@ -122,7 +126,11 @@ class HomeTabScreen extends Component {
               <Image source={tooltipButtonImage} style={styles.tooltipButton} resizeMode={'stretch'} />
             </Tooltip>
           </HorizontalJustifyLayout>
-          <SwipeListView style={{paddingLeft: 15*em, paddingRight: 15*em}} data={this.props.allJobs} renderItem={this.renderItem} />
+        <SwipeListView
+          style={{paddingLeft: 15 * em, paddingRight: 15 * em}}
+          data={this.props.allJobs}
+          renderItem={this.renderItem}
+        />
 
           <Spinner
             visible={this.props.isFetching}

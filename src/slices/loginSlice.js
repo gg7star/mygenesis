@@ -39,7 +39,7 @@ export function authWithEmail(email, password) {
   const { appLoginSuccess } = appSlice.actions
   return async dispatch => {
     dispatch(tryLogin())
-    showRootToast('Signing in...')
+    showRootToast('Connectez-vous...')
     const res = await loginInWithEmailPassword({email, password})
     if (res.error) {
       dispatch(loginFailure({statusMessage: res.error}))

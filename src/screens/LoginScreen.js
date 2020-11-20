@@ -6,7 +6,7 @@ import {validateEmail} from '../utils/Validators'
 import {showRootToast} from '../utils/misc'
 
 import {em, WIDTH} from '../common'
-import { TouchableOpacity, StatusBar } from "react-native"
+import { TouchableOpacity, StatusBar, Alert } from "react-native"
 import { Actions } from 'react-native-router-flux'
 
 import AccountLayout from '../layouts/AccountLayout'
@@ -19,6 +19,7 @@ import Separator from '../components/Separator'
 import {CommonText, TitleText, SmallText, CustomTextInput} from '../components/text'
 import Toast from 'react-native-root-toast'
 import Spinner from 'react-native-loading-spinner-overlay'
+import { resetPasswordWithEmail } from '../utils/firebase/auth'
 
 class LoginScreen extends Component {
   constructor(props){
@@ -36,12 +37,24 @@ class LoginScreen extends Component {
     const {isFetching} = this.props
 
     if (!validateEmail(email)) {
-      showRootToast('Please enter valid email address')
+      // showRootToast('Veuillez saisir une adresse e-mail valide.')
+      Alert.alert(
+        'Alerte',
+        'Veuillez saisir une adresse e-mail valide.',
+        [{ text: 'OK', onPress: () => console.log('OK Pressed') }],
+        { cancelable: true },
+      );
       return
     }
 
     if (password == ""){
-      showRootToast('Please enter your password')
+      // showRootToast('Veuillez eVeuillez entrer votre mot de passe.')
+      Alert.alert(
+        'Alerte',
+        'Veuillez eVeuillez entrer votre mot de passe.',
+        [{ text: 'OK', onPress: () => console.log('OK Pressed') }],
+        { cancelable: true },
+      );
       return
     }
 
@@ -54,6 +67,31 @@ class LoginScreen extends Component {
     }, 5000)
 
     this.props.authWithEmail(email, password)
+  }
+
+  handleForgotPassword = async () => {
+    const { email, password } = this.state
+    if (!email) {
+      Alert.alert(
+        'Alerte',
+        'Veuillez saisir votre adresse e-mail.',
+        [{ text: 'OK', onPress: () => console.log('OK Pressed') }],
+        { cancelable: true },
+      );
+      return
+    }
+    const res = await resetPasswordWithEmail(email)
+    console.log('==== res: ', res)
+    var message = 'Merci de consulter vos emails.'
+    if (!res || res.error) {
+      message = 'Veuillez saisir une adresse e-mail valide.'
+    }
+    Alert.alert(
+      'Alerte',
+      message,
+      [{ text: 'OK', onPress: () => console.log('OK Pressed') }],
+      { cancelable: true },
+    );
   }
 
   render() {
@@ -85,7 +123,9 @@ class LoginScreen extends Component {
             secureTextEntry={true}
             value={password}
             handleChange={text => this.setState({password: text})}
-            textContentType="password" rightText="OUBLIÉ ?"
+            textContentType="password" 
+            rightText="OUBLIÉ ?"
+            onPressRightText={this.handleForgotPassword}
             style={{
               borderBottomLeftRadius: 22 * em,
               borderBottomRightRadius: 22 * em,
@@ -106,6 +146,11 @@ class LoginScreen extends Component {
             <CommonText theme="primary" style={{marginTop: 25 * em}}>M'inscrire</CommonText>
           </TouchableOpacity>
         </HorizontalCenterLayout>
+        <Spinner
+          visible={this.props.isFetching}
+          textContent={''}
+          textStyle={{ color: '#FFF' }}
+        />
       </AccountLayout>
     );
   }

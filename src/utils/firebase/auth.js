@@ -75,7 +75,7 @@ export async function resetPasswordWithEmail(email) {
     console.log('==== resetPasswordWithEmail: result: ', result);
     return {token: result, error: null, errorMessage: null};
   } catch (error) {
-    console.log('==== resetPasswordWithEmail: ', resetPasswordWithEmail);
+    console.log('==== resetPasswordWithEmail: ', error);
     var errorMessage = 'Failed to reste password.';
     switch(error.code) {
       case 'auth/invalid-email':
@@ -84,7 +84,6 @@ export async function resetPasswordWithEmail(email) {
       case 'auth/user-not-found':
         errorMessage = 'Can not find user.';
         break;
-
     }
     return {token: null, errorType: error.code, errorMessage};
   }

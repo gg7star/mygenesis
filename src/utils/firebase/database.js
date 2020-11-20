@@ -5,8 +5,9 @@ const USER_TABLE_NAME = 'users'
 const JOB_TABLE_NAME = 'jobs'
 const FAVORITE_TABLE_NAME = 'favorites'
 const APPLIED_TABLE_NAME = 'appliedJobs'
-const ADMIN_MESSAGE_TABLE_NAME = "adminMessages"
+// const ADMIN_MESSAGE_TABLE_NAME = "adminMessages"
 const AVAILABILITY_TABLE_NAME = "availability"
+const CONTACT_US_TABLE_NAME = "contactUs"
 
 export async function createAccount({ credential, signupInfo }) {
   const user = credential.user._user
@@ -189,8 +190,8 @@ export async function updateUserInfo(data) {
   if (uid) {
     return firebase.database().ref(`${USER_TABLE_NAME}/${uid}`)
       .update(data).then(() => {
-        return uid
-      })
+        return uid;
+      });
   }
   return null;
 }
@@ -2413,7 +2414,7 @@ export async function createDummyMessages() {
   }
 
   try {
-    return firebase.database().ref(`${ADMIN_MESSAGE_TABLE_NAME}`)
+    return firebase.database().ref(`${CONTACT_US_TABLE_NAME}`)
       .set(messages).then(() => {
         return null
       });
@@ -2424,9 +2425,17 @@ export async function createDummyMessages() {
 
 export async function addAdminContactMessage(message) {
   try {
-    return firebase.database().ref(`${ADMIN_MESSAGE_TABLE_NAME}`)
-      .push(messages).then(() => {
-        return null;
+    const userId = await getCurrentUserId()
+    const strDate = `${Date.now()}`
+    const data = {
+      ...message,
+      userId: userId,
+      createdAt: strDate,
+      checked: false,
+    }
+    return firebase.database().ref(`${CONTACT_US_TABLE_NAME}/${strDate}`)
+      .set(data).then(() => {
+        return data;
       });
   } catch (e) {
     return e;

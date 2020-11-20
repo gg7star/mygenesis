@@ -1,6 +1,6 @@
 /* eslint-disable react-native/no-inline-styles */
 import React, {Component, useState} from 'react';
-import {Image} from 'react-native';
+import { Image, View, StyleSheet} from 'react-native';
 import VerticalCenterLayout from '../../layouts/VerticalCenterLayout';
 import {CommonText} from '../text';
 import DropDownPicker from 'react-native-dropdown-picker';
@@ -66,6 +66,8 @@ const AccountDropDown = props => {
       }}
       onOpen={() => setBottomRadius(0)}
       onClose={() => setBottomRadius(22 * em)}
+      zIndex={props.zIndex || 10}
+      dropDownMaxHeight={350}
     />
   );
 };
