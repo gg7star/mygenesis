@@ -67,9 +67,11 @@ const CustomTextInput = props => {
         keyboardType={propKeyboardType}
         placeholderTextColor={'#5B6777'}
       />
-      <TouchableOpacity onPress={props.onPressRightText}>
-        <HorizontalCenterLayout
-          style={{width: textLength, height: 56 * em, marginRight: 25 * em}}>
+      <TouchableOpacity
+        style={{width: '20%', position: 'absolute', right: 0}}
+        onPress={props.onPressRightText}>
+        <HorizontalCenterLayout style={{width: '100%', height: 56 * em}}>
+          {/* {style={{width: textLength, height: 56 * em, marginRight: 25 * em}}>} */}
           <SmallButtonText theme="green">{props.rightText}</SmallButtonText>
         </HorizontalCenterLayout>
       </TouchableOpacity>

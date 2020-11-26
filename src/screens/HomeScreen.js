@@ -23,7 +23,7 @@ class HomeScreen extends Component {
         <VerticalCenterLayout style={{paddingLeft: '10%', paddingRight: '10%', width: '100%'}}>
           <TouchableOpacity
             style={{width: '100%'}}
-            onPress={() => {Actions.login()}}>
+            onPressIn={() => {Actions.login()}}>
             <RoundButton text="Me connecter" theme="negative" style={{width: '100%'}} />
           </TouchableOpacity>
           <TouchableOpacity style={{width: '100%'}} onPress={() => {Actions.subscribe()}}>

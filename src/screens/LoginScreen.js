@@ -99,6 +99,8 @@ class LoginScreen extends Component {
     const {isFetching} = this.props
     const {statusMessage} = this.props
 
+    console.log('===== props.credential: ', this.props.login1)
+
     return (
       <AccountLayout style={{paddingLeft: '5%', paddingRight: '5%'}}>
         <StatusBar barstyle="dark-content" translucent backgroundColor="transparent" />
@@ -129,7 +131,7 @@ class LoginScreen extends Component {
             secureTextEntry={true}
             value={password}
             handleChange={text => this.setState({password: text})}
-            textContentType="password" 
+            textContentType="password"
             rightText="OUBLIÉ ?"
             onPressRightText={this.handleForgotPassword}
             style={{
@@ -140,7 +142,7 @@ class LoginScreen extends Component {
           />
         </VerticalCenterFlowLayout>
 
-        <TouchableOpacity onPress={() => {this.handleLogin()}} style={{width: '100%'}}>
+        <TouchableOpacity onPressIn={() => {this.handleLogin()}} style={{width: '100%'}}>
           <RoundButton
             text="Me connecter"
             rightIcon="next"
@@ -168,6 +170,7 @@ const mapStateToProps = state => ({
   isFetching: state.login && state.login.isFetching,
   statusMessage: state.login && state.login.statusMessage,
   credential: state.login && state.login.credential,
+  login1: state.login
 })
 
 const mapDispatchToProps = dispatch => {

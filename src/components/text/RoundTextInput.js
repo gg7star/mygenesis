@@ -69,7 +69,9 @@ const RoundTextInput = props => {
         placeholderTextColor={'#5B6777'}
         keyboardType={propKeyboardType}
       />
-      <TouchableOpacity style={{width: '20%', position: 'absolute', right: 0}} onPress={props.onPressRightText}>
+      <TouchableOpacity
+        style={{width: '20%', position: 'absolute', right: 0}}
+        onPress={props.onPressRightText}>
         <HorizontalCenterLayout style={{width: '100%', height: 56 * em}}>
           {/* style={{width: '100%', height: 56 * em, marginRight: 25 * em}}> */}
           <SmallButtonText theme="green">{props.rightText}</SmallButtonText>
