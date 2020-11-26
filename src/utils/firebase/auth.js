@@ -60,7 +60,7 @@ export async function attemptSignInWithPhone(phoneNumber) {
           error = 'We have blocked all requests from this device due to unusual activity. Try again later.';
         break;
       default:
-        console.error(e);
+        console.log('===== error: ', e);
         break;
     }
   } finally {

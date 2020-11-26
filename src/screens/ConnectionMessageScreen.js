@@ -52,23 +52,45 @@ class SubscribeScreen extends Component {
     let textContentType = "password"
     if (showPassword) {
       passwordShowButtonText = "CACHER"
-      textContentType = "text"
+      textContentType = "none"
     }
     return (
-        <AccountLayout>
-          <StatusBar barstyle="dark-content" translucent backgroundColor="transparent" />
-          <LogoView size="small" style={{marginTop: 20 * em}}/>
-          <TitleText style={{marginTop: 35 * em}} theme="black">Mes données de connexion</TitleText>
+      <AccountLayout style={{paddingLeft: '5%', paddingRight: '5%'}}>
+        <StatusBar
+          barstyle="dark-content"
+          translucent
+          backgroundColor="transparent"
+        />
+        <LogoView size="small" style={{marginTop: 20 * em}} />
+        <TitleText style={{marginTop: 35 * em}} theme="black">
+          Mes données de connexion
+        </TitleText>
 
-          <RoundTextInput placeHolder="Email" textContentType="emailAddress" style={{marginTop: 15 * em}}
-            value={email} handleChange={(text)=>this.setState({email:text})} />
-          <RoundTextInput placeHolder="Mot de passe" secureTextEntry={!showPassword} onPressRightText={this.togglePasswordShow.bind(this)}
-            textContentType={textContentType} rightText={passwordShowButtonText} style={{marginTop: 15 * em}}
-            value={password} handleChange={(text)=>this.setState({password:text})} />
-          <TouchableOpacity onPress={this.handleContinue.bind(this)}>
-            <RoundButton text="Continuer" rightIcon="next" style={{marginTop: 75 * em}}/>
-          </TouchableOpacity>
-        </AccountLayout>
+        <RoundTextInput
+          placeHolder="Email"
+          textContentType="emailAddress"
+          style={{marginTop: 15 * em, width: '100%'}}
+          value={email}
+          handleChange={text => this.setState({email: text})}
+        />
+        <RoundTextInput
+          placeHolder="Mot de passe"
+          secureTextEntry={!showPassword}
+          onPressRightText={this.togglePasswordShow}
+          textContentType={textContentType}
+          rightText={passwordShowButtonText}
+          style={{marginTop: 15 * em, width: '100%'}}
+          value={password}
+          handleChange={text => this.setState({password: text})}
+        />
+        <TouchableOpacity style={{width: '100%'}} onPress={this.handleContinue}>
+          <RoundButton
+            text="Continuer"
+            rightIcon="next"
+            style={{marginTop: 75 * em}}
+          />
+        </TouchableOpacity>
+      </AccountLayout>
     );
   }
 }

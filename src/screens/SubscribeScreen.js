@@ -63,7 +63,7 @@ class SubscribeScreen extends Component {
 
   render() {
     return (
-      <AccountLayout>
+      <AccountLayout style={{paddingLeft: '5%', paddingRight: '5%'}}>
         <StatusBar
           barstyle="dark-content"
           translucent
@@ -86,20 +86,21 @@ class SubscribeScreen extends Component {
             {label: 'Madame', value: 'Madame'},
             {label: 'Monsieur', value: 'Monsieur'},
           ]}
-          style={{marginTop: 20 * em}}
+          style={{marginTop: 20 * em, width: '100%'}}
           placeholder="Civilité"
+          zIndex={1000}
         />
         <RoundTextInput
           placeHolder="Nom*"
           textContentType="familyName"
-          style={{marginTop: 15 * em}}
+          style={{marginTop: 15 * em, width: '100%'}}
           value={this.state.firstName}
           handleChange={text => this.setState({firstName: text})}
         />
         <RoundTextInput
           placeHolder="Prénom*"
           textContentType="givenName"
-          style={{marginTop: 15 * em}}
+          style={{marginTop: 15 * em, width: '100%'}}
           value={this.state.lastName}
           handleChange={text => this.setState({lastName: text})}
         />
@@ -112,14 +113,14 @@ class SubscribeScreen extends Component {
               : this.setToggleCheckBox(true)
           }
         />
-        <TouchableOpacity onPress={this.handleContinue.bind(this)}>
+        <TouchableOpacity style={{width: '100%'}} onPress={this.handleContinue.bind(this)}>
           <RoundButton
             text="Continuer"
             rightIcon="next"
             style={{marginTop: 15 * em}}
           />
         </TouchableOpacity>
-        <HorizontalCenterLayout style={{marginBottom: 30 * em}}>
+        <HorizontalCenterLayout style={{marginBottom: 30 * em, width: '100%'}}>
           <CommonText theme="gray" style={{marginTop: 25 * em}}>
             Déjà un compte ?{' '}
           </CommonText>

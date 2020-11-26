@@ -61,7 +61,7 @@ class TermsOfServiceScreen extends Component {
   _renderContent(section, i, isActive, sections) {
     let buttonStyle = { borderBottomLeftRadius: 20 * em, borderBottomRightRadius: 20 * em }
     return (
-      <HorizontalCenterLayout style={[{ width: WIDTH * 0.85, backgroundColor: "#ffffff", paddingHorizontal: 20 * em, paddingVertical: 15 * em }, buttonStyle]}>
+      <HorizontalCenterLayout style={[{ width: '100%', backgroundColor: "#ffffff", paddingHorizontal: 20 * em, paddingVertical: 15 * em }, buttonStyle]}>
         <CommonRegularText theme="gray" style={{ flex: 1 }}>{section.content}</CommonRegularText>
       </HorizontalCenterLayout>
     );
@@ -77,9 +77,9 @@ class TermsOfServiceScreen extends Component {
 
   render() {
     return (
-      <AccountLayout>
+      <AccountLayout style={{paddingLeft: '5%', paddingRight: '5%'}}>
         <StatusBar barstyle="dark-content" translucent backgroundColor="transparent" />
-        <HorizontalJustifyLayout style={{ marginTop: 25 * em }}>
+        <HorizontalJustifyLayout style={{ width: '100%', marginTop: 25 * em }}>
           <TouchableOpacity onPress={() => {
             this.props.navigation.goBack()
           }}>
@@ -88,7 +88,7 @@ class TermsOfServiceScreen extends Component {
           <CommonText theme="blue_gray" style={{ marginLeft: 5 * em }}>Confidentialité</CommonText>
           <View style={{ width: 30 * em }} />
         </HorizontalJustifyLayout>
-        <VerticalCenterLayout style={{ marginTop: 20 * em, marginBottom: 20 * em }}>
+        <VerticalCenterLayout style={{ width: '100%', marginTop: 20 * em, marginBottom: 20 * em }}>
           <Accordion
             sections={SECTIONS}
             activeSections={this.state.activeSections}

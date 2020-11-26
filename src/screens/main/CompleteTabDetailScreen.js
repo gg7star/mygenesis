@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import {em, WIDTH} from '../../common'
-import { TouchableOpacity, StatusBar, Image } from "react-native"
+import { TouchableOpacity, StatusBar, Image, View } from "react-native"
 import { Actions } from 'react-native-router-flux'
 
 import VerticalCenterFlowLayout from '../../layouts/VerticalCenterFlowLayout'
@@ -21,51 +21,79 @@ class CompleteTabDetailScreen extends Component {
 
   render() {
     return (
-        <AccountLayout>
-          <StatusBar barstyle="dark-content" translucent backgroundColor="transparent" />
-          <TitleText style={{marginTop: 35 * em, marginBottom: 10 * em}} theme="black">Mon Compte</TitleText>
-          <VerticalCenterFlowLayout style={{marginTop: 20*em}}>
-            <HorizontalJustifyLayout>
-              <TouchableOpacity onPress={() => {
-                Actions.myinformation()
+      <AccountLayout style={{paddingLeft: '5%', paddingRight: '5%'}}>
+        <StatusBar
+          barstyle="dark-content"
+          translucent
+          backgroundColor="transparent"
+        />
+        <TitleText
+          style={{marginTop: 35 * em, marginBottom: 10 * em}}
+          theme="black">
+          Mon Compte
+        </TitleText>
+        <VerticalCenterFlowLayout style={{width: '100%', marginTop: 20*em}}>
+          <HorizontalJustifyLayout>
+            <TouchableOpacity
+              style={{width: '45%'}}
+              onPress={() => {
+                Actions.myinformation();
               }}>
-                <CompleteCard type="my_information"/>
-              </TouchableOpacity>
-              <TouchableOpacity onPress={() => {
-                Actions.myfollowup()
+              <CompleteCard type="my_information" />
+            </TouchableOpacity>
+            <TouchableOpacity
+              style={{width: '45%'}}
+              onPress={() => {
+                Actions.myfollowup();
               }}>
-                <CompleteCard type="follow_up"/>
-              </TouchableOpacity>
-            </HorizontalJustifyLayout>
-            <HorizontalJustifyLayout style={{marginTop: WIDTH * 0.05}}>
-              <TouchableOpacity onPress={() => {
-                Actions.myavailability()
+              <CompleteCard type="follow_up" />
+            </TouchableOpacity>
+          </HorizontalJustifyLayout>
+          <HorizontalJustifyLayout style={{marginTop: WIDTH * 0.05}}>
+            <TouchableOpacity
+              style={{width: '45%'}}
+              onPress={() => {
+                Actions.myavailability();
               }}>
-                <CompleteCard type="availability"/>
-              </TouchableOpacity>
-              <TouchableOpacity onPress={() => {
+              <CompleteCard type="availability" />
+            </TouchableOpacity>
+            <TouchableOpacity
+              style={{width: '45%'}}
+              onPress={() => {
                 Actions.contactus()
               }}>
-                <CompleteCard type="contact_us"/>
-              </TouchableOpacity>
-            </HorizontalJustifyLayout>
-          </VerticalCenterFlowLayout>
-          <TouchableOpacity onPress={() => {
-            Actions.aboutmygenesis()
+              <CompleteCard type="contact_us" />
+            </TouchableOpacity>
+          </HorizontalJustifyLayout>
+        </VerticalCenterFlowLayout>
+        <TouchableOpacity
+          style={{width: '100%'}}
+          onPress={() => {
+            Actions.aboutmygenesis();
           }}>
-            <RoundExpandableButton text="A propos de My Genesis" style={{marginTop: WIDTH * 0.05}}/>
-          </TouchableOpacity>
-          <TouchableOpacity onPress={() => {
-            Actions.cgu()
+          <RoundExpandableButton
+            text="A propos de My Genesis"
+            style={{marginTop: WIDTH * 0.05}}
+          />
+        </TouchableOpacity>
+        <TouchableOpacity
+          style={{width: '100%'}}
+          onPress={() => {
+            Actions.cgu();
           }}>
-            <RoundExpandableButton text="CGU" style={{marginTop: WIDTH * 0.05}}/>
-          </TouchableOpacity>
-          <TouchableOpacity onPress={() => {
-            Actions.legalnotice()
+          <RoundExpandableButton text="CGU" style={{marginTop: WIDTH * 0.05}} />
+        </TouchableOpacity>
+        <TouchableOpacity
+          style={{width: '100%'}}
+          onPress={() => {
+            Actions.legalnotice();
           }}>
-            <RoundExpandableButton text="Mentions legalés" style={{marginTop: WIDTH * 0.05, marginBottom: 80*em}}/>
-          </TouchableOpacity>
-        </AccountLayout>
+          <RoundExpandableButton
+            text="Mentions legalés"
+            style={{marginTop: WIDTH * 0.05, marginBottom: 80 * em}}
+          />
+        </TouchableOpacity>
+      </AccountLayout>
     );
   }
 }

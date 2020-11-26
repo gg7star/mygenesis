@@ -18,6 +18,7 @@ import { SwipeListView, SwipeRow } from 'react-native-swipe-list-view'
 import JobMetaAdapter from '../../components/custom/JobMetaAdapter'
 import VerticalCenterFlowLayout from '../../layouts/VerticalCenterFlowLayout'
 import HorizontalLayout from '../../layouts/HorizontalLayout'
+import HorizontalJustifyLayout from '../../layouts/HorizontalJustifyLayout'
 import {CommonText, TitleText, SmallText, RoundTextInput} from '../../components/text'
 import Spinner from 'react-native-loading-spinner-overlay'
 
@@ -112,8 +113,9 @@ class MyOffersTabScreen extends Component {
             <StatusBar barstyle="dark-content" translucent backgroundColor="transparent" />
             <TitleText style={{marginTop: 35 * em, marginBottom: 10 * em}} theme="black">Mes offres</TitleText>
             <SmallText theme="gray" style={{marginBottom: 20 * em}}>Pour supprimer l'offre glisser vers la droite</SmallText>
-            <SwipeListView style={{ paddingLeft: 15 * em, paddingRight: 15 * em }} data={this.props.appliedJobs} renderItem={this.renderItem} />
-
+            <HorizontalJustifyLayout>
+              <SwipeListView style={{ paddingLeft: 15 * em, paddingRight: 15 * em }} data={this.props.appliedJobs} renderItem={this.renderItem} />
+            </HorizontalJustifyLayout>
             <Spinner
               visible={this.props.isFetching}
               textContent={''}

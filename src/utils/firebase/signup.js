@@ -10,17 +10,21 @@ export async function attempSignup({email, password}) {
     var errorType = e.code;
     switch (e.code) {
       case 'auth/invalid-email':
-        errorMessage = 'Please enter a valid email address.';
+        // 'Please enter a valid email address.';
+        errorMessage = "S'il vous plaît, mettez une adresse email valide.";
         break;
       case 'auth/user-disabled':
-        errorMessage = 'This account has been disabled.';
+        // 'This account has been disabled.';
+        errorMessage = 'Ce compte a été désactivé.';
         break;
       case 'auth/user-not-found':
       case 'auth/wrong-password':
-        errorMessage = 'No user found or wrong password.';
+        // 'No user found or wrong password.
+        errorMessage = 'Aucun utilisateur trouvé ou mot de passe incorrect.';
         break;
       case 'auth/email-already-in-use':
-        errorMessage = 'The email address is already in use by another account.';
+        // 'The email address is already in use by another account.'
+        errorMessage = "L'adresse e - mail est déjà utilisée par un autre compte.";
         break;
       default:
         console.log('==== error: ', e);

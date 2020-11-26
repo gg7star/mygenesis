@@ -10,6 +10,7 @@ import { fetchFavoriteJobs, updateFavoriteJobIdsForAll } from '../../slices/jobS
 
 import HorizontalCenterLayout from '../../layouts/HorizontalCenterLayout'
 import VerticalCenterFlowLayout from '../../layouts/VerticalCenterFlowLayout'
+import HorizontalJustifyLayout from '../../layouts/HorizontalJustifyLayout'
 import { withNavigationFocus } from "react-navigation"
 
 import LogoView from '../../components/LogoView'
@@ -75,7 +76,9 @@ class FavoritesTabScreen extends Component {
         <VerticalCenterFlowLayout style={{marginBottom: 150*em}}>
           <StatusBar barstyle="dark-content" translucent backgroundColor="transparent" />
           <TitleText style={{marginTop: 35 * em, marginBottom: 30 * em}} theme="black">Favoris</TitleText>
-        <SwipeListView style={{ paddingLeft: 15 * em, paddingRight: 15 * em }} data={this.props.favoriteJobs} renderItem={this.renderItem} />
+          <HorizontalJustifyLayout>
+            <SwipeListView style={{ paddingLeft: 15 * em, paddingRight: 15 * em }} data={this.props.favoriteJobs} renderItem={this.renderItem} />
+          </HorizontalJustifyLayout>
         </VerticalCenterFlowLayout>
     );
   }

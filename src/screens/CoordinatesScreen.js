@@ -52,7 +52,7 @@ class SubscribeScreen extends Component {
   render() {
     const {zipCode, city, telephone} = this.state
     return (
-        <AccountLayout>
+        <AccountLayout style={{paddingLeft: '5%', paddingRight: '5%'}}>
           <StatusBar barstyle="dark-content" translucent backgroundColor="transparent" />
           <LogoView size="small" style={{marginTop: 20 * em}}/>
           <TitleText style={{marginTop: 35 * em}} theme="black">Mes coordonnées</TitleText>
@@ -61,20 +61,20 @@ class SubscribeScreen extends Component {
           <RoundTextInput
             placeHolder="Code Postale*"
             textContentType="postalCode"
-            style={{marginTop: 20 * em}}
+            style={{marginTop: 20 * em, width: '100%'}}
             value={zipCode}
             keyboardType='numeric'
             handleChange={(text)=>this.setState({zipCode:text})} />
-          <RoundTextInput placeHolder="Ville*" style={{marginTop: 15 * em}}
+          <RoundTextInput placeHolder="Ville*" style={{marginTop: 15 * em, width: '100%'}}
             value={city} handleChange={(text)=>this.setState({city:text})} />
           <RoundTextInput
             placeHolder="Téléphone*"
             textContentType="telephoneNumber"
-            style={{marginTop: 15 * em}}
+            style={{marginTop: 15 * em, width: '100%'}}
             value={telephone}
             keyboardType='phone-pad'
             handleChange={(text)=>this.setState({telephone:text})} />
-          <TouchableOpacity onPress={this.handleContinue.bind(this)}>
+          <TouchableOpacity style={{width: '100%'}} onPress={this.handleContinue.bind(this)}>
             <RoundButton text="Continuer" rightIcon="next" style={{marginTop: 15 * em}}/>
           </TouchableOpacity>
         </AccountLayout>

@@ -62,25 +62,40 @@ class MyFollowUpScreen extends Component {
 
   render() {
     return (
-        <VerticalCenterFlowLayout>
-          <StatusBar barstyle="dark-content" translucent backgroundColor="transparent" />
-          <HorizontalJustifyLayout style={{marginTop: 25 * em}}>
-            <TouchableOpacity onPress={() => {
-              Actions.pop()
-            }}>
-              <Image source={require('../../assets/images/ic_back.png')} style={{width: 30*em, height: 30*em}} resizeMode={'stretch'} />
-            </TouchableOpacity>
-            <CommonText theme="blue_gray" style={{marginLeft: 5 * em}}>Mon suivi</CommonText>
-            <View style={{width: 30*em}}/>
-          </HorizontalJustifyLayout>
-          <CommonRegularText theme="gray" style={{marginTop: 5*em, marginBottom: 15*em}}>Voici la liste des offres dont vous avez déjà postulé</CommonRegularText>
-        <SwipeListView style={{ paddingLeft: 15 * em, paddingRight: 15 * em }} data={this.props.appliedJobs} renderItem={this.renderItem} />
-          <Spinner
-            visible={this.props.isFetching}
-            textContent={''}
-            textStyle={{ color: '#FFF' }}
+      <VerticalCenterFlowLayout
+        style={{width: '100%', paddingLeft: '5%', paddingRight: '5%'}}>
+        <StatusBar
+          barstyle="dark-content"
+          translucent
+          backgroundColor="transparent"
+        />
+        <HorizontalJustifyLayout style={{marginTop: 25 * em}}>
+          <TouchableOpacity onPress={() => {
+            Actions.pop()
+          }}>
+            <Image source={require('../../assets/images/ic_back.png')} style={{width: 30*em, height: 30*em}} resizeMode={'stretch'} />
+          </TouchableOpacity>
+          <CommonText theme="blue_gray" style={{marginLeft: 5 * em}}>Mon suivi</CommonText>
+          <View style={{width: 30*em}}/>
+        </HorizontalJustifyLayout>
+        <CommonRegularText
+          theme="gray"
+          style={{marginTop: 5 * em, marginBottom: 15 * em}}>
+          Voici la liste des offres dont vous avez déjà postulé
+        </CommonRegularText>
+        <HorizontalJustifyLayout>
+          <SwipeListView
+            style={{paddingLeft: 15 * em, paddingRight: 15 * em}}
+            data={this.props.appliedJobs}
+            renderItem={this.renderItem}
           />
-        </VerticalCenterFlowLayout>
+        </HorizontalJustifyLayout>
+        <Spinner
+          visible={this.props.isFetching}
+          textContent={''}
+          textStyle={{ color: '#FFF' }}
+        />
+      </VerticalCenterFlowLayout>
     );
   }
 }

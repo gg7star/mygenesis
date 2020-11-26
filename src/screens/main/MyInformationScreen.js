@@ -32,65 +32,71 @@ class MyInformationScreen extends Component {
     var job = (credential && credential.job) || 'Médecin, Aide soignant, infirmier'
 
     return (
-        <AccountLayout>
-          <StatusBar barstyle="dark-content" translucent backgroundColor="transparent" />
-          <HorizontalJustifyLayout style={{marginTop: 25 * em, marginBottom: 20 * em}}>
-            <TouchableOpacity onPress={() => {
-              this.props.navigation.goBack()
-            }}>
-              <Image source={require('../../assets/images/ic_back.png')} style={{width: 30*em, height: 30*em}} resizeMode={'stretch'} />
-            </TouchableOpacity>
-            <CommonText theme="blue_gray" style={{marginLeft: 5 * em}}>Mes informations</CommonText>
-            <View style={{width: 30*em}}/>
-          </HorizontalJustifyLayout>
-          <CommonRegularText theme="gray">{civility}</CommonRegularText>
-          <TitleText theme="black" style={{marginTop: 5*em}}>{full_name}</TitleText>
-
-          <VerticalFlowLayout
-            style={[
-              {
-                padding: 20*em,
-                backgroundColor: "#ffffff",
-                width: WIDTH*0.85,
-                borderRadius: 20*em,
-                marginTop: 15*em,
-              },
-              commonStyles.shadow.card,
-            ]}>
-            <CommonText theme="blue_gray">Email</CommonText>
-            <SmallText theme="light_gray" style={{marginTop: 5*em}}>{email}</SmallText>
-            <CommonText theme="blue_gray" style={{marginTop: 15*em}}>Code postal</CommonText>
-          <SmallText theme="light_gray" style={{marginTop: 5*em}}>{zipCode}</SmallText>
-            <CommonText theme="blue_gray" style={{marginTop: 15*em}}>Ville</CommonText>
-          <SmallText theme="light_gray" style={{ marginTop: 5 * em }}>{city}</SmallText>
-            <CommonText theme="blue_gray" style={{marginTop: 15*em}}>Numéro de téléphone</CommonText>
-          <SmallText theme="light_gray" style={{marginTop: 5*em}}>{telephone}</SmallText>
-          </VerticalFlowLayout>
-
-          <VerticalFlowLayout
-            style={[
-              {
-                padding: 20*em,
-                backgroundColor: "#ffffff",
-                width: WIDTH*0.85,
-                borderRadius: 20*em,
-                marginTop: 15*em,
-              },
-              commonStyles.shadow.card,
-            ]}>
-            <CommonText theme="blue_gray">Mon CV</CommonText>
-            <SmallText theme="light_gray" style={{marginTop: 5*em}}>{cvFileName}</SmallText>
-            <CommonText theme="blue_gray" style={{marginTop: 15*em}}>Secteur d'activité</CommonText>
-            <SmallText theme="light_gray" style={{marginTop: 5*em}}>{activityArea}</SmallText>
-            <CommonText theme="blue_gray" style={{marginTop: 15*em}}>Métier</CommonText>
-            <SmallText theme="light_gray" style={{marginTop: 5*em}}>{job}</SmallText>
-          </VerticalFlowLayout>
+      <AccountLayout style={{paddingLeft: '5%', paddingRight: '5%'}}>
+        <StatusBar barstyle="dark-content" translucent backgroundColor="transparent" />
+        <HorizontalJustifyLayout style={{marginTop: 25 * em, marginBottom: 20 * em}}>
           <TouchableOpacity onPress={() => {
-            this.didClickLogout()
+            this.props.navigation.goBack()
           }}>
-            <RoundButton style={{marginTop: 20*em, marginBottom: 20*em}} text="DÉCONNEXION" theme="gray"/>
+            <Image source={require('../../assets/images/ic_back.png')} style={{width: 30*em, height: 30*em}} resizeMode={'stretch'} />
           </TouchableOpacity>
-        </AccountLayout>
+          <CommonText theme="blue_gray" style={{marginLeft: 5 * em}}>Mes informations</CommonText>
+          <View style={{width: 30*em}}/>
+        </HorizontalJustifyLayout>
+        <CommonRegularText theme="gray">{civility}</CommonRegularText>
+        <TitleText theme="black" style={{marginTop: 5*em}}>{full_name}</TitleText>
+
+        <VerticalFlowLayout
+          style={[
+            {
+              padding: 20*em,
+              backgroundColor: "#ffffff",
+              width: '100%', //WIDTH*0.85,
+              borderRadius: 20*em,
+              marginTop: 15*em,
+            },
+            commonStyles.shadow.card,
+          ]}>
+          <CommonText theme="blue_gray">Email</CommonText>
+          <SmallText theme="light_gray" style={{marginTop: 5*em}}>{email}</SmallText>
+          <CommonText theme="blue_gray" style={{marginTop: 15*em}}>Code postal</CommonText>
+        <SmallText theme="light_gray" style={{marginTop: 5*em}}>{zipCode}</SmallText>
+          <CommonText theme="blue_gray" style={{marginTop: 15*em}}>Ville</CommonText>
+        <SmallText theme="light_gray" style={{ marginTop: 5 * em }}>{city}</SmallText>
+          <CommonText theme="blue_gray" style={{marginTop: 15*em}}>Numéro de téléphone</CommonText>
+        <SmallText theme="light_gray" style={{marginTop: 5*em}}>{telephone}</SmallText>
+        </VerticalFlowLayout>
+
+        <VerticalFlowLayout
+          style={[
+            {
+              padding: 20*em,
+              backgroundColor: "#ffffff",
+              width: '100%', //WIDTH*0.85,
+              borderRadius: 20*em,
+              marginTop: 15*em,
+            },
+            commonStyles.shadow.card,
+          ]}>
+          <CommonText theme="blue_gray">Mon CV</CommonText>
+          <SmallText theme="light_gray" style={{marginTop: 5*em}}>{cvFileName}</SmallText>
+          <CommonText theme="blue_gray" style={{marginTop: 15*em}}>Secteur d'activité</CommonText>
+          <SmallText theme="light_gray" style={{marginTop: 5*em}}>{activityArea}</SmallText>
+          <CommonText theme="blue_gray" style={{marginTop: 15*em}}>Métier</CommonText>
+          <SmallText theme="light_gray" style={{marginTop: 5*em}}>{job}</SmallText>
+        </VerticalFlowLayout>
+        <TouchableOpacity
+          style={{width: '100%'}}
+          onPress={() => {
+            this.didClickLogout();
+          }}>
+          <RoundButton
+            style={{marginTop: 20 * em, marginBottom: 20 * em}}
+            text="DÉCONNEXION"
+            theme="gray"
+          />
+        </TouchableOpacity>
+      </AccountLayout>
     );
   }
 }

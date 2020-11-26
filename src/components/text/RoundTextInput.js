@@ -37,7 +37,8 @@ const RoundTextInput = props => {
           borderColor: '#ffffff',
           backgroundColor: '#ffffff',
           borderWidth: 1,
-          borderRadius: 22 * em
+          borderRadius: 22 * em,
+          width: '100%',
         },
         commonStyles.shadow.textEdit,
         props.style,
@@ -46,12 +47,15 @@ const RoundTextInput = props => {
         multiline={props.multiline}
         style={[
           {
-            width: WIDTH * 0.85 - textLength - 50 * em,
+            // width: WIDTH * 0.85 - textLength - 50 * em,
+            width: '100%',
             height: commonStyles.height * em,
             fontFamily: 'Lato-Bold',
             fontSize: 16 * em,
             paddingVertical: 10 * em,
-            marginLeft: 25 * em,
+            paddingLeft: '8%',
+            paddingRight: '8%',
+            color: '#090F36'
           },
           props.textInputStyle,
         ]}
@@ -62,16 +66,16 @@ const RoundTextInput = props => {
         textContentType={propTextContentType}
         secureTextEntry={propSecureTextEntry}
         placeholder={props.placeHolder}
+        placeholderTextColor={'#5B6777'}
         keyboardType={propKeyboardType}
       />
-      <TouchableOpacity onPress={props.onPressRightText}>
-        <HorizontalCenterLayout
-          style={{width: textLength, height: 56 * em, marginRight: 25 * em}}>
+      <TouchableOpacity style={{width: '20%', position: 'absolute', right: 0}} onPress={props.onPressRightText}>
+        <HorizontalCenterLayout style={{width: '100%', height: 56 * em}}>
+          {/* style={{width: '100%', height: 56 * em, marginRight: 25 * em}}> */}
           <SmallButtonText theme="green">{props.rightText}</SmallButtonText>
         </HorizontalCenterLayout>
       </TouchableOpacity>
     </HorizontalLayout>
   );
 };
-
 export default RoundTextInput;

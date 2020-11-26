@@ -1,6 +1,6 @@
 /* eslint-disable prettier/prettier */
 import React, { Component } from 'react';
-import { Text, Image } from 'react-native';
+import { Text, Image, View } from 'react-native';
 
 import {WIDTH, HEIGHT, em} from '../../common';
 import HorizontalJustifyLayout from '../../layouts/HorizontalJustifyLayout';
@@ -22,20 +22,26 @@ const RoundButton = (props) => {
     propBackColor = "#e9e9f5"
     textTheme="primary"
   }
-  let width = WIDTH * 0.85
+  var width = '100%'; //WIDTH * 0.85
   if (props.width) {
     width = props.width
   }
-  let height = 56 * em;
+  // if (props.rightIcon == "next") {
+  //   width = '65%'
+  // }
+  var height = 56 * em;
   if (props.height) {
     height = props.height
   }
-  if (props.rightIcon == "next") {
+  if (props.rightIcon === 'next') {
     return (
-      <HorizontalJustifyLayout
+      <View
         style={[
           {
-            height: 56 * em,
+            flexDirection: 'row',
+            alignItems: 'center',
+            justifyContent: 'space-between',
+            height: height,
             width: width,
             backgroundColor: propBackColor,
             borderRadius: 22 * em,
@@ -43,29 +49,56 @@ const RoundButton = (props) => {
           commonStyles.shadow.button,
           props.style,
         ]}>
-          <HorizontalCenterLayout style={{marginLeft: 50 * em, width: width - 100 * em}}>
-            <CommonText theme={textTheme}>{props.text}</CommonText>
-          </HorizontalCenterLayout>
-          <Image source={require("../../assets/images/ic_next_arrow.png")} style={{width: 50 * em, height: 30 * em}} resizeMode={'center'} />
-      </HorizontalJustifyLayout>
+        <View
+          style={{
+            flex: 1,
+            flexDirection: 'row',
+            alignItems: 'center',
+            justifyContent: 'center',
+            position: 'relative'
+          }}>
+        {/* <HorizontalCenterLayout style={{}}> */}
+          <CommonText theme={textTheme}>{props.text}</CommonText>
+        {/* </HorizontalCenterLayout> */}
+        </View>
+        <View
+          style={{
+            flex: 1,
+            flexDirection: 'row',
+            alignItems: 'flex-end',
+            justifyContent: 'flex-end',
+            position: 'absolute',
+            right: 0
+          }}>
+        <Image
+          source={require("../../assets/images/ic_next_arrow.png")}
+          style={{width: 50 * em, height: 30 * em}}
+          resizeMode={'center'} />
+          </View>
+      </View>
     );
   }
-  else if (props.leftIcon == "applied") {
+  else if (props.leftIcon === 'applied') {
     return (
       <HorizontalCenterLayout
         style={[
           {
-            height: 56 * em,
-            width: WIDTH * 0.85,
+            height: height,
+            width: width,
+            // paddingLeft: '5%',
+            // paddingRight: '5%',
             backgroundColor: propBackColor,
-            borderRadius: 22 * em
-          }, 
+            borderRadius: 22 * em,
+          },
           commonStyles.shadow.button,
-          props.style
+          props.style,
         ]}
       >
-          <Image source={require("../../assets/images/ic_applied.png")} style={{width: 14 * em, height: 15 * em, marginRight: 5 * em}} resizeMode={'stretch'} />
-          <CommonText theme={textTheme}>{props.text}</CommonText>
+        <Image
+          source={require('../../assets/images/ic_applied.png')}
+          style={{width: 14 * em, height: 15 * em, marginRight: 5 * em}}
+          resizeMode={'stretch'} />
+        <CommonText theme={textTheme}>{props.text}</CommonText>
       </HorizontalCenterLayout>
     );
   }
@@ -74,13 +107,15 @@ const RoundButton = (props) => {
     <HorizontalCenterLayout
       style={[
         {
-          height: 56 * em,
-          width: WIDTH * 0.85,
+          height: height,
+          width: width,
+          paddingLeft: '5%',
+          paddingRight: '5%',
           backgroundColor: propBackColor,
-          borderRadius: 22 * em
+          borderRadius: 22 * em,
         },
         commonStyles.shadow.button,
-        props.style
+        props.style,
       ]}>
         <CommonText theme={textTheme}>{props.text}</CommonText>
     </HorizontalCenterLayout>

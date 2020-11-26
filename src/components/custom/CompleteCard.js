@@ -25,7 +25,8 @@ const CompleteCard = (props) => {
       <VerticalCenterLayout
         style={[
           {
-            width: WIDTH * 0.4,
+            // width: WIDTH * 0.4
+            width: '100%',
             paddingHorizontal: 20*em,
             paddingVertical: 30*em,
             backgroundColor: "#ffffff",

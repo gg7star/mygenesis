@@ -1,50 +1,49 @@
 import React, { Component } from 'react'
-import { Router } from 'react-native-router-flux'
-import RootRoutes from './routes'
-import LoadingScreen from './screens/LoadingScreen'
-import HomeScreen from './screens/HomeScreen'
-import SubscribeScreen from './screens/SubscribeScreen'
-import ConnectionMessageScreen from './screens/ConnectionMessageScreen'
-import CoordinatesScreen from './screens/CoordinatesScreen'
-import MyCVScreen from './screens/MyCVScreen'
-import MainTabScreen from './screens/main/MainTabScreen'
-import { StatusBar, View, Text, Image } from "react-native"
-import { NavigationContainer } from '@react-navigation/native'
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
-import AppView from './screens/AppView'
-import { Provider } from 'react-redux'
-import {configureStore} from '@reduxjs/toolkit'
-import rootReducer from './slices'
+import AppView from './screens/AppView';
+import { Provider } from 'react-redux';
+import { persistStore } from 'redux-persist';
+import { PersistGate } from 'redux-persist/integration/react';
+import { store } from './store';
 
-const store = configureStore({reducer: rootReducer})
+let persistor = persistStore(store);
 
-class App extends Component {
-  constructor(props){
-    super(props)
-    this.state = {
-      didFinish: true,
-    }
-  }
+// class App extends Component {
+//   constructor(props){
+//     super(props)
+//     this.state = {
+//       didFinish: true,
+//     }
+//   }
 
-  onComplete = () => {
-  };
+//   onComplete = () => {
+//   };
 
-  onFailedLoad = () => {
-  };
+//   onFailedLoad = () => {
+//   };
 
-  render() {
-    if (this.state.didFinish) {
-      return(
-          <Provider store={store}>
-            <AppView />
-          </Provider>
-          // <RootRoutes />
-          // <MainTabScreen />
-      )
-    }else{
-      return null;
-    }
-  }
+//   render() {
+//     if (this.state.didFinish) {
+//       return (
+//         <Provider store={store}>
+//           <PersistGate loading={null} persistor={persistor}>
+//             <AppView />
+//           </PersistGate>
+//         </Provider>
+//       )
+//     } else {
+//       return null;
+//     }
+//   }
+// };
+
+const App: () => React$Node = () => {
+  return (
+    <Provider store={store}>
+      <PersistGate loading={null} persistor={persistor}>
+        <AppView />
+      </PersistGate>
+    </Provider>
+  );
 };
 
 export default App;

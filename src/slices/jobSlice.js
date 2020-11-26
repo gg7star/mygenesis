@@ -1,5 +1,14 @@
 import {createSlice} from '@reduxjs/toolkit'
-import { getAppliedJobs, getFavorites, getJobsForJobIds, getAllJobs, updateFavorites, updateAppliedJobs, getJobsByCriteria, filterJobsByCriteria } from '../utils/firebase/database'
+import {
+  getAppliedJobs,
+  getFavorites,
+  getJobsForJobIds,
+  getAllJobs,
+  updateFavorites,
+  updateAppliedJobs,
+  getJobsByCriteria,
+  filterJobsByCriteria,
+} from '../utils/firebase/database';
 import { Actions } from 'react-native-router-flux'
 import { showRootToast } from '../utils/misc'
 import { appSlice } from './appSlice'
@@ -9,7 +18,7 @@ export const initialState = {
   favoriteJobIds: [],
   appliedJobs: [],
   appliedJobIds: [],
-  isFetching: true,
+  isFetching: false,
   allJobs: [],
   searchedJobs: [],
   showApplySuccess: false
@@ -21,9 +30,11 @@ const jobSlice = createSlice({
   reducers: {
     tryFetch: state => {
       state.isFetching = true
+      console.log('====== tryFetch: true')
     },
     tryUpdate: state => {
       state.isFetching = true
+      console.log('====== tryUpdate: true')
     },
     fetchFavoriteJobIdsSuccess: (state, { payload }) => {
       state.isFetching = false
@@ -53,6 +64,7 @@ const jobSlice = createSlice({
       state.favoriteJobIds = payload.favoriteJobIds
     },
     filterJobSuccess: (state, {payload}) => {
+      console.log('====== filterJobSuccess: false')
       state.isFetching = false
       state.searchedJobs = payload.searchedJobs
     },
@@ -100,22 +112,23 @@ export function fetchAllJobs(sortBy) {
 
 export function fetchJobsByCriteria(sortBy, title, activityArea, contractType, city) {
   return async dispatch => {
-    dispatch(tryFetch())
+    // dispatch(tryFetch())
     getAppliedJobs().then(appliedRes => {
       const appliedJobIds = appliedRes.appliedJobs
       dispatch(fetchAppliedJobIdsSuccess({appliedJobIds: appliedJobIds}))
-      dispatch(tryFetch())
+      // dispatch(tryFetch())
       getFavorites().then(favoriteRes => {
         const favoriteJobIds = favoriteRes.favoriteJobs
         dispatch(fetchFavoriteJobIdsSuccess({favoriteJobIds: favoriteJobIds}))
-        dispatch(tryFetch())
+        // dispatch(tryFetch())
         getAllJobsAndSort(sortBy).then(res => {
           dispatch(fetchAllJobsSuccess({allJobs: res}))
           console.log("Sort By", sortBy)
-          console.log("Sorted First Job", res[0])
           const searchedJobs = filterJobsByCriteria(res, title, activityArea, contractType, city)
           dispatch(filterJobSuccess({searchedJobs: searchedJobs}))
         })
+      }).catch(err => {
+        console.log('==== err: ', err);
       })
     })
   }

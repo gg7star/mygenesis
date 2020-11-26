@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import {em} from '../common'
+import {WIDTH, HEIGHT, em} from '../common'
 import { TouchableOpacity, StatusBar, Linking } from "react-native";
 import { Actions } from 'react-native-router-flux';
 
@@ -20,21 +20,23 @@ class HomeScreen extends Component {
         <StatusBar barstyle="dark-content" translucent backgroundColor="transparent" />
         <LogoView size="small" textShow = "false" style={{marginTop: 20 * em}}/>
 
-        <VerticalCenterLayout>
-          <TouchableOpacity onPress={() => {
-            Actions.login()}
-          }>
-            <RoundButton text="Me connecter" theme="negative"/>
+        <VerticalCenterLayout style={{paddingLeft: '10%', paddingRight: '10%', width: '100%'}}>
+          <TouchableOpacity
+            style={{width: '100%'}}
+            onPress={() => {Actions.login()}}>
+            <RoundButton text="Me connecter" theme="negative" style={{width: '100%'}} />
           </TouchableOpacity>
-          <TouchableOpacity onPress={() => {
-            Actions.subscribe()}
-          }>
-            <RoundButton text="M'inscrire" style={{marginTop: 10 * em}}/>
+          <TouchableOpacity style={{width: '100%'}} onPress={() => {Actions.subscribe()}}>
+            <RoundButton text="M'inscrire" style={{marginTop: 10 * em, width: '100%'}}/>
           </TouchableOpacity>
-          <TouchableOpacity onPress={() => {
+          <TouchableOpacity
+            // style={{width: '100%'}}
+            onPress={() => {
               Linking.openURL('https://genesis.softy.pro')
           }}>
-            <CommonText style={{marginTop: 20 * em, marginBottom: 20 * em}}>Consulter les offres sans m'inscrire</CommonText>
+            <CommonText style={{marginTop: 20 * em, marginBottom: 20 * em}}>
+              Consulter les offres sans m'inscrire
+            </CommonText>
           </TouchableOpacity>
         </VerticalCenterLayout>
       </VerticalJustifyLayout>

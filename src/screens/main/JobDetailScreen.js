@@ -94,7 +94,13 @@ class JobDetailScreen extends Component {
     }
 
     return (
-      <VerticalFlowLayout style={{width: WIDTH, height: HEIGHT, backgroundColor: "#f5f6fa"}}>
+      <VerticalFlowLayout
+        style={{
+          paddingLeft: '5%',
+          paddingRight: '5%',
+          height: HEIGHT,
+          backgroundColor: '#f5f6fa',
+        }}>
         <View style={{height: viewHeight}}>
           <AccountLayout>
             {this.props.showApplySuccess &&
@@ -136,7 +142,7 @@ class JobDetailScreen extends Component {
             </HorizontalLayout>
             <VerticalFlowLayout
               style={[
-                {width: WIDTH * 0.85, backgroundColor: "#ffffff", borderRadius: 10 * em, marginTop: 20*em},
+                {width: '90%', backgroundColor: "#ffffff", borderRadius: 10 * em, marginTop: 20*em},
                 commonStyles.shadow.card,
               ]}
             >
@@ -147,25 +153,59 @@ class JobDetailScreen extends Component {
             </VerticalFlowLayout>
           </AccountLayout>
         </View>
-        <TouchableOpacity onPress={() => {
-            this.didClickApply(applied)
-        }}>
-          { applied &&
-            <RoundButton text="Déjà postulé" leftIcon="applied" theme="green" style={{marginTop: 15 * em, alignSelf: "center"}}/>
-          }
-          { !applied &&
-            <RoundButton text="Postuler" rightIcon="next" style={{marginTop: 15 * em, marginBottom: 80 * em, alignSelf: "center"}}/>
-          }
+        <TouchableOpacity
+          style={{width: '100%', paddingLeft: '5%', paddingRight: '5%'}}
+          onPress={() => this.didClickApply(applied)}
+          // style={{paddingLeft: '5%', paddingRight: '5%'}}
+        >
+          {applied && (
+            <RoundButton
+              text="Déjà postulé"
+              leftIcon="applied"
+              theme="green"
+              style={{marginTop: 15 * em, alignSelf: 'center'}}
+            />
+          )}
+          {!applied && (
+            <RoundButton
+              text="Postuler"
+              rightIcon="next"
+              style={{
+                marginTop: 15 * em,
+                marginBottom: 80 * em,
+                alignSelf: 'center',
+                // width: WIDTH * 0.85,
+              }}
+            />
+          )}
         </TouchableOpacity>
 
-        <Modal isVisible={this.props.showApplySuccess} backdropColor="#18277a" backdropOpacity={0.95}>
+        <Modal
+          isVisible={this.props.showApplySuccess}
+          backdropColor="#18277a"
+          backdropOpacity={0.95}>
           <VerticalCenterFlowLayout style={{flex: 1}}>
             <VerticalCenterFlowLayout style={{flex: 1}}/>
-            <VerticalCenterFlowLayout style={{padding: 20*em, backgroundColor: "#ffffff", borderRadius: 22*em, width: WIDTH * 0.85, marginBottom: 15*em}}>
+            <VerticalCenterFlowLayout
+              style={{
+                padding: 20 * em,
+                backgroundColor: '#ffffff',
+                borderRadius: 22 * em,
+                width: '100%', //WIDTH * 0.85,
+                marginBottom: 15 * em,
+              }}>
               <Image source={require('../../assets/images/ic_job_applied.png')}
                 style={{width: 55 * em, height: 55 * em, marginTop: 10 * em}}
                 resizeMode={'stretch'} />
-              <TitleText theme="black" style={{marginTop: 10 * em, marginHorizontal: 45*em, textAlign: "center"}}>Votre candidature a bien ete envoyée !</TitleText>
+              <TitleText
+                theme="black"
+                style={{
+                  marginTop: 10 * em,
+                  marginHorizontal: 45 * em,
+                  textAlign: 'center',
+                }}>
+                Votre candidature a bien ete envoyée !
+              </TitleText>
               <CommonRegularText theme="gray" style={{marginTop: 10 * em}}>Votre agence:</CommonRegularText>
               <CommonText theme="black" style={{marginTop: 10 * em}}>Genesis-rh macon</CommonText>
               <HorizontalLayout style={{width: 130*em}}>
@@ -190,9 +230,11 @@ class JobDetailScreen extends Component {
                 Lo ou la chargé(e) de recrutement vous recontactera.
               </CommonRegularText>
             </VerticalCenterFlowLayout>
-            <TouchableOpacity onPress={() => {
+            <TouchableOpacity
+              style={{width: '90%'}}
+              onPress={() => {
                 this.props.showApplySuccessModal(false)
-            }}>
+              }}>
               <RoundButton text="Fermer" theme="negative"/>
             </TouchableOpacity>
           </VerticalCenterFlowLayout>

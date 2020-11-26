@@ -16,7 +16,7 @@ const RoundExpandableButton = (props) => {
       style={[
         {
           height: 56*em,
-          width: WIDTH * 0.85,
+          width: '100%', //WIDTH * 0.85,
           backgroundColor: "#ffffff",
           borderRadius: 22*em,
           paddingHorizontal: 28*em

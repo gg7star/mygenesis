@@ -78,7 +78,7 @@ class ContactUsScreen extends Component {
   _renderContent = (section, i, isActive, sections) => {
     let buttonStyle = {borderBottomLeftRadius: 20*em, borderBottomRightRadius: 20*em}
     let buttonsListArr = section.content.map((contentInfo, index) => (
-      <VerticalFlowLayout style={{paddingLeft: 25*em, width: WIDTH * 0.85}}>
+      <VerticalFlowLayout style={{paddingLeft: 25*em, width:'100%'}}>
         {index != 5 &&
           <MediumText theme="gray" style={{marginBottom: 20*em}}>{contentInfo}</MediumText>
         }
@@ -86,7 +86,14 @@ class ContactUsScreen extends Component {
           <MediumText theme="gray" style={{marginBottom: 10*em}}>{contentInfo}</MediumText>
         }
         {index != 5 &&
-          <Separator style={{width: WIDTH * 0.85 - 25*em, backgroundColor: "#f5f6fa", marginBottom: 20*em}}/>
+          <Separator
+            style={{
+              // width: WIDTH * 0.85 - 25 * em,
+              width: '100%',
+              backgroundColor: '#f5f6fa',
+              marginBottom: 20 * em,
+            }}
+          />
         }
       </VerticalFlowLayout>
     ));
@@ -94,7 +101,7 @@ class ContactUsScreen extends Component {
       <VerticalCenterLayout
         style={[
           {
-            width: WIDTH * 0.85,
+            width: '100%', //WIDTH * 0.85,
             backgroundColor: '#ffffff',
             paddingHorizontal: 20 * em,
             paddingVertical: 15 * em,
@@ -133,7 +140,7 @@ class ContactUsScreen extends Component {
 
   render() {
     return (
-      <AccountLayout>
+      <AccountLayout style={{paddingLeft: '5%', paddingRight: '5%'}}>
         {this.state.isModalVisible &&
         <StatusBar barstyle="dark-content" translucent backgroundColor="#18277a" />}
         {!this.state.isModalVisible &&
@@ -155,6 +162,7 @@ class ContactUsScreen extends Component {
               width: WIDTH*0.85,
               backgroundColor: "#ffffff",
               borderRadius: 20*em,
+              width: '100%'
             },
             commonStyles.shadow.card,
           ]}
@@ -191,7 +199,7 @@ class ContactUsScreen extends Component {
           defaultValue={this.state.subject}
           onChangeItem={item => this.setState({ subject: item.value })}
           items={SUJET}
-          style={{ marginTop: 10 * em }}
+          style={{ marginTop: 10 * em, width: '100%'}}
           placeholder={SECTIONS[0].title} />
         {/* <Accordion
           sections={SECTIONS}
@@ -207,15 +215,15 @@ class ContactUsScreen extends Component {
           placeHolder="Email*"
           textContentType="emailAddress"
           keyboardType="email-address"
-          style={{marginTop: 10 * em}}
+          style={{marginTop: 10 * em, width: '100%'}}
           value={this.state.email}
           handleChange={text => this.setState({email: text})}
         />
         <RoundTextInput
           placeHolder="Message*"
           multiline={true}
-          style={{marginTop: 10 * em}}
-          textInputStyle={{height: 200 * em}}
+          style={{marginTop: 10 * em, paddingTop: 10 * em, width: '100%'}}
+          textInputStyle={{height: 150 * em}}
           value={this.state.content}
           handleChange={text => this.setState({content: text})}
         />
@@ -231,12 +239,12 @@ class ContactUsScreen extends Component {
           isVisible={this.state.isModalVisible}
           backdropColor="#18277a"
           backdropOpacity={0.95}>
-          <VerticalJustifyLayout style={{flex: 1}}>
+          <VerticalJustifyLayout style={{flex: 1, width: '100%'}}>
             <View style={{height: 56 * em, marginTop: 20 * em}} />
             <VerticalCenterLayout
               style={{
                 padding: 30 * em,
-                width: WIDTH * 0.85,
+                width: '100%', //WIDTH * 0.85,
                 backgroundColor: '#ffffff',
                 borderRadius: 20 * em,
               }}>
@@ -252,6 +260,7 @@ class ContactUsScreen extends Component {
               </TitleText>
             </VerticalCenterLayout>
             <TouchableOpacity
+              style={{width: '100%'}}
               onPress={this.handleSendMessage}>
               <RoundButton theme="gray" text="Fermer" />
             </TouchableOpacity>

@@ -19,6 +19,9 @@ import { Tooltip } from 'react-native-elements'
 import TooltipContent from './TooltipContent'
 import { SwipeListView } from 'react-native-swipe-list-view'
 
+const CLOSE_POPOVER = require('../../assets/images/ic_close_popover.png')
+const SUB_MENU = require('../../assets/images/btn_sub_menu.png')
+
 class SearchTabResultScreen extends Component {
   constructor(props) {
     super(props)
@@ -32,10 +35,10 @@ class SearchTabResultScreen extends Component {
     ])
   }
 
-  refreshJobs(newSortBy) {
+  refreshJobs = async (newSortBy) => {
     const {tooltipShown} = this.state
     const { title, activityArea, contractType, city } = this.props.route.params
-    this.props.fetchJobsByCriteria(newSortBy, title, activityArea, contractType, city)
+    await this.props.fetchJobsByCriteria(newSortBy, title, activityArea, contractType, city)
     this.setState({sortBy: newSortBy})
   }
 
@@ -61,19 +64,16 @@ class SearchTabResultScreen extends Component {
     this.props.updateFavoriteJobIdsForAll(newAllJobs, newSearchedJobs, newFavoriteJobs, newAppliedJobs, newFavoriteJobIds, newAppliedJobIds)
   }
 
-  tooltipItemClicked(index) {
+  tooltipItemClicked= (index) => {
     console.log("========= Tooltip Clicked at ", index)
     let newSortBy = ""
     if (index == 1) {
       newSortBy = "date"
-    }
-    else if (index == 2) {
+    } else if (index == 2) {
       newSortBy = "contract_type"
-    }
-    else if (index == 3) {
+    } else if (index == 3) {
       newSortBy = "location"
-    }
-    else {
+    } else {
       newSortBy = "activity_area"
     }
     this.refreshJobs(newSortBy)
@@ -102,41 +102,55 @@ class SearchTabResultScreen extends Component {
   )
 
   render() {
-    let tooltipButtonImage = require('../../assets/images/ic_close_popover.png')
+    var tooltipButtonImage = CLOSE_POPOVER;
     if (!this.state.tooltipShown) {
-      tooltipButtonImage = require('../../assets/images/btn_sub_menu.png')
+      tooltipButtonImage = SUB_MENU;
     }
     return (
-        <VerticalCenterFlowLayout style={{marginBottom: 140 * em}}>
-          {this.state.tooltipShown &&
-          <StatusBar barstyle="dark-content" translucent backgroundColor="#18277aef" />}
-          {!this.state.tooltipShown &&
-          <StatusBar barstyle="dark-content" translucent backgroundColor="transparent" />}
-          <HorizontalJustifyLayout style={{marginTop: 25 * em, marginBottom: 20 * em}}>
-            <HorizontalLayout>
-              <TouchableOpacity onPress={() => {
-                this.props.navigation.goBack()
-              }}>
-                <Image source={require('../../assets/images/ic_back.png')} style={styles.tooltipButton} resizeMode={'stretch'} />
-              </TouchableOpacity>
-              <CommonText theme="blue_gray" style={{marginLeft: 5 * em}}>{this.props.searchedJobs.length} résultats trouvés</CommonText>
-            </HorizontalLayout>
-            <Tooltip
-              ref = {this.tooltipRef}
-              popover={<TooltipContent onItemClick={(index) => {
-                this.tooltipItemClicked(index)
-              }}/>}
-              onOpen={()=>{this.setState({tooltipShown: true})}}
-              onClose={()=>{this.setState({tooltipShown: false})}}
-              backgroundColor="#ffffff"
-              overlayColor="#18277aef"
-              width={150*em}
-              height={170*em}>
-              <Image source={tooltipButtonImage} style={styles.tooltipButton} resizeMode={'stretch'} />
-            </Tooltip>
-          </HorizontalJustifyLayout>
-          <SwipeListView style={{ paddingLeft: 15 * em, paddingRight: 15 * em }} data={this.props.searchedJobs} renderItem={this.renderItem} />
-        </VerticalCenterFlowLayout>
+      <VerticalCenterFlowLayout style={{marginBottom: 140 * em, paddingLeft: '5%', paddingRight: '5%'}}>
+        {this.state.tooltipShown &&
+        <StatusBar barstyle="dark-content" translucent backgroundColor="#18277aef" />}
+        {!this.state.tooltipShown &&
+        <StatusBar barstyle="dark-content" translucent backgroundColor="transparent" />}
+        <HorizontalJustifyLayout style={{marginTop: 25 * em, marginBottom: 20 * em}}>
+          <HorizontalLayout>
+            <TouchableOpacity onPress={() => {
+              this.props.navigation.goBack()
+            }}>
+              <Image source={require('../../assets/images/ic_back.png')} style={styles.tooltipButton} resizeMode={'stretch'} />
+            </TouchableOpacity>
+            <CommonText theme="blue_gray" style={{marginLeft: 5 * em}}>{this.props.searchedJobs.length} résultats trouvés</CommonText>
+          </HorizontalLayout>
+          <Tooltip
+            ref={this.tooltipRef}
+            popover={
+              <TooltipContent
+                onItemClick={index => {
+                  this.tooltipItemClicked(index);
+                }}
+              />
+            }
+            onOpen={() => {
+              this.setState({tooltipShown: true});
+            }}
+            onClose={() => {
+              this.setState({tooltipShown: false});
+            }}
+            backgroundColor="#ffffff"
+            overlayColor="#18277aef"
+            width={150*em}
+            height={170*em}>
+            <Image source={tooltipButtonImage} style={styles.tooltipButton} resizeMode={'stretch'} />
+          </Tooltip>
+        </HorizontalJustifyLayout>
+        <HorizontalJustifyLayout>
+          <SwipeListView
+            style={{paddingLeft: 15 * em, paddingRight: 15 * em}}
+            data={this.props.searchedJobs}
+            renderItem={this.renderItem}
+          />
+        </HorizontalJustifyLayout>
+      </VerticalCenterFlowLayout>
     );
   }
 }

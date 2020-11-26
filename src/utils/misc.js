@@ -2,11 +2,11 @@ import Toast from 'react-native-root-toast';
 import {em} from '../common/consts'
 import {Linking} from 'react-native';
 
-export const delay = (ms = 1000) =>
+export const delay = ms =>
   new Promise((resolve, reject) => {
     setTimeout(() => {
       resolve();
-    }, ms);
+    }, ms || 1000);
   });
 
 export const stripeDoubleLineBreak = str => str.replace(/\n{2,}/g, '\n');

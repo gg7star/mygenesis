@@ -16,7 +16,7 @@ const AgreeCheckBox = props => {
       style={[
         {
           height: commonStyles.height * em,
-          width: WIDTH * 0.85,
+          width: '100%', //WIDTH * 0.85,
         },
         // commonStyles.shadow.dropdown,
         props.style,
@@ -35,7 +35,7 @@ const AgreeCheckBox = props => {
         </TouchableOpacity>
         <SmallText theme="gray" size={fontSize}> et les</SmallText>
       </HorizontalLayout>
-      <HorizontalLayout style={{marginLeft: 48 * em, width: WIDTH * 0.85}}>
+      <HorizontalLayout style={{marginLeft: 48 * em, width: '100%'}}>
         <TouchableOpacity onPress={() => Actions.legalnotice()}>
           <SmallText theme="primary" size={fontSize}> mentions légales</SmallText>
         </TouchableOpacity>

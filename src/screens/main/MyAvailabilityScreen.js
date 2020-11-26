@@ -102,7 +102,9 @@ class MyAvailabilityScreen extends Component {
     let checkImageSource = require('../../assets/images/check_circled.png')
     let availTable = []
     availTable.push(
-      <HorizontalLayout style={[{borderRadius: 20*em}, styles.weekItemContainer]}>
+      <HorizontalLayout
+        key={`availTable-0`}
+        style={[{borderRadius: 20 * em}, styles.weekItemContainer]}>
         <HorizontalCenterLayout style={styles.weekItem}>
         </HorizontalCenterLayout>
         <HorizontalCenterLayout style={styles.weekItem}>
@@ -128,170 +130,186 @@ class MyAvailabilityScreen extends Component {
       let weekItemContainerChild = []
       if (index % 2 == 0) {
         weekItemContainerChild.push(
-          <HorizontalCenterLayout style={styles.weekItemGrayShadow} key={index}>
-          </HorizontalCenterLayout>
+          <HorizontalCenterLayout
+            style={styles.weekItemGrayShadow}
+            key={`daysOfWeek-${index}`}
+          />,
         )
       }
       weekItemContainerChild.push(
-        <HorizontalCenterLayout style={styles.weekItem}>
+        <HorizontalCenterLayout style={styles.weekItem} key={`weekItem-${index}`}>
           <CommonText theme="black">{item}</CommonText>
         </HorizontalCenterLayout>
       )
       this.state.availability[item].map((availItem, availIndex) => {
         weekItemContainerChild.push(
-          <HorizontalCenterLayout style={styles.weekItem} key={`available-${availIndex}`}>
-                <View style={styles.realSeparator}/>
-                {availItem &&
-                <TouchableOpacity onPress={() => {
-                    _this.setAvailableForDay(availItem, item, availIndex)
-                  }}>
-                    <Image source={checkImageSource} style={styles.checkImage} resizeMode={'stretch'} />
-                </TouchableOpacity>}
-                {!availItem &&
-                <TouchableOpacity onPress={() => {
-                    _this.setAvailableForDay(availItem, item, availIndex)
-                  }}>
-                    <Image style={styles.checkImage} resizeMode={'stretch'} />
-                </TouchableOpacity>}
-            </HorizontalCenterLayout>
+          <HorizontalCenterLayout
+            style={styles.weekItem}
+            key={`available-${index}-${availIndex}`}>
+            <View style={styles.realSeparator} />
+            {availItem && (
+              <TouchableOpacity
+                onPress={() => {
+                  _this.setAvailableForDay(availItem, item, availIndex);
+                }}>
+                <Image
+                  source={checkImageSource}
+                  style={styles.checkImage}
+                  resizeMode={'stretch'}
+                />
+              </TouchableOpacity>
+            )}
+            {!availItem && (
+              <TouchableOpacity
+                onPress={() => {
+                  _this.setAvailableForDay(availItem, item, availIndex);
+                }}>
+                <Image style={styles.checkImage} resizeMode={'stretch'} />
+              </TouchableOpacity>
+            )}
+          </HorizontalCenterLayout>
         )
       })
       availTable.push(
-        <HorizontalLayout style={[{borderRadius: 20*em}, styles.weekItemContainer]}>
+        <HorizontalLayout key={`weekitemChild-${index}`} style={[{borderRadius: 20*em}, styles.weekItemContainer]}>
           {weekItemContainerChild}
         </HorizontalLayout>
       )
     })
     return (
-        <AccountLayout>
-          {this.state.isModalVisible &&
-          <StatusBar barstyle="dark-content" translucent backgroundColor="#18277a" />}
-          {!this.state.isModalVisible &&
-          <StatusBar barstyle="dark-content" translucent backgroundColor="transparent" />}
-          <HorizontalJustifyLayout style={{marginTop: 25 * em}}>
-            <TouchableOpacity onPress={() => {
-              this.props.navigation.goBack()
-            }}>
-              <Image source={require('../../assets/images/ic_back.png')} style={{width: 30*em, height: 30*em}} resizeMode={'stretch'} />
-            </TouchableOpacity>
-            <CommonText theme="blue_gray" style={{marginLeft: 5 * em}}>Mes disponibilités</CommonText>
-            <View style={{width: 30*em}}/>
-          </HorizontalJustifyLayout>
-          <CommonRegularText theme="gray" style={{marginTop: 5*em}}>Si vous avez des indisponibilités merci de nous</CommonRegularText>
-          <TouchableOpacity onPress={() => Actions.contactus()}>
-            <CommonRegularText theme="green" style={{textDecorationLine: "underline"}}>contacter</CommonRegularText>
+      <AccountLayout style={{paddingLeft: '5%', paddingRight: '5%'}}>
+        {this.state.isModalVisible &&
+        <StatusBar barstyle="dark-content" translucent backgroundColor="#18277a" />}
+        {!this.state.isModalVisible &&
+        <StatusBar barstyle="dark-content" translucent backgroundColor="transparent" />}
+        <HorizontalJustifyLayout style={{marginTop: 25 * em}}>
+          <TouchableOpacity onPress={() => {
+            this.props.navigation.goBack()
+          }}>
+            <Image source={require('../../assets/images/ic_back.png')} style={{width: 30*em, height: 30*em}} resizeMode={'stretch'} />
           </TouchableOpacity>
-          <HorizontalLayout
-            style={[
-              {backgroundColor: "#ffffff", borderRadius: 20*em, marginTop: 15*em, width: WIDTH * 0.85},
-              commonStyles.shadow.card,
-            ]}
-          >
-            <HorizontalJustifyLayout style={{flex: 3}}>
-              <HorizontalLayout style={{padding: 15*em}}>
-                <View style={{backgroundColor: "#01d9ce", width: 12*em, height: 12*em, borderRadius: 6*em}}/>
-                <VerticalFlowLayout style={{marginLeft: 10*em}}>
-                  <MediumText theme="gray">Je suis disponible</MediumText>
-                  <CommonRegularText theme="gray">à partir du:</CommonRegularText>
+          <CommonText theme="blue_gray" style={{marginLeft: 5 * em}}>Mes disponibilités</CommonText>
+          <View style={{width: 30*em}}/>
+        </HorizontalJustifyLayout>
+        <CommonRegularText theme="gray" style={{marginTop: 5*em}}>Si vous avez des indisponibilités merci de nous</CommonRegularText>
+        <TouchableOpacity onPress={() => Actions.contactus()}>
+          <CommonRegularText theme="green" style={{textDecorationLine: "underline"}}>contacter</CommonRegularText>
+        </TouchableOpacity>
+        <HorizontalLayout
+          style={[
+            {
+              backgroundColor: '#ffffff',
+              borderRadius: 20 * em,
+              marginTop: 15 * em,
+              width: '100%'//WIDTH * 0.85,
+            },
+            commonStyles.shadow.card,
+          ]}
+        >
+          <HorizontalJustifyLayout style={{flex: 3}}>
+            <HorizontalLayout style={{padding: 15*em}}>
+              <View style={{backgroundColor: "#01d9ce", width: 12*em, height: 12*em, borderRadius: 6*em}}/>
+              <VerticalFlowLayout style={{marginLeft: 10*em}}>
+                <MediumText theme="gray">Je suis disponible</MediumText>
+                <CommonRegularText theme="gray">à partir du:</CommonRegularText>
+              </VerticalFlowLayout>
+            </HorizontalLayout>
+            <View style={{width: 1, height: 22*em}}/>
+          </HorizontalJustifyLayout>
+          <HorizontalJustifyLayout style={{flex: 2}}>
+            <View style={{width: 1*em, height: 22*em, backgroundColor: "#f4f5f9"}}/>
+            <TouchableOpacity
+              onPress={() => {this.setState({isModalVisible: true})}}>
+              <HorizontalLayout>
+                <TitleText theme="primary">{this.getDayOfDate(this.state.chosenDate)}</TitleText>
+                <VerticalFlowLayout style={{marginLeft: 6*em}}>
+                  <SmallText theme="primary">{ this.getMonthOfDate(this.state.chosenDate) }</SmallText>
+                  <SmallText theme="primary">{ this.getYearOfDate(this.state.chosenDate) }</SmallText>
                 </VerticalFlowLayout>
               </HorizontalLayout>
-              <View style={{width: 1, height: 22*em}}/>
-            </HorizontalJustifyLayout>
-            <HorizontalJustifyLayout style={{flex: 2}}>
-              <View style={{width: 1*em, height: 22*em, backgroundColor: "#f4f5f9"}}/>
-              <TouchableOpacity onPress={() => {
-                this.setState({isModalVisible: true})
-              }}>
+            </TouchableOpacity>
+            <TouchableOpacity onPress={() => {
+              this.setState({isModalVisible: true})
+            }}>
+              <Image source={require('../../assets/images/btn_dot_menu.png')} style={{width: 20*em, height: 20*em}} resizeMode={'stretch'} />
+            </TouchableOpacity>
+          </HorizontalJustifyLayout>
+        </HorizontalLayout>
+
+        <MediumText theme="primary" style={{ marginTop: 25 * em }}>Mes créneaux horaires par jour</MediumText>
+        <VerticalCenterFlowLayout
+          style={[
+            styles.weekDataContainer,
+            commonStyles.shadow.card,
+          ]}
+        >
+          {availTable}
+        </VerticalCenterFlowLayout>
+
+        <Modal isVisible={this.state.isModalVisible} backdropColor="#18277a" backdropOpacity={0.95}>
+          <VerticalCenterFlowLayout style={styles.modalRoundContainer}>
+            <HorizontalLayout style={{backgroundColor: "#ffffff", borderRadius: 20*em}}>
+              <HorizontalJustifyLayout style={{flex: 3}}>
                 <HorizontalLayout>
-                  <TitleText theme="primary">{this.getDayOfDate(this.state.chosenDate)}</TitleText>
-                  <VerticalFlowLayout style={{marginLeft: 6*em}}>
-                    <SmallText theme="primary">{ this.getMonthOfDate(this.state.chosenDate) }</SmallText>
-                    <SmallText theme="primary">{ this.getYearOfDate(this.state.chosenDate) }</SmallText>
+                  <View style={styles.borderdCircle}/>
+                  <VerticalFlowLayout style={{marginLeft: 10*em}}>
+                    <MediumText theme="gray">Je suis disponible</MediumText>
+                    <CommonRegularText theme="gray">à partir du:</CommonRegularText>
                   </VerticalFlowLayout>
                 </HorizontalLayout>
+                <View style={{width: 1, height: 22*em}}/>
+              </HorizontalJustifyLayout>
+              <HorizontalLayout style={{flex: 2}}>
+                <View style={{width: 1*em, height: 22*em, backgroundColor: "#f4f5f9"}}/>
+                <HorizontalLayout style={{marginLeft: 20*em}}>
+                  <TitleText theme="green">{ this.getDayOfDate(this.state.tempDate) }</TitleText>
+                  <VerticalFlowLayout style={{marginLeft: 6*em}}>
+                    <SmallText theme="green">{ this.getMonthOfDate(this.state.tempDate) }</SmallText>
+                    <SmallText theme="green">{ this.getYearOfDate(this.state.tempDate) }</SmallText>
+                  </VerticalFlowLayout>
+                </HorizontalLayout>
+              </HorizontalLayout>
+            </HorizontalLayout>
+            <HorizontalLayout style={{backgroundColor: "#f4f5f9", borderRadius: 15*em, marginTop: 15*em, marginBottom: 5*em}}>
+              <DatePicker
+                date={this.state.chosenDate}
+                onDateChange={this.setTempDate}
+                mode='date'
+                locale='fr'
+                fadeToColor="#f4f5f9"
+                textColor="#1de1d7"
+                style={{width: WIDTH * 0.78, borderRadius: 15*em, marginVertical: 10*em}}
+              />
+            </HorizontalLayout>
+            <HorizontalJustifyLayout style={{width: "100%", marginTop: 10*em}}>
+              <TouchableOpacity onPress={() => {
+                this.setState({isModalVisible: false})
+              }}>
+                <RoundButton text="Annuler" style={styles.modalButton} theme="gray"/>
               </TouchableOpacity>
               <TouchableOpacity onPress={() => {
-                this.setState({isModalVisible: true})
+                this.setState({isModalVisible: false})
+                this.updateStartDateState(this.state.tempDate)
               }}>
-                <Image source={require('../../assets/images/btn_dot_menu.png')} style={{width: 20*em, height: 20*em}} resizeMode={'stretch'} />
+                <RoundButton text="Enregistrer" style={styles.modalButton} theme="primary"/>
               </TouchableOpacity>
             </HorizontalJustifyLayout>
-          </HorizontalLayout>
-
-          <MediumText theme="primary" style={{ marginTop: 25 * em }}>Mes créneaux horaires par jour</MediumText>
-          <VerticalCenterFlowLayout
-            style={[
-              styles.weekDataContainer,
-              commonStyles.shadow.card,
-            ]}
-          >
-            {availTable}
           </VerticalCenterFlowLayout>
+        </Modal>
 
-          <Modal isVisible={this.state.isModalVisible} backdropColor="#18277a" backdropOpacity={0.95}>
-              <VerticalCenterFlowLayout style={styles.modalRoundContainer}>
-                <HorizontalLayout style={{backgroundColor: "#ffffff", borderRadius: 20*em}}>
-                  <HorizontalJustifyLayout style={{flex: 3}}>
-                    <HorizontalLayout>
-                      <View style={styles.borderdCircle}/>
-                      <VerticalFlowLayout style={{marginLeft: 10*em}}>
-                        <MediumText theme="gray">Je suis disponible</MediumText>
-                        <CommonRegularText theme="gray">à partir du:</CommonRegularText>
-                      </VerticalFlowLayout>
-                    </HorizontalLayout>
-                    <View style={{width: 1, height: 22*em}}/>
-                  </HorizontalJustifyLayout>
-                  <HorizontalLayout style={{flex: 2}}>
-                    <View style={{width: 1*em, height: 22*em, backgroundColor: "#f4f5f9"}}/>
-                    <HorizontalLayout style={{marginLeft: 20*em}}>
-                      <TitleText theme="green">{ this.getDayOfDate(this.state.tempDate) }</TitleText>
-                      <VerticalFlowLayout style={{marginLeft: 6*em}}>
-                        <SmallText theme="green">{ this.getMonthOfDate(this.state.tempDate) }</SmallText>
-                        <SmallText theme="green">{ this.getYearOfDate(this.state.tempDate) }</SmallText>
-                      </VerticalFlowLayout>
-                    </HorizontalLayout>
-                  </HorizontalLayout>
-                </HorizontalLayout>
-                <HorizontalLayout style={{backgroundColor: "#f4f5f9", borderRadius: 15*em, marginTop: 15*em, marginBottom: 5*em}}>
-                  <DatePicker
-                    date={this.state.chosenDate}
-                    onDateChange={this.setTempDate}
-                    mode='date'
-                    locale='fr'
-                    fadeToColor="#f4f5f9"
-                    textColor="#1de1d7"
-                    style={{width: WIDTH * 0.78, borderRadius: 15*em, marginVertical: 10*em}}
-                  />
-                </HorizontalLayout>
-                <HorizontalJustifyLayout style={{width: "100%", marginTop: 10*em}}>
-                  <TouchableOpacity onPress={() => {
-                    this.setState({isModalVisible: false})
-                  }}>
-                    <RoundButton text="Annuler" style={styles.modalButton} theme="gray"/>
-                  </TouchableOpacity>
-                  <TouchableOpacity onPress={() => {
-                    this.setState({isModalVisible: false})
-                    this.updateStartDateState(this.state.tempDate)
-                  }}>
-                    <RoundButton text="Enregistrer" style={styles.modalButton} theme="primary"/>
-                  </TouchableOpacity>
-                </HorizontalJustifyLayout>
-              </VerticalCenterFlowLayout>
-          </Modal>
-
-          <Spinner
-            visible={this.state.showLoading}
-            textContent={''}
-            textStyle={{ color: '#FFF' }}
-          />
-        </AccountLayout>
+        <Spinner
+          visible={this.state.showLoading}
+          textContent={''}
+          textStyle={{ color: '#FFF' }}
+        />
+      </AccountLayout>
     );
   }
 }
 
 const styles = {
   weekDataContainer: {
-    width: WIDTH * 0.85,
+    width: '100%', //WIDTH * 0.85,
     borderRadius: 20*em,
     marginTop: 10*em,
     marginBottom: 20*em,
@@ -300,7 +318,7 @@ const styles = {
   },
 
   weekItemContainer: {
-    width: WIDTH * 0.85,
+    width: '100%', //WIDTH * 0.85,
     height: 56*em,
     backgroundColor: '#ffffff',
   },
@@ -309,7 +327,10 @@ const styles = {
     position: 'absolute',
     left: 10*em,
     top: 5*em,
-    width: WIDTH * 0.85 - 20 * em,
+    // width: WIDTH * 0.85 - 20 * em,
+    width: '100%', //WIDTH * 0.85,
+    paddingLeft: '5%',
+    paddingRight: '5%',
     height: 56*em - 10*em,
     backgroundColor: "#d4d5d911",
     borderRadius: 15*em,
@@ -321,12 +342,12 @@ const styles = {
   },
 
   realSeparator: {
-      position: 'absolute',
-      left: 0,
-      top: 0,
-      width: 1*em,
-      height: 58*em,
-      backgroundColor: "#f4f5f9"
+    position: 'absolute',
+    left: 0,
+    top: 0,
+    width: 1*em,
+    height: 58*em,
+    backgroundColor: "#f4f5f9"
   },
 
   checkImage: {
@@ -353,7 +374,7 @@ const styles = {
     backgroundColor: "#ffffff",
     borderRadius: 22*em,
     alignSelf: "center",
-    width: WIDTH * 0.85
+    width: '100%'//WIDTH * 0.85
   }
 }
 

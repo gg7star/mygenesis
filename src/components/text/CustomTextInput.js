@@ -37,7 +37,7 @@ const CustomTextInput = props => {
           borderColor: '#ffffff',
           backgroundColor: '#ffffff',
           borderWidth: 1,
-          // borderRadius: 22 * em
+          // borderRadius: 22 * em,
         },
         commonStyles.shadow.textEdit,
         props.style,
@@ -46,12 +46,14 @@ const CustomTextInput = props => {
         multiline={props.multiline}
         style={[
           {
-            width: WIDTH * 0.85 - textLength - 50 * em,
+            // width: WIDTH * 0.85 - textLength - 50 * em,
+            width: '100%',
             height: commonStyles.height * em,
             fontFamily: 'Lato-Bold',
             fontSize: 16 * em,
             paddingVertical: 10 * em,
             marginLeft: 25 * em,
+            color: '#090F36'
           },
           props.textInputStyle,
         ]}
@@ -63,6 +65,7 @@ const CustomTextInput = props => {
         secureTextEntry={propSecureTextEntry}
         placeholder={props.placeHolder}
         keyboardType={propKeyboardType}
+        placeholderTextColor={'#5B6777'}
       />
       <TouchableOpacity onPress={props.onPressRightText}>
         <HorizontalCenterLayout

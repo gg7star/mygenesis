@@ -9,7 +9,7 @@ import commonStyles from '../common_styles';
 const RoundDropDownButton = (props) => {
   return (
     <HorizontalJustifyLayout style={[{height: 56*em,
-      width: WIDTH * 0.85,
+      width: '100%', //WIDTH * 0.85,WIDTH * 0.85,
       backgroundColor: "#ffffff",
       borderRadius: 22*em,
       paddingHorizontal: 25*em},

@@ -1,6 +1,6 @@
 import React, { Component, createRef } from 'react'
 import {em} from '../../common'
-import { TouchableOpacity, StatusBar, Image, Text, YellowBox } from "react-native"
+import { TouchableOpacity, StatusBar, Image, Text, YellowBox, View } from "react-native"
 import { Actions } from 'react-native-router-flux'
 import { connect } from 'react-redux'
 import { fetchAllJobs } from '../../slices/jobSlice'
@@ -39,12 +39,15 @@ class HomeTabScreen extends Component {
   }
 
   didClickFavorite = (data, index) => {
-    let newFavoriteJobIds = JSON.parse(JSON.stringify(this.props.favoriteJobIds))
-    const jobIndex = newFavoriteJobIds.findIndex(function (v) {return v == data.id})
+    let newFavoriteJobIds = JSON.parse(
+      JSON.stringify(this.props.favoriteJobIds),
+    );
+    const jobIndex = newFavoriteJobIds.findIndex(function(v) {
+      return v == data.id;
+    });
     if (jobIndex != -1) {
       newFavoriteJobIds.splice(jobIndex, 1)
-    }
-    else {
+    } else {
       newFavoriteJobIds.push(data.id)
     }
     let newAllJobs = JSON.parse(JSON.stringify(this.props.allJobs))
@@ -52,7 +55,14 @@ class HomeTabScreen extends Component {
     let newAppliedJobIds = JSON.parse(JSON.stringify(this.props.appliedJobIds))
     let newSearchedJobs = JSON.parse(JSON.stringify(this.props.searchedJobs))
     let newAppliedJobs = JSON.parse(JSON.stringify(this.props.appliedJobs))
-    this.props.updateFavoriteJobIdsForAll(newAllJobs, newSearchedJobs, newFavoriteJobs, newAppliedJobs, newFavoriteJobIds, newAppliedJobIds)
+    this.props.updateFavoriteJobIdsForAll(
+      newAllJobs,
+      newSearchedJobs,
+      newFavoriteJobs,
+      newAppliedJobs,
+      newFavoriteJobIds,
+      newAppliedJobIds,
+    );
   }
 
   tooltipItemClicked(index) {
@@ -77,26 +87,31 @@ class HomeTabScreen extends Component {
     }
   }
 
-  renderItem = (data, rowMap) => (
-    <TouchableOpacity
-      onPress={() => {
-        this.props.navigation.navigate('JobDetail', {
-          job: data.item,
-        })
-      }}>
-      <JobMetaAdapter
-        global={data.item.country !== 'France'}
-        applied={isJobApplied(data.item.id, this.props.appliedJobIds)}
-        favorite={isJobFavorite(data.item.id, this.props.favoriteJobIds)}
-        title={data.item.title}
-        durationType={data.item.contract_type}
-        budget={data.item.salary}
-        availability={data.item.duration}
-        location=""
-        onFavoriteClick={() => this.didClickFavorite(data.item, data.index)}
-      />
-    </TouchableOpacity>
-  );
+  renderItem = (data, rowMap) => {
+    const item = data && data.item;
+    if (!item) return <View />;
+    return (
+      <TouchableOpacity
+        style={{width: '100%', paddingLeft: '5%', paddingRight: '5%'}}
+        onPress={() => {
+          this.props.navigation.navigate('JobDetail', {
+            job: item,
+          });
+          // Actions['JobDetail']({job: data.item})
+        }}>
+        <JobMetaAdapter
+          global={item.country !== 'France'}
+          applied={isJobApplied(item.id, this.props.appliedJobIds)}
+          favorite={isJobFavorite(item.id, this.props.favoriteJobIds)}
+          title={item.title}
+          durationType={item.contract_type}
+          budget={item.salary}
+          availability={item.duration}
+          location=""
+          onFavoriteClick={() => this.didClickFavorite(item, data.index)}
+        />
+      </TouchableOpacity>
+  )};
 
   render() {
     let tooltipButtonImage = require('../../assets/images/ic_close_popover.png')
@@ -104,40 +119,66 @@ class HomeTabScreen extends Component {
       tooltipButtonImage = require('../../assets/images/btn_sub_menu.png')
     }
     return (
-      <VerticalCenterFlowLayout style={{marginBottom: 75 * em}}>
-          {this.state.tooltipShown &&
-          <StatusBar barstyle="dark-content" translucent backgroundColor="#18277aef" />}
-          {!this.state.tooltipShown &&
-          <StatusBar barstyle="dark-content" translucent backgroundColor="transparent" />}
-          <LogoView size="small" style={{marginTop: 20 * em}}/>
-          <HorizontalJustifyLayout style={{ marginTop: 25 * em, marginBottom: 20 * em}}>
-            <CommonText theme="blue_gray">Toutes les offres de postes</CommonText>
-            <Tooltip
-              ref = {this.tooltipRef}
-              popover={<TooltipContent onItemClick={(index) => {
-                this.tooltipItemClicked(index)
-              }}/>}
-              onOpen={()=>{this.setState({tooltipShown: true})}}
-              onClose={()=>{this.setState({tooltipShown: false})}}
-              backgroundColor="#ffffff"
-              overlayColor="#18277aef"
-              width={150*em}
-              height={170*em}>
-              <Image source={tooltipButtonImage} style={styles.tooltipButton} resizeMode={'stretch'} />
-            </Tooltip>
-          </HorizontalJustifyLayout>
-        <SwipeListView
-          style={{paddingLeft: 15 * em, paddingRight: 15 * em}}
-          data={this.props.allJobs}
-          renderItem={this.renderItem}
-        />
-
-          <Spinner
-            visible={this.props.isFetching}
-            textContent={''}
-            textStyle={{ color: '#FFF' }}
+      <VerticalCenterFlowLayout
+        // eslint-disable-next-line react-native/no-inline-styles
+        style={{marginBottom: 75 * em}}>
+        {this.state.tooltipShown && (
+          <StatusBar
+            barstyle="dark-content"
+            translucent
+            backgroundColor="#18277aef"
           />
-        </VerticalCenterFlowLayout>
+        )}
+        {!this.state.tooltipShown && (
+          <StatusBar
+            barstyle="dark-content"
+            translucent
+            backgroundColor="transparent"
+          />
+        )}
+        <LogoView size="small" style={{marginTop: 20 * em}} />
+        <HorizontalJustifyLayout
+          style={{marginTop: 25 * em, marginBottom: 20 * em, paddingLeft: '5%', paddingRight: '5%'}}>
+          <CommonText theme="blue_gray">Toutes les offres de postes</CommonText>
+          <Tooltip
+            ref={this.tooltipRef}
+            popover={
+              <TooltipContent
+                onItemClick={index => {
+                  this.tooltipItemClicked(index);
+                }}
+              />
+            }
+            onOpen={() => {
+              this.setState({tooltipShown: true});
+            }}
+            onClose={() => {
+              this.setState({tooltipShown: false});
+            }}
+            backgroundColor="#ffffff"
+            overlayColor="#18277aef"
+            width={150 * em}
+            height={170 * em}>
+            <Image
+              source={tooltipButtonImage}
+              style={styles.tooltipButton}
+              resizeMode={'stretch'}
+            />
+          </Tooltip>
+        </HorizontalJustifyLayout>
+        <HorizontalJustifyLayout>
+          <SwipeListView
+            // style={{width: '100%'}}
+            data={this.props.allJobs}
+            renderItem={this.renderItem}
+          />
+        </HorizontalJustifyLayout>
+        <Spinner
+          visible={this.props.isFetching}
+          textContent={''}
+          textStyle={{color: '#FFF'}}
+        />
+      </VerticalCenterFlowLayout>
     );
   }
 }
@@ -150,13 +191,13 @@ const styles = {
 }
 
 const mapStateToProps = state => ({
-  allJobs: state.job.allJobs,
-  favoriteJobIds: state.job.favoriteJobIds,
-  appliedJobIds: state.job.appliedJobIds,
-  searchedJobs: state.job.searchedJobs,
-  favoriteJobs: state.job.favoriteJobs,
-  appliedJobs: state.job.appliedJobs,
-  isFetching: state.job.isFetching,
+  allJobs: state.job && state.job.allJobs,
+  favoriteJobIds: state.job && state.job.favoriteJobIds,
+  appliedJobIds: state.job && state.job.appliedJobIds,
+  searchedJobs: state.job && state.job.searchedJobs,
+  favoriteJobs: state.job && state.job.favoriteJobs,
+  appliedJobs: state.job && state.job.appliedJobs,
+  isFetching: state.job && state.job.isFetching,
 })
 
 const mapDispatchToProps = dispatch => {

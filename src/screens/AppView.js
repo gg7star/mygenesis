@@ -5,17 +5,18 @@ import { RootSiblingParent } from 'react-native-root-siblings'
 import {
   StyleSheet, View, SafeAreaView, StatusBar
 } from 'react-native';
+import {useDarkMode} from 'react-native-dark-mode';
 import RootRoutes from '../routes';
 
 class AppView extends Component {
   state = {
-    loaded: false
+    loaded: false,
   };
 
   async UNSAFE_componentWillReceiveProps(nextProps) {
     const { app } = nextProps;
     const { loaded } = this.state;
-    if (app.loaded && !loaded) {
+    if (app && app.loaded && !loaded) {
       const _this = this;
       this.setState({loaded: true}, () => {
         _this.initialize();
@@ -27,9 +28,16 @@ class AppView extends Component {
   }
 
   render() {
+    // const isDarkMode = useDarkMode();
+    const isDarkMode = true;
     return (
       <RootSiblingParent>
-        <SafeAreaView style={{ flex: 0, backgroundColor: '#FFFFFF' }} />
+        <SafeAreaView
+          style={{
+            flex: 0,
+            backgroundColor: isDarkMode ? '#000000' : '#FFFFFF',
+          }}
+        />
         <SafeAreaView style={styles.safeArea}>
           <View style={styles.container}>
             <RootRoutes />

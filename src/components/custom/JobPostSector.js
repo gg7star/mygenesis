@@ -5,6 +5,9 @@ import HorizontalCenterLayout from '../../layouts/HorizontalCenterLayout';
 import HorizontalJustifyLayout from '../../layouts/HorizontalJustifyLayout';
 import {TitleText, CommonRegularText} from '../text';
 import Moment from 'moment';
+import 'moment/locale/fr';
+import 'moment/locale/en-gb';
+import 'moment/locale/es-us';
 
 import {WIDTH, HEIGHT, em} from '../../common';
 import commonStyles from '../common_styles';
@@ -30,7 +33,7 @@ const JobPostSector = (props) => {
     else if (props.type == "information") {
       iconResource = require('../../assets/images/ic_job_info.png')
       sectorTitle = "Infos Utiles"
-      Moment.locale("de")
+      Moment.locale("fr")
       const formattedDate = Moment(props.job.date).format("DD MMMM YYYY")
       return (
         <VerticalFlowLayout

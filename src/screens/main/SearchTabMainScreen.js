@@ -48,21 +48,21 @@ class SearchTabMainScreen extends Component {
   render() {
     const {title, activityArea, contractType, city} = this.state
     return (
-        <AccountLayout style={{marginBottom: 60 * em}}>
+        <AccountLayout style={{marginBottom: 60 * em, paddingLeft: '10%', paddingRight: '10%'}}>
           <StatusBar barstyle="dark-content" translucent backgroundColor="transparent" />
           <TitleText style={{marginTop: 35 * em}} theme="black">Rechercher</TitleText>
-          <RoundTextInput placeHolder="Métier" style={{marginTop: 15 * em}}
+          <RoundTextInput placeHolder="Métier" style={{marginTop: 15 * em, width: '100%'}}
             value={title} handleChange={(text)=>this.setState({title:text})} />
-          <RoundTextInput placeHolder="Secteur d'activité" style={{marginTop: 15 * em}}
+          <RoundTextInput placeHolder="Secteur d'activité" style={{marginTop: 15 * em, width: '100%'}}
             value={activityArea} handleChange={(text)=>this.setState({activityArea:text})} />
-          <RoundTextInput placeHolder="Type de contrat" style={{marginTop: 15 * em}}
+          <RoundTextInput placeHolder="Type de contrat" style={{marginTop: 15 * em, width: '100%'}}
             value={contractType} handleChange={(text)=>this.setState({contractType:text})} />
-          <RoundTextInput placeHolder="Ville" style={{marginTop: 15 * em}}
+          <RoundTextInput placeHolder="Ville" style={{marginTop: 15 * em, width: '100%'}}
             value={city} handleChange={(text)=>this.setState({city:text})} />
           <TouchableOpacity onPress={() => {
               this.didClickSearchButton()
           }}>
-          <RoundButton text="Rechercher" rightIcon="next" style={{marginTop: 15 * em}}/>
+          <RoundButton text="Rechercher" rightIcon="next" style={{marginTop: 15 * em, width: '100%'}}/>
           </TouchableOpacity>
         </AccountLayout>
     );

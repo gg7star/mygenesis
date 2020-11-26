@@ -26,12 +26,12 @@ class LoginScreen extends Component {
     super(props)
 
     this.state = {
-      email:"",
-      password:""
+      email: props.credential ? props.credential.email : '',
+      password: ''
     }
   }
 
-  handleLogin = () => {
+  handleLogin = async () => {
     // Actions.mainTab()
     const {email, password} = this.state
     const {isFetching} = this.props
@@ -64,7 +64,7 @@ class LoginScreen extends Component {
          this.props.loginFailed("DB: Timeout")
          showRootToast('DB: Timeout')
        }
-    }, 5000)
+    }, 10000)
 
     this.props.authWithEmail(email, password)
   }
@@ -100,12 +100,17 @@ class LoginScreen extends Component {
     const {statusMessage} = this.props
 
     return (
-      <AccountLayout>
+      <AccountLayout style={{paddingLeft: '5%', paddingRight: '5%'}}>
         <StatusBar barstyle="dark-content" translucent backgroundColor="transparent" />
         <LogoView size="small" style={{marginTop: 20 * em}}/>
         <TitleText style={{marginTop: 35 * em, marginBottom: 15 * em}} theme="black">Me connecter</TitleText>
 
-        <VerticalCenterFlowLayout style={{backgroundColor: "#ffffff", borderRadius: 22*em}}>
+        <VerticalCenterFlowLayout
+          style={{
+            backgroundColor: '#ffffff',
+            borderRadius: 22 * em,
+            width: '100%'
+          }}>
           <CustomTextInput
             placeHolder="Email"
             textContentType="emailAddress"
@@ -115,9 +120,10 @@ class LoginScreen extends Component {
             style={{
               borderTopLeftRadius: 22 * em,
               borderTopRightRadius: 22 * em,
+              width: '100%'
             }}
           />
-          <Separator style={{width: WIDTH * 0.85, backgroundColor: "#f5f6fa"}}/>
+          <Separator style={{width: '100%', backgroundColor: "#f5f6fa"}}/>
           <CustomTextInput
             placeHolder="Mot de passe"
             secureTextEntry={true}
@@ -129,11 +135,12 @@ class LoginScreen extends Component {
             style={{
               borderBottomLeftRadius: 22 * em,
               borderBottomRightRadius: 22 * em,
+              width: '100%'
             }}
           />
         </VerticalCenterFlowLayout>
 
-        <TouchableOpacity onPress={() => {this.handleLogin()}}>
+        <TouchableOpacity onPress={() => {this.handleLogin()}} style={{width: '100%'}}>
           <RoundButton
             text="Me connecter"
             rightIcon="next"
@@ -157,10 +164,10 @@ class LoginScreen extends Component {
 }
 
 const mapStateToProps = state => ({
-  isAuthenticated: state.login.isAuthenticated,
-  isFetching: state.login.isFetching,
-  statusMessage: state.login.statusMessage,
-  credential: state.login.credential,
+  isAuthenticated: state.login && state.login.isAuthenticated,
+  isFetching: state.login && state.login.isFetching,
+  statusMessage: state.login && state.login.statusMessage,
+  credential: state.login && state.login.credential,
 })
 
 const mapDispatchToProps = dispatch => {

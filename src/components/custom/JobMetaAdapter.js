@@ -22,6 +22,9 @@ const JobMetaAdapter = (props) => {
           marginBottom: 15 * em,
           backgroundColor: '#ffffff',
           borderRadius: 15 * em,
+          paddingLeft: '1%',
+          paddingRight: '1%',
+          width: '100%'
         },
         commonStyles.shadow.card,
         props.style,
