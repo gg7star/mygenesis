@@ -142,7 +142,7 @@ class LoginScreen extends Component {
           />
         </VerticalCenterFlowLayout>
 
-        <TouchableOpacity onPressIn={() => {this.handleLogin()}} style={{width: '100%'}}>
+        <TouchableOpacity onPress={() => {this.handleLogin()}} style={{width: '100%'}}>
           <RoundButton
             text="Me connecter"
             rightIcon="next"
